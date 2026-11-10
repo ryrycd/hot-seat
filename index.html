@@ -644,14 +644,6 @@ svg{display:block}
 .card.t-story .facts{display:none}
 .card.t-story.told .facts{display:flex}
 
-@container (max-height:330px){
-  .rail{gap:4px;bottom:2px}
-  .rail .ic{width:40px;height:36px}
-  .rail svg{width:27px;height:27px}
-  .rail button{font-size:11px;gap:1px}
-}
-@container (max-height:250px){ .rail .r-share{display:none} }
-@container (max-height:190px){ .rail .r-debate{display:none} }
 
 .side .qr{display:grid;grid-template-columns:104px 1fr;gap:14px;align-items:center;padding:12px;border-radius:18px;background:var(--s1);box-shadow:inset 0 0 0 1px var(--line2)}
 .side .qrc{width:104px;height:104px;border-radius:12px;background:#fff;padding:7px}
@@ -733,6 +725,22 @@ html.standalone .stage{position:fixed;left:0;top:0;width:100%;height:var(--app-h
 .card.t-story .head{margin-top:6px}
 .device.fit-tighter .card.answered .collapse.h{grid-template-rows:0fr;opacity:0}
 .device.fit-tightest .card.answered .collapse.m{grid-template-rows:0fr;opacity:0}
+
+/* side buttons: same spot, size and count on every card */
+.rail{position:absolute;top:calc(var(--sat) + 110px);right:8px;bottom:auto;gap:12px;z-index:4}
+.device.fit-tighter .rail{gap:6px}
+.device.fit-tighter .rail .ic{width:40px;height:38px}
+.device.fit-tighter .rail svg{width:28px;height:28px}
+.head .hook,.head .facts{padding-right:54px}
+.hook{font-size:clamp(20px,6.6cqw,27px)}
+.card.answered .head .hook{padding-right:0}
+.caps{padding-right:58px}
+/* story recap: the whole story stays on screen once it has played */
+.cap.recap{font:750 clamp(16px,4.6cqw,19px)/1.32 var(--font-d);letter-spacing:-.015em;text-align:left;display:grid;gap:6px;justify-self:stretch}
+.cap.recap .ln{color:rgb(255 255 255/.86)}
+.cap.recap .ln.last{color:#fff}
+.cap.recap.small{font-size:14.5px;gap:4px}
+.tapzone{cursor:pointer}
 
 [hidden]{display:none!important}
 
@@ -2322,7 +2330,7 @@ function updateTop() {
 }
 
 /* ================= feed + cards ================= */
-const TDUR = 20000;
+const TDUR = 30000;
 const feeds = {};
 let curFeed = 'feed', activeCtrl = null, curPage = 'home';
 const stat = c => { const h = hash(c.id); return { likes: 900 + h % 14000, comments: 30 + (h >>> 4) % 420 }; };
@@ -2399,7 +2407,7 @@ function caseCard(c, mode) {
   const ans = () => mode === 'daily' ? S.daily.a[c.id] : S.answers[c.id];
   const letters = c.type === 'swipe' ? ['← Swipe left', 'Swipe right →'] : ['A', 'B', 'C', 'D'];
   const opts = c.options.map((o, i) => `<button class="opt" data-i="${i}" aria-label="${esc(o.t)}"><span class="fillwrap"><span class="fill"></span></span><span class="k">${letters[i]}</span><span class="t">${esc(o.t)}</span><span class="p num">${o.pct}%</span></button>`).join('');
-  const timer = `<div class="timer"><span class="bonus num">${icon('bolt', 1).replace('<svg', '<svg style="width:12px;height:12px;display:inline-block;vertical-align:-1px"')}+10</span><div class="tring"><svg viewBox="0 0 32 32"><circle class="tr" cx="16" cy="16" r="14" fill="none" stroke-width="3"/><circle class="pr" cx="16" cy="16" r="14" fill="none" stroke-width="3" stroke-linecap="round"/></svg><b class="num">20</b></div></div>`;
+  const timer = `<div class="timer"><span class="bonus num">${icon('bolt', 1).replace('<svg', '<svg style="width:12px;height:12px;display:inline-block;vertical-align:-1px"')}+10</span><div class="tring"><svg viewBox="0 0 32 32"><circle class="tr" cx="16" cy="16" r="14" fill="none" stroke-width="3"/><circle class="pr" cx="16" cy="16" r="14" fill="none" stroke-width="3" stroke-linecap="round"/></svg><b class="num">30</b></div></div>`;
   let hero = '';
   if (c.type === 'thread') {
     const people = [...new Set((c.messages || []).map(m => (m.from || '').split('·')[0].trim()).filter(Boolean))];
@@ -2429,7 +2437,7 @@ function caseCard(c, mode) {
         ${showHook ? `<div class="collapse h"><div><h2 class="hook">${esc(c.hook)}</h2></div></div>` : ''}
         ${facts}
       </div>
-      <div class="hero">${hero}${rail}</div>
+      <div class="hero">${hero}</div>
       <div class="body">
         <div class="${c.type === 'story' ? 'story-q' : ''}">
           <div class="collapse q"><div><div class="ask"><span class="q">${esc(c.question)}</span>${timer}</div></div></div>
@@ -2437,7 +2445,7 @@ function caseCard(c, mode) {
         </div>
         <div class="collapse r"><div><div class="reveal"></div></div></div>
       </div>
-    </div>`;
+    </div>${rail}`;
 
   const ctrl = { el, c, mode, kind: 'case', elapsed: 0, t0: 0, timing: false, ready: false, answered: !!ans(), active: false, tick: null, played: false };
   el._ctrl = ctrl;
@@ -2450,7 +2458,7 @@ function caseCard(c, mode) {
     const upd = () => {
       const e = ctrl.elapsedNow(), left = Math.max(0, Math.ceil((TDUR - e) / 1000)), b = Math.max(0, Math.round(10 * (1 - e / TDUR)));
       if (tnum) tnum.textContent = left;
-      if (bonus) { if (b > 0) bonus.innerHTML = bonus.innerHTML.replace(/\+\d+$/, '+' + b); else { bonus.textContent = 'No bonus'; bonus.classList.add('gone'); tring.classList.add('late'); } }
+      if (bonus) { if (b > 0) bonus.innerHTML = bonus.innerHTML.replace(/\+\d+$/, '+' + b); else { bonus.textContent = 'Take your time'; bonus.classList.add('gone'); tring.classList.add('late'); } }
     };
     upd(); ctrl.tick = setInterval(upd, 200);
   };
@@ -2481,13 +2489,13 @@ function caseCard(c, mode) {
   dblTap(el, (x, y) => likeAt(ctrl, x, y));
   if (c.type === 'swipe') bindSwipe(ctrl);
   if (c.type === 'story') {
-    $('.tapzone', el).addEventListener('click', () => storyAdvance(ctrl));
+    $('.tapzone', el).addEventListener('click', e => { const r = el.getBoundingClientRect(); if (e.clientX - r.left < r.width / 3) storyBack(ctrl); else storyAdvance(ctrl); });
     $('.skip', el).addEventListener('click', e => { e.stopPropagation(); storySkip(ctrl); });
   }
   if (ctrl.answered) { // restore
     ctrl.ready = true; ctrl.played = true;
     if (c.type === 'thread') { renderThreadAll(ctrl); $('.opts', el).classList.remove('wait'); }
-    if (c.type === 'story') el.classList.add('told');
+    if (c.type === 'story') { el.classList.add('told'); storyRecap(ctrl); }
     if (c.type === 'numbers') el.classList.add('drawn');
     renderAnswered(ctrl, ans(), false);
   }
@@ -2588,11 +2596,23 @@ function storyPlay(ctrl) {
   run();
 }
 function storyAdvance(ctrl) { if (!ctrl.ready) { ctrl.skipLine = true; sfx('tap'); } }
-function storySkip(ctrl) { if (ctrl.storyToken) ctrl.storyToken.cancel = true; ctrl.line = (ctrl.c.lines || []).length; const lines = ctrl.c.lines || []; $('.cap', ctrl.el).innerHTML = lines.length ? lines[lines.length - 1].split(/\s+/).map(w => `<span class="w in">${esc(w)}</span>`).join(' ') : ''; storyDone(ctrl); }
+function storyBack(ctrl) {
+  if (ctrl.ready) return;
+  if (ctrl.storyToken) ctrl.storyToken.cancel = true;
+  ctrl.line = Math.max(0, (ctrl.line || 0) - 1); ctrl.skipLine = false; sfx('tap'); haptic();
+  storyPlay(ctrl);
+}
+function storyRecap(ctrl) {
+  const lines = ctrl.c.lines || [], cap = $('.cap', ctrl.el), caps = $('.caps', ctrl.el);
+  cap.classList.add('recap');
+  cap.innerHTML = lines.map((l, i) => `<span class="ln${i === lines.length - 1 ? ' last' : ''}">${esc(l)}</span>`).join('');
+  requestAnimationFrame(() => { if (caps.scrollHeight > caps.clientHeight + 1) cap.classList.add('small'); });
+}
+function storySkip(ctrl) { if (ctrl.storyToken) ctrl.storyToken.cancel = true; ctrl.line = (ctrl.c.lines || []).length; storyDone(ctrl); }
 function storyDone(ctrl) {
   if (ctrl.ready) return;
   $$('.story-bars i b', ctrl.el).forEach(b => { b.getAnimations().forEach(a => a.cancel()); b.style.transform = 'scaleX(1)'; });
-  ctrl.el.classList.add('told'); ctrl.ready = true;
+  ctrl.el.classList.add('told'); ctrl.ready = true; storyRecap(ctrl);
   $$('.opt', ctrl.el).forEach((n, i) => anim(n, [{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'none' }], { duration: SPR.bouncy.d, delay: 120 + i * 70, easing: SPR.bouncy.e, fill: 'backwards' }));
   setTimeout(() => ctrl.startTimer(), 300);
 }
