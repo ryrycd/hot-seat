@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Hot Seat">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" type="image/png" href="icon-192.png">
@@ -684,7 +684,7 @@ svg{display:block}
 .page.feedpage{opacity:1;transform:none;transition:none}
 .page.feedpage:not(.on){visibility:hidden}
 /* Home Screen app: fill the whole screen (iOS can report a shorter viewport and leave a gap at the bottom) */
-html.standalone .stage{position:fixed;left:0;top:0;width:100%;height:var(--app-h,100%)}
+/* Home Screen app: iOS lays the page out below a black status bar (black-translucent left a dead strip at the bottom) */
 /* who you are: company badge + bigger name */
 .meta.who{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:nowrap}
 .who .co{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font:800 16px/1 var(--font-d);letter-spacing:-.02em;color:#fff;
