@@ -696,7 +696,7 @@ html.standalone .stage{position:fixed;left:0;top:0;width:100%;height:var(--app-h
 .meta.who{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:nowrap}
 .who .co{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font:800 16px/1 var(--font-d);letter-spacing:-.02em;color:#fff;
   background:linear-gradient(140deg,color-mix(in oklab,var(--c1) 78%,#fff 22%),color-mix(in oklab,var(--c2) 72%,#000 28%));box-shadow:inset 0 0 0 1.5px rgb(255 255 255/.35),0 6px 16px -6px rgb(0 0 0/.5)}
-.who .co.e{font-size:21px;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;background:rgb(0 0 0/.35)}
+.who .co.e{font-size:22px;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
 .who .wn{min-width:0}
 .who b{display:block;font:800 18px/1.1 var(--font-d);letter-spacing:-.02em;text-shadow:0 1px 10px rgb(0 0 0/.3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .who small{display:block;font:600 12.5px/1.25 var(--font-t);color:rgb(255 255 255/.78);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -2381,9 +2381,7 @@ function whoHTML(c, mode) {
     name = c.company || parts[1] || '';
     const yr = c.year || parts[2] || '';
     sub = `You're the ${r}${yr ? ' · ' + yr : ''}`;
-    const w = name.replace(/[^A-Za-z0-9 ]/g, ' ').split(/\s+/).filter(Boolean);
-    const mono = w.length > 1 ? w[0][0] + w[1][0] : (w[0] || '?')[0];
-    badge = `<span class="co">${esc(mono.toUpperCase())}</span>`;
+    badge = `<span class="co e">${c.emoji || '🏢'}</span>`;
   } else {
     const org = parts.slice(1).join(' · ') || 'Your company';
     name = org.charAt(0).toUpperCase() + org.slice(1);
