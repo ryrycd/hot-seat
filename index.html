@@ -654,6 +654,12 @@ svg{display:block}
 @container (max-height:250px){ .rail .r-share{display:none} }
 @container (max-height:190px){ .rail .r-debate{display:none} }
 
+.side .qr{display:grid;grid-template-columns:104px 1fr;gap:14px;align-items:center;padding:12px;border-radius:18px;background:var(--s1);box-shadow:inset 0 0 0 1px var(--line2)}
+.side .qrc{width:104px;height:104px;border-radius:12px;background:#fff;padding:7px}
+.side .qrc svg{width:100%;height:100%;display:block}
+.side .qr b{display:block;font:700 14.5px/1.25 var(--font-t);color:var(--fg1);margin-bottom:4px}
+.side .qr span{display:block;font:500 12.5px/1.4 var(--font-t);color:var(--fg3)}
+
 [hidden]{display:none!important}
 
 </style>
@@ -730,6 +736,7 @@ svg{display:block}
       <div class="fix"><i>✓</i><span>Climb from Intern to CEO, then answer members' questions for coins</span></div>
       <div class="fix"><i>✓</i><span>One Ask button: spend coins to get a real CEO's answer</span></div>
     </div>
+    <div class="qr" id="qrBox" hidden><div class="qrc" id="qrCode"></div><div><b>Play it on your phone</b><span>ryrycd.github.io/hot-seat</span><span>Then Share → Add to Home Screen</span></div></div>
   </aside>
 </div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -738,6 +745,7 @@ svg{display:block}
   <linearGradient id="gGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe27a"/><stop offset="1" stop-color="#ff9f1a"/></linearGradient>
   <linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
 </defs></svg>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
 <script>
 window.HS_CASES = [
   {
@@ -3186,6 +3194,7 @@ function rebuildFeed() {
 }
 function boot() {
   if (!CASES.length) { $('#feed').innerHTML = '<div class="empty" style="height:100%;align-content:center"><b>No cases loaded</b><p>The case content failed to load.</p></div>'; return; }
+  try { if (window.qrcode && $('#qrCode')) { const q = window.qrcode(0, 'M'); q.addData('https://ryrycd.github.io/hot-seat/'); q.make(); $('#qrCode').innerHTML = q.createSvgTag({ cellSize: 4, margin: 0, scalable: true }); $('#qrBox').hidden = false; } } catch (e) {}
   renderTabbar();
   rebuildFeed();
   mountFeed('dfeed', [...dailyPicks().map(c => ({ kind: 'case', c })), { kind: 'dailyEnd' }], 'daily');
