@@ -45,7 +45,7 @@ svg{display:block}
 /* ---------- Stage + device ---------- */
 .stage{height:100%;width:100%;display:grid;place-items:center;position:relative;overflow:hidden;background:var(--bg)}
 .device{position:relative;width:100%;height:100%;overflow:hidden;background:#000;isolation:isolate;container-type:size;container-name:device;
-  --sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px)}
+  --sat:env(safe-area-inset-top,0px);--sab:min(env(safe-area-inset-bottom,0px),34px)}
 .side,.island,.statusbar{display:none}
 @media (min-width:820px) and (min-height:620px){
   .stage{grid-template-columns:1fr auto 1fr;gap:56px;padding:20px 40px;
@@ -78,8 +78,8 @@ svg{display:block}
 .side .bigl{font-size:13.5px;line-height:1.4;color:var(--fg3);margin-top:8px}
 
 /* ---------- App shell ---------- */
-.main{position:absolute;inset:0;transform-origin:50% 100%;transition:transform .5s var(--ease-out),border-radius .5s var(--ease-out),filter .5s var(--ease-out);overflow:hidden;background:#000}
-.device.sheet-open .main{transform:scale(.93) translateY(10px);border-radius:28px;filter:brightness(.62)}
+.main{position:absolute;inset:0;overflow:hidden;background:#000}
+.device.sheet-open .main{pointer-events:none}
 .pages{position:absolute;inset:0 0 calc(var(--tab-h) + var(--sab)) 0;overflow:hidden}
 .page{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;scrollbar-width:none;
   background:var(--bg);opacity:0;visibility:hidden;transform:translateY(10px) scale(.985);transition:opacity .22s var(--ease-out),transform .32s var(--ease-out),visibility 0s .32s}
@@ -129,13 +129,12 @@ svg{display:block}
 .feed{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;scroll-snap-type:y mandatory;overscroll-behavior-y:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .feed::-webkit-scrollbar{display:none}
 .feed.off{opacity:0;visibility:hidden;pointer-events:none}
-.card{position:relative;height:100%;width:100%;scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden;background:#000;--c1:#ff4d2e;--c2:#5b2bff}
+.card{position:relative;height:100%;width:100%;scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden;background:#000;content-visibility:auto;--c1:#ff4d2e;--c2:#5b2bff}
 .bg{position:absolute;inset:0;background:linear-gradient(165deg,var(--c1) 0%,var(--c2) 100%);overflow:hidden}
-.bg i{position:absolute;border-radius:50%;will-change:transform;animation:drift 16s ease-in-out infinite alternate;animation-play-state:paused}
+.bg i{position:absolute;border-radius:50%;animation:drift 16s ease-in-out infinite alternate;animation-play-state:paused}
 .bg i:nth-child(1){width:90%;height:60%;left:-25%;top:-10%;background:radial-gradient(closest-side,color-mix(in oklab,var(--c1) 55%,#fff 45%),transparent);opacity:.55}
 .bg i:nth-child(2){width:110%;height:70%;right:-40%;bottom:5%;background:radial-gradient(closest-side,color-mix(in oklab,var(--c2) 65%,#000 35%),transparent);opacity:.8;animation-duration:19s;animation-direction:alternate-reverse}
 .bg i:nth-child(3){width:70%;height:45%;left:20%;top:30%;background:radial-gradient(closest-side,color-mix(in oklab,var(--c1) 50%,var(--c2) 50%),transparent);opacity:.5;animation-duration:23s}
-.bg::after{content:"";position:absolute;inset:0;opacity:.22;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .card.active .bg i,.card.active .float{animation-play-state:running}
 @keyframes drift{0%{transform:translate3d(0,0,0) scale(1) rotate(0)}50%{transform:translate3d(8%,6%,0) scale(1.12) rotate(8deg)}100%{transform:translate3d(-6%,10%,0) scale(.95) rotate(-6deg)}}
 .scrim{position:absolute;inset:0;pointer-events:none;background:
@@ -315,7 +314,7 @@ svg{display:block}
 .card.t-numbers.answered .chartbox{opacity:0;transition:opacity .3s}
 
 /* story */
-.story-bars{position:absolute;top:calc(var(--sat) + 46px);left:12px;right:12px;display:flex;gap:4px;z-index:3}
+.story-bars{position:absolute;top:calc(var(--sat) + 44px);left:12px;right:12px;display:flex;gap:4px;z-index:3}
 .story-bars i{flex:1;height:3px;border-radius:2px;background:rgb(255 255 255/.25);overflow:hidden;position:relative}
 .story-bars i b{position:absolute;inset:0;background:#fff;transform-origin:0 50%;transform:scaleX(0)}
 .caps{position:absolute;inset:0;display:grid;place-items:center;padding:0 58px 0 4px;text-align:left}
@@ -390,7 +389,7 @@ svg{display:block}
 .league-hero p{margin:4px 0 0;font:600 13px/1.35 var(--font-t);color:var(--fg2);position:relative}
 .league-hero .cd{display:inline-flex;gap:6px;align-items:center;margin-top:8px;font:700 12px/1 var(--font-t);color:var(--xp);position:relative}
 .lb{display:grid;gap:2px;position:relative}
-.lbr{display:grid;grid-template-columns:30px 36px 1fr auto;gap:12px;align-items:center;height:56px;padding:0 12px;border-radius:14px;font:600 15px/1 var(--font-t);will-change:transform}
+.lbr{display:grid;grid-template-columns:30px 36px 1fr auto;gap:12px;align-items:center;height:56px;padding:0 12px;border-radius:14px;font:600 15px/1 var(--font-t)}
 .lbr .r{font:800 15px/1 var(--font-d);color:var(--fg3);text-align:center}
 .lbr .n small{display:block;font:600 11.5px/1.2 var(--font-t);color:var(--fg3);margin-top:3px}
 .lbr .x{font:800 14px/1 var(--font-d);color:var(--fg2)}
@@ -504,7 +503,7 @@ svg{display:block}
 .sw.on::after{transform:translateX(20px)}
 
 /* ---------- Sheets ---------- */
-.scrim-l{position:absolute;inset:0;z-index:50;background:rgb(0 0 0/.35);opacity:0;pointer-events:none;transition:opacity .4s var(--ease-out)}
+.scrim-l{position:absolute;inset:0;z-index:50;background:rgb(0 0 0/.58);opacity:0;pointer-events:none;transition:opacity .4s var(--ease-out)}
 .scrim-l.on{opacity:1;pointer-events:auto}
 .sheet{position:absolute;left:0;right:0;bottom:0;z-index:51;max-height:calc(100% - var(--sat) - 18px);display:flex;flex-direction:column;background:var(--s1);border-radius:28px 28px 0 0;
   box-shadow:0 -1px 0 rgb(255 255 255/.06),0 -30px 60px -20px rgb(0 0 0/.6);transform:translateY(105%);will-change:transform;padding-bottom:var(--sab)}
@@ -570,7 +569,7 @@ svg{display:block}
 
 /* ---------- Toast (island) ---------- */
 .toasts{position:absolute;top:0;left:0;right:0;z-index:80;display:grid;justify-items:center;pointer-events:none}
-.toast{margin-top:max(8px,calc(var(--sat) - 46px));width:min(92%,360px);min-height:58px;border-radius:29px;background:#000;box-shadow:0 0 0 1px rgb(255 255 255/.08),0 20px 40px -10px rgb(0 0 0/.7);
+.toast{margin-top:calc(var(--sat) + 6px);width:min(92%,360px);min-height:58px;border-radius:29px;background:#000;box-shadow:0 0 0 1px rgb(255 255 255/.08),0 20px 40px -10px rgb(0 0 0/.7);
   display:grid;grid-template-columns:38px 1fr auto;gap:10px;align-items:center;padding:10px 16px 10px 10px;transform-origin:50% 0;color:#fff;pointer-events:none}
 .toast .ti{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:20px;font-family:"Apple Color Emoji","Segoe UI Emoji",sans-serif}
 .toast b{font:700 14px/1.2 var(--font-t);display:block;letter-spacing:-.01em}
@@ -666,7 +665,7 @@ svg{display:block}
 @container device (max-width:370px){ .act .opt-l{display:none} .act.a-listen,.act.a-debate{width:34px;padding:0} }
 /* fit: answered cards on shorter screens (classes set from the measured space) */
 .collapse.m{grid-template-rows:1fr}
-.device.fit-tight .card.answered .collapse.m{grid-template-rows:0fr;opacity:0}
+
 .device.fit-tight .card.answered .next{display:none}
 .device.fit-tight .reveal{gap:9px;padding-top:10px}
 .device.fit-tighter .card.answered .opt{min-height:44px;padding-top:6px;padding-bottom:6px}
@@ -687,6 +686,53 @@ svg{display:block}
 .chat.densest .msg p{font-size:13px;padding:6px 10px}
 .chat.densest{gap:4px;padding-right:50px!important}
 .chat.clip{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 28px);mask-image:linear-gradient(to bottom,transparent 0,#000 28px)}
+
+/* the feed page switches instantly: animating it made iPhone Safari run out of graphics memory */
+.page.feedpage{opacity:1;transform:none;transition:none}
+.page.feedpage:not(.on){visibility:hidden}
+/* Home Screen app: fill the whole screen (iOS can report a shorter viewport and leave a gap at the bottom) */
+html.standalone .stage{position:fixed;left:0;top:0;width:100%;height:var(--app-h,100%)}
+/* who you are: company badge + bigger name */
+.meta.who{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:nowrap}
+.who .co{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font:800 16px/1 var(--font-d);letter-spacing:-.02em;color:#fff;
+  background:linear-gradient(140deg,color-mix(in oklab,var(--c1) 78%,#fff 22%),color-mix(in oklab,var(--c2) 72%,#000 28%));box-shadow:inset 0 0 0 1.5px rgb(255 255 255/.35),0 6px 16px -6px rgb(0 0 0/.5)}
+.who .co.e{font-size:21px;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;background:rgb(0 0 0/.35)}
+.who .wn{min-width:0}
+.who b{display:block;font:800 18px/1.1 var(--font-d);letter-spacing:-.02em;text-shadow:0 1px 10px rgb(0 0 0/.3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.who small{display:block;font:600 12.5px/1.25 var(--font-t);color:rgb(255 255 255/.78);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.who .chip{height:22px;padding:0 8px;font-size:10.5px}
+/* answer screen: verdict and XP on one row, the lesson first, the full story behind a tap */
+.verdict{grid-template-columns:44px minmax(0,1fr) auto}
+.verdict h3{font-size:19.5px}
+.vx{display:grid;justify-items:end;gap:5px}
+.vx .xpc{height:24px;font-size:12px;padding:0 9px}
+.vx small{font:700 11px/1 var(--font-t);color:var(--cool);white-space:nowrap}
+.vx small.cb{color:#ff8a5c}
+.more{display:flex;align-items:center;justify-content:space-between;width:100%;height:40px;padding:0 2px;font:700 14px/1 var(--font-t);color:rgb(255 255 255/.9);box-shadow:inset 0 1px 0 rgb(255 255 255/.1),inset 0 -1px 0 rgb(255 255 255/.1);text-align:left}
+.more svg{width:18px;height:18px;flex:none;transition:transform .45s var(--sp)}
+.more.open svg{transform:rotate(180deg)}
+.collapse.o{grid-template-rows:0fr;opacity:0;transition:grid-template-rows .45s var(--ease-out),opacity .3s}
+.collapse.o.open{grid-template-rows:1fr;opacity:1}
+.collapse.o .outcome{padding:2px 0 4px}
+.card.more-open .collapse.h{grid-template-rows:0fr;opacity:0}
+.device.fit-tighter .outcome{display:block;-webkit-line-clamp:unset;overflow:visible}
+.device.fit-tightest .card.answered .lesson{display:grid}
+.device.fit-tightest .vx small{display:none}
+
+/* swipe card stays clear of the side buttons */
+.card.t-swipe .swipe-zone{inset:6px 62px 8px 0!important}
+.sw-card{width:auto;height:min(100%,380px);aspect-ratio:1/1.08;max-width:100%}
+
+.swipe-zone{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr)}
+.sw-card{width:100%;height:auto;max-width:330px;max-height:100%;aspect-ratio:1/1.08;justify-self:center;align-self:center}
+
+/* every card: who + question pinned to the top, the picture in the middle, answers at the bottom */
+.head{flex:0 0 auto;position:relative;z-index:1}
+.hero{margin:4px 0 8px}
+.card.answered .hero{margin:0}
+.card.t-story .head{margin-top:6px}
+.device.fit-tighter .card.answered .collapse.h{grid-template-rows:0fr;opacity:0}
+.device.fit-tightest .card.answered .collapse.m{grid-template-rows:0fr;opacity:0}
 
 [hidden]{display:none!important}
 
@@ -2015,6 +2061,12 @@ const BOARD = (window.HS_BOARD || []).filter(Boolean);
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const dev = $('#device'), mainEl = $('#main');
+const STANDALONE = navigator.standalone === true || !!(window.matchMedia && matchMedia('(display-mode: standalone)').matches);
+if (STANDALONE) {
+  const root = document.documentElement; root.classList.add('standalone');
+  const setH = () => { const portrait = innerHeight >= innerWidth, sh = portrait ? Math.max(screen.width, screen.height) : Math.min(screen.width, screen.height); root.style.setProperty('--app-h', Math.max(innerHeight, sh) + 'px'); };
+  setH(); addEventListener('resize', setH); addEventListener('orientationchange', () => setTimeout(setH, 300));
+}
 const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
 const hash = s => { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; };
@@ -2071,6 +2123,7 @@ const IC = {
   check: '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
   chevU: '<path d="m6 15 6-6 6 6"/>',
   chevR: '<path d="m9 6 6 6-6 6"/>',
+  chevD: '<path d="m6 9 6 6 6-6"/>',
   lock: '<rect x="5" y="10.5" width="14" height="10.5" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/>',
   coin: '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/>',
   clock: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
@@ -2175,14 +2228,21 @@ const SFX = {
   streak() { [392, 523.25, 659.25, 783.99].forEach((f, i) => tone(f, i * 0.06, 0.4, 'triangle', 0.05)); },
 };
 const sfx = n => { try { SFX[n] && SFX[n](); } catch (e) {} };
-function haptic(kind = 'tap') {
-  if (!S.haptics) return;
+// iPhone Safari has no vibration API; toggling a hidden iOS switch control plays the system haptic tick (iOS 18+).
+function tick() {
   try {
-    if (navigator.vibrate) { navigator.vibrate(kind === 'success' ? [10, 50, 16] : kind === 'heavy' ? [20, 40, 20, 40, 30] : 8); return; }
     const l = document.createElement('label'); l.className = 'hapt'; l.ariaHidden = 'true';
     const i = document.createElement('input'); i.type = 'checkbox'; i.setAttribute('switch', '');
     l.appendChild(i); document.head.appendChild(l); l.click(); l.remove();
   } catch (e) {}
+}
+const HAPTIC = { tap: [0], success: [0, 120], streak: [0, 110, 220], heavy: [0, 90, 180, 300, 420] };
+function haptic(kind = 'tap') {
+  if (!S.haptics) return;
+  try {
+    if (navigator.vibrate) { navigator.vibrate(kind === 'success' ? [12, 60, 18] : kind === 'streak' ? [12, 50, 12, 50, 20] : kind === 'heavy' ? [20, 40, 20, 40, 30, 40, 40] : 8); return; }
+  } catch (e) {}
+  (HAPTIC[kind] || HAPTIC.tap).forEach(t => t ? setTimeout(tick, t) : tick());
 }
 
 /* ================= fx canvas ================= */
@@ -2313,6 +2373,26 @@ function makeCard(it, mode) {
 }
 
 /* ---------- case card ---------- */
+function whoHTML(c, mode) {
+  const parts = (c.seat || '').split('·').map(x => x.trim()).filter(Boolean), real = c.kind === 'real';
+  const role = parts[0] || 'CEO', r = role === role.toUpperCase() ? role : role.toLowerCase();
+  let name, sub, badge;
+  if (real) {
+    name = c.company || parts[1] || '';
+    const yr = c.year || parts[2] || '';
+    sub = `You're the ${r}${yr ? ' · ' + yr : ''}`;
+    const w = name.replace(/[^A-Za-z0-9 ]/g, ' ').split(/\s+/).filter(Boolean);
+    const mono = w.length > 1 ? w[0][0] + w[1][0] : (w[0] || '?')[0];
+    badge = `<span class="co">${esc(mono.toUpperCase())}</span>`;
+  } else {
+    const org = parts.slice(1).join(' · ') || 'Your company';
+    name = org.charAt(0).toUpperCase() + org.slice(1);
+    sub = `You're the ${r}`;
+    badge = `<span class="co e">${c.emoji || '🏢'}</span>`;
+  }
+  if (mode === 'daily') sub += ' · Daily 5';
+  return `${badge}<span class="wn"><b>${esc(name)}</b><small>${esc(sub)}</small></span><span class="chip ${real ? 'real' : 'scn'}">${real ? 'Real' : 'Scenario'}</span>`;
+}
 function caseCard(c, mode) {
   const el = document.createElement('section');
   el.className = `card t-${c.type}`;
@@ -2346,11 +2426,13 @@ function caseCard(c, mode) {
   el.innerHTML = `<div class="bg"><i></i><i></i><i></i></div><div class="scrim"></div><div class="scrim2"></div>
     ${c.type === 'story' ? `<div class="story-bars">${(c.lines || []).map(() => '<i><b></b></i>').join('')}</div>` : ''}
     <div class="ui">
+      <div class="head">
+        <div class="collapse m"><div><div class="meta who">${whoHTML(c, mode)}</div></div></div>
+        ${showHook ? `<div class="collapse h"><div><h2 class="hook">${esc(c.hook)}</h2></div></div>` : ''}
+        ${facts}
+      </div>
       <div class="hero">${hero}${rail}</div>
       <div class="body">
-        <div class="collapse m"><div><div class="meta"><span class="chip ${real ? 'real' : 'scn'}">${real ? 'Real decision' : 'Scenario'}</span><span class="chip">${esc(c.seat)}</span>${mode === 'daily' ? '<span class="chip" style="color:var(--xp)">Daily 5</span>' : ''}</div></div></div>
-        ${showHook ? `<h2 class="hook">${esc(c.hook)}</h2>` : ''}
-        ${facts}
         <div class="${c.type === 'story' ? 'story-q' : ''}">
           <div class="collapse q"><div><div class="ask"><span class="q">${esc(c.question)}</span>${timer}</div></div></div>
           <div class="opts ${c.type === 'swipe' ? 'swipe-opts' : ''} ${c.type === 'thread' ? 'wait' : ''}">${opts}</div>
@@ -2604,12 +2686,13 @@ function pick(ctrl, i) {
   if (firstToday) { S.streak += 1; S.best = Math.max(S.best, S.streak); S.lastDay = TODAY; if (!S.days.includes(TODAY)) S.days.push(TODAY); }
   save();
 
-  haptic(win ? 'success' : 'tap'); sfx(win ? 'win' : 'miss');
+  const willLevel = lvl(S.xp).i > before.i;
+  haptic(willLevel ? 'heavy' : win ? 'success' : 'tap'); sfx(win ? 'win' : 'miss');
   const btn = $(`.opt[data-i="${i}"]`, ctrl.el);
   anim(btn, [{ transform: 'scale(.96)' }, { transform: 'scale(1.025)' }, { transform: 'none' }], { duration: 520, easing: SPR.bouncy.e });
   renderAnswered(ctrl, rec, true);
   const p = rel(btn);
-  if (win) setTimeout(() => fx.burst(p.x, p.y - 6, { n: 64, speed: 10, spread: Math.PI * 1.1, colors: ['#35e3a1', '#ffd23f', '#ffffff', c.palette[0], '#8db4ff'] }), 160);
+  if (win) setTimeout(() => { fx.burst(p.x, p.y - 6, { n: 64, speed: 10, spread: Math.PI * 1.1, colors: ['#35e3a1', '#ffd23f', '#ffffff', c.palette[0], '#8db4ff'] }); if (!willLevel) haptic('tap'); }, 160);
   setTimeout(() => flyXP(btn, gained), 380);
   setTimeout(() => {
     updateTop();
@@ -2659,10 +2742,10 @@ function renderAnswered(ctrl, rec, animate) {
   const v = verdictCopy(c, i), st = stat(c), secs = (rec.ms / 1000).toFixed(1);
   const liked = S.liked.includes(c.id), saved = S.saved.includes(c.id);
   $('.reveal', el).innerHTML = `
-    <div class="verdict ${v.cls}"><div class="vi">${icon(v.cls === 'win' ? 'check' : 'x')}</div><div><h3>${esc(v.h)}</h3><p>${esc(v.p)}</p></div></div>
-    <div class="xps"><span class="xpc num">+${rec.xp} XP</span><span class="xpc sp num">${icon('clock')} ${secs}s${rec.speed ? ' · +' + rec.speed + ' speed' : ''}</span>${rec.mult > 1 ? `<span class="xpc cb num">${icon('bolt', 1)} x${rec.mult} combo</span>` : ''}</div>
-    <p class="outcome">${esc(c.outcome)}</p>
+    <div class="verdict ${v.cls}"><div class="vi">${icon(v.cls === 'win' ? 'check' : 'x')}</div><div><h3>${esc(v.h)}</h3><p>${esc(v.p)}</p></div><div class="vx"><span class="xpc num">+${rec.xp} XP</span><small class="num">${secs}s${rec.speed ? ' · +' + rec.speed + ' speed' : ''}</small>${rec.mult > 1 ? `<small class="cb num">x${rec.mult} combo</small>` : ''}</div></div>
     <div class="lesson"><small>The lesson</small><b>${esc(c.lesson)}</b></div>
+    <button class="more a-more" aria-expanded="false">${c.kind === 'real' ? 'What really happened' : 'How experienced CEOs see it'}${icon('chevD')}</button>
+    <div class="collapse o"><div><p class="outcome">${esc(c.outcome)}</p></div></div>
     <div class="acts">
       <button class="act primary a-why">${icon('spark', 1)} Why?</button>
       ${c.listen ? `<button class="act a-listen" aria-label="Full story, ${c.listen.mins} minutes">${icon('headphones')}<span class="opt-l num">${c.listen.mins}m</span></button>` : ''}
@@ -2674,6 +2757,7 @@ function renderAnswered(ctrl, rec, animate) {
     <button class="next a-next">${icon('chevU')} Swipe up for the next call</button>`;
   const R = $('.reveal', el);
   $('.a-why', R).onclick = () => openCoach(c);
+  $('.a-more', R).onclick = () => { const o = $('.collapse.o', el), b = $('.a-more', R), open = !o.classList.contains('open'); o.classList.toggle('open', open); b.classList.toggle('open', open); b.setAttribute('aria-expanded', String(open)); el.classList.toggle('more-open', open); haptic(); sfx('tap'); };
   if ($('.a-listen', R)) $('.a-listen', R).onclick = () => openListen(c);
   $('.a-debate', R).onclick = () => openDebate(c);
   $('.a-like', R).onclick = () => toggleLike(ctrl);
@@ -2707,7 +2791,7 @@ function streakCelebrate() {
   anim($('.flame', pill), [{ transform: 'scale(1) rotate(0)' }, { transform: 'scale(1.35) rotate(-8deg)' }, { transform: 'scale(1.2) rotate(6deg)' }, { transform: 'none' }], { duration: 900, easing: 'ease-out' });
   countUp(streakN, S.streak - 1, S.streak, 700);
   fx.burst(p.x, p.y, { n: 26, speed: 6, g: 0.16, colors: ['#ffb21f', '#ff5a2b', '#ff2d6f', '#ffe08a'], shape: 1 });
-  sfx('streak'); haptic('success');
+  sfx('streak'); haptic('streak');
   toast({ icon: FLAME.replace('class="flame"', 'style="width:24px;height:24px"'), bg: 'rgb(255 90 43/.18)', title: `${S.streak}-day streak`, sub: 'First call of the day. Come back tomorrow to keep it.', value: `🔥 ${S.streak}` });
 }
 function leagueNudge(before) {
@@ -3127,6 +3211,7 @@ $('#sheetX').onclick = () => closeSheet();
 function openCoach(c) {
   openSheet({ title: 'Why it played out', body: `<div class="coach-b">
     <div class="ep" style="grid-template-columns:56px 1fr;--c1:${c.palette[0]};--c2:${c.palette[1]}"><span class="cover" style="width:56px;height:56px;font-size:28px;border-radius:14px">${c.emoji}</span><span><b>${esc(c.verdict || '')}</b><small>${esc(c.seat)}</small></span></div>
+    <p style="margin:0;font:500 15px/1.5 var(--font-t);color:var(--fg2)">${esc(c.outcome)}</p>
     ${(c.deep || []).map((d, k) => `<div class="bul"><i>${k + 1}</i><span>${esc(d)}</span></div>`).join('')}
     <div class="lesson" style="margin-top:4px"><small>Take it with you</small><b>${esc(c.lesson)}</b></div>
     ${c.source ? `<div class="src">Source: ${esc(c.source)}. Summary written by the Hot Seat team, not a quote.</div>` : '<div class="src">Scenario written by the Hot Seat team from common founder situations.</div>'}
@@ -3248,7 +3333,10 @@ function boot() {
   $$('#tabs button').forEach(b => b.onclick = () => switchFeed(b.dataset.f));
   $('#streakPill').onclick = openStreak;
   $('#lvlRing').onclick = () => go('you');
-  if (location.hash === '#play' && !S.onboarded) { S.onboarded = true; save(); }
+  const route = location.hash.slice(1);
+  if (route && !S.onboarded && ['play', 'league', 'ask', 'playbook', 'you', 'daily'].includes(route)) { S.onboarded = true; save(); }
+  if (S.onboarded && ['league', 'ask', 'playbook', 'you'].includes(route)) setTimeout(() => go(route), 60);
+  if (S.onboarded && route === 'daily') setTimeout(() => switchFeed('dfeed'), 60);
   if (!S.onboarded) showOnboarding(false);
   else if (freezeNote) setTimeout(() => toast({ icon: '🧊', bg: 'rgb(141 180 255/.18)', title: 'Streak freeze used', sub: `Your ${S.streak}-day streak is safe. Make a call today to keep it going.` }), 900);
   // unlock audio on first gesture
