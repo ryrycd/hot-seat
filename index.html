@@ -629,7 +629,8 @@ svg{display:block}
 .hapt{display:none}
 
 @media (max-height:700px){
-  .ui{padding-top:calc(var(--sat) + 46px)}
+  .ui{padding-top:calc(var(--sat) + 50px)}
+  .topbar{padding-bottom:6px}
   .hook{font-size:clamp(19px,6.4cqw,25px);margin-bottom:7px}
   .opt{min-height:46px;padding-top:8px;padding-bottom:8px;font-size:14.5px}
   .facts{padding-bottom:8px}.fact b{font-size:15px}
@@ -742,6 +743,23 @@ html.standalone .stage{position:fixed;left:0;top:0;width:100%;height:var(--app-h
 .cap.recap.small{font-size:14.5px;gap:4px}
 .tapzone{cursor:pointer}
 
+/* intro: once past the first screen, darken the moving wall so headings never sit on top of tile text */
+.onb .fade2{position:absolute;inset:0;background:linear-gradient(to bottom,rgb(5 5 7/.55) 0%,rgb(5 5 7/.9) 30%,#050507 48%);opacity:0;transition:opacity .5s var(--ease-out);pointer-events:none}
+.onb.deep .fade2{opacity:1}
+
+/* SE-size phones: keep the answered thread clear of the tab bar */
+.device.fit-tightest .reveal{gap:7px;padding-top:8px}
+.device.fit-tightest .card.answered .opt{min-height:42px}
+
+.device.fit-tightest .rail{gap:2px}
+.device.fit-tightest .rail .ic{width:36px;height:34px}
+.device.fit-tightest .rail svg{width:25px;height:25px}
+.device.fit-tightest .rail button span:not(.ic){display:none}
+.device.fit-tightest .card:not(.answered) .facts{display:none}
+.device.fit-tightest .opt{min-height:44px;padding-top:6px;padding-bottom:6px}
+
+.xpc{white-space:nowrap}
+
 [hidden]{display:none!important}
 
 </style>
@@ -750,7 +768,7 @@ html.standalone .stage{position:fixed;left:0;top:0;width:100%;height:var(--app-h
 <div class="stage" id="stage">
   <aside class="side l" aria-hidden="true">
     <div class="brand"><svg width="44" height="44" viewBox="0 0 44 44"><rect width="44" height="44" rx="13" fill="url(#gHeat)"/><g transform="translate(10 10)" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5h8a1.5 1.5 0 0 1 1.5 1.5v7h-11V4A1.5 1.5 0 0 1 8 2.5z"/><path d="M4.5 11h15v2.2a1.8 1.8 0 0 1-1.8 1.8H6.3a1.8 1.8 0 0 1-1.8-1.8z"/><path d="M12 15v4.5M7.5 21.5 12 19.5l4.5 2"/></g></svg><b>Hot Seat</b></div>
-    <h1>Real CEO decisions. <span>Twenty seconds each.</span></h1>
+    <h1>Real CEO decisions. <span>Thirty seconds each.</span></h1>
     <p>Scroll, make the call, see what really happened and how everyone else chose. Climb from Intern to CEO.</p>
     <div class="keys">
       <div><kbd>↑</kbd><kbd>↓</kbd> next or previous call</div>
@@ -811,7 +829,7 @@ html.standalone .stage{position:fixed;left:0;top:0;width:100%;height:var(--app-h
   <aside class="side r" aria-hidden="true">
     <div><div class="big num">277</div><div class="bigl">issues we logged in CEO Wisdom, then rebuilt around one loop</div></div>
     <div class="fixlist">
-      <div class="fix"><i>✓</i><span>Twenty-second calls instead of walls of small text</span></div>
+      <div class="fix"><i>✓</i><span>Thirty-second calls instead of walls of small text</span></div>
       <div class="fix"><i>✓</i><span>The timer pays a speed bonus, so it means something</span></div>
       <div class="fix"><i>✓</i><span>See how everyone chose and what really happened, instantly</span></div>
       <div class="fix"><i>✓</i><span>Streaks, combos and weekly leagues bring people back</span></div>
@@ -2085,6 +2103,7 @@ const pad2 = n => String(n).padStart(2, '0');
 const dayKey = d => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
 const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
 const TODAY = dayKey(new Date());
+const weekId = d => { const x = new Date(d); x.setHours(0, 0, 0, 0); x.setDate(x.getDate() - x.getDay()); return dayKey(x); };
 const AVC = ['#ff6a3d', '#7c5cff', '#16b38a', '#2f8cff', '#ff3d81', '#e8a400', '#00a3c4', '#a64dff', '#ef5350', '#4caf50'];
 const avColor = s => AVC[hash(s) % AVC.length];
 const initials = s => s.split(/[\s.]+/).filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
@@ -2173,16 +2192,17 @@ function seed() {
   for (let i = 6; i >= 1; i--) days.push(dayKey(addDays(now, -i)));
   [-9, -10, -11, -12, -15, -16, -17, -18, -19, -20, -22, -23].forEach(i => days.unshift(dayKey(addDays(now, i))));
   return {
-    v: 1, onboarded: false, name: '', interests: ['Strategy', 'Founder life', 'People'], goal: 5,
+    v: 1, onboarded: false, name: '', interests: [], goal: 5,
     xp: 352, weekXp: 418, coins: 240, streak: 6, best: 14, lastDay: dayKey(addDays(now, -1)), days, freezes: 2, frozen: [dayKey(addDays(now, -13))],
     combo: 0, answers: {}, daily: { date: TODAY, a: {} }, saved: [], liked: [], votes: {}, myQ: [], comments: {}, badges: ['first'],
     times: [19.4, 18.1, 18.6, 16.9, 15.8, 16.2, 14.7, 13.9, 13.1, 12.6, 11.8, 11.2, 10.9], todayTimes: [], todayKey: TODAY,
-    made: 37, wins: 24, sound: true, haptics: true, seenRank: null, style: [58, 64, 47, 55, 61],
+    made: 37, wins: 24, sound: true, haptics: true, seenRank: null, style: [58, 64, 47, 55, 61], voteXp: {}, weekKey: weekId(now),
   };
 }
 let S = Object.assign(seed(), store.get('state', {}));
 const save = () => store.set('state', S);
 let freezeNote = 0;
+(function rollWeek() { const w = weekId(new Date()); if (S.weekKey !== w) { S.weekKey = w; S.weekXp = 0; S.seenRank = null; } })();
 (function rollDay() {
   if (S.todayKey !== TODAY) {
     if (S.todayTimes && S.todayTimes.length) S.times.push(+(S.todayTimes.reduce((a, b) => a + b, 0) / S.todayTimes.length).toFixed(1));
@@ -2326,7 +2346,7 @@ function updateTop() {
   $('#streakPill').classList.toggle('cold', S.lastDay !== TODAY);
   const L = lvl(S.xp); lvlN.textContent = L.i + 1;
   lvlArc.style.strokeDashoffset = (100.53 * (1 - L.p)).toFixed(2);
-  const cp = $('#comboPill'); cp.classList.toggle('on', S.combo >= 2); $('#comboN').textContent = 'x' + S.combo;
+  const cp = $('#comboPill'); cp.classList.toggle('on', S.combo >= 3); $('#comboN').textContent = 'x' + (S.combo >= 5 ? 3 : 2);
 }
 
 /* ================= feed + cards ================= */
@@ -2453,7 +2473,8 @@ function caseCard(c, mode) {
   if (tring) tring.style.setProperty('--tdur', TDUR + 'ms');
   ctrl.elapsedNow = () => ctrl.elapsed + (ctrl.timing ? performance.now() - ctrl.t0 : 0);
   ctrl.startTimer = () => {
-    if (ctrl.answered || !ctrl.ready || ctrl.timing || !ctrl.active) return;
+    if (ctrl.answered || !ctrl.ready || ctrl.timing || !ctrl.active || curPage !== 'home') return;
+    if (sheetOpen || $('#lvlup').classList.contains('on') || !$('#onb').hidden) return;
     ctrl.timing = true; ctrl.t0 = performance.now(); el.classList.add('timing');
     const upd = () => {
       const e = ctrl.elapsedNow(), left = Math.max(0, Math.ceil((TDUR - e) / 1000)), b = Math.max(0, Math.round(10 * (1 - e / TDUR)));
@@ -2604,6 +2625,7 @@ function storyBack(ctrl) {
 }
 function storyRecap(ctrl) {
   const lines = ctrl.c.lines || [], cap = $('.cap', ctrl.el), caps = $('.caps', ctrl.el);
+  $$('.story-bars i b', ctrl.el).forEach(b => { b.getAnimations().forEach(a => a.cancel()); b.style.transform = 'scaleX(1)'; });
   cap.classList.add('recap');
   cap.innerHTML = lines.map((l, i) => `<span class="ln${i === lines.length - 1 ? ' last' : ''}">${esc(l)}</span>`).join('');
   requestAnimationFrame(() => { if (caps.scrollHeight > caps.clientHeight + 1) cap.classList.add('small'); });
@@ -2684,6 +2706,7 @@ function swipeFly(ctrl, side, from = 0) {
 /* ---------- answering ---------- */
 function pick(ctrl, i) {
   if (ctrl.answered) return;
+  if (dayKey(new Date()) !== TODAY) { location.reload(); return; }
   const c = ctrl.c, ms = Math.round(ctrl.elapsedNow());
   ctrl.pauseTimer(); ctrl.answered = true;
   const win = i === c.best;
@@ -2823,6 +2846,7 @@ function leagueNudge(before) {
 }
 function levelUp(L) {
   const o = $('#lvlup');
+  activeCtrl && activeCtrl.pauseTimer && activeCtrl.pauseTimer();
   const unlocks = { Manager: ['Weekly league promotions', 'Daily 5 hard mode', '+50 bonus coins'], Director: ['Board questions in your feed', 'Custom decision journal tags', '+75 bonus coins'], VP: ['Vote counts double on the Board', 'Exclusive interview drops', '+100 bonus coins'], 'C-Suite': ['Draft answers for the Board', 'Private cohort leagues', '+150 bonus coins'], CEO: ['Answer members\' questions and earn coins', 'CEO badge on your profile', 'Invite-only case drops'], Analyst: ['Streak freezes', 'Playbook export', '+25 bonus coins'] }[L.name] || [];
   const bonus = { Analyst: 25, Manager: 50, Director: 75, VP: 100, 'C-Suite': 150 }[L.name] || 0;
   S.coins += bonus; save();
@@ -2835,7 +2859,7 @@ function levelUp(L) {
   anim($('.badge', lc), [{ transform: 'scale(0) rotate(-40deg)' }, { transform: 'none' }], { duration: SPR.bouncy.d + 200, easing: SPR.bouncy.e, fill: 'backwards', delay: 120 });
   [...lc.children].forEach((n, k) => { if (!n.classList.contains('badge')) anim(n, [{ opacity: 0, transform: 'translateY(20px)' }, { opacity: 1, transform: 'none' }], { duration: 700, delay: 200 + k * 90, easing: SPR.soft.e, fill: 'backwards' }); });
   setTimeout(() => { const b = rel($('.badge', lc)); fx.burst(b.x, b.y, { n: 110, speed: 13 }); fx.rain(90); }, 350);
-  const close = () => { o.classList.remove('on'); updateTop(); };
+  const close = () => { o.classList.remove('on'); updateTop(); if (curPage === 'home' && activeCtrl && activeCtrl.startTimer) activeCtrl.startTimer(); };
   $('#lvlGo').onclick = close;
   o.onclick = e => { if (e.target === o) close(); };
 }
@@ -2844,7 +2868,7 @@ function levelUp(L) {
 function dblTap(el, fn) {
   let lt = 0, lx = 0, ly = 0;
   el.addEventListener('pointerup', e => {
-    if (e.target.closest('button,.opt,.rail,.acts,.sw-card,input,a')) return;
+    if (e.target.closest('button,.opt,.rail,.acts,.sw-card,input,a,.tapzone,.skip')) return;
     const now = performance.now();
     if (now - lt < 300 && Math.hypot(e.clientX - lx, e.clientY - ly) < 40) { const d = dev.getBoundingClientRect(); fn(e.clientX - d.left, e.clientY - d.top); lt = 0; }
     else { lt = now; lx = e.clientX; ly = e.clientY; }
@@ -2882,7 +2906,7 @@ async function shareText(text, title = 'Hot Seat') {
 }
 function shareCase(c, rec) {
   rec = rec || S.answers[c.id] || S.daily.a[c.id];
-  const t = rec ? `I sat in the hot seat: "${c.hook}"\nMy call: ${c.options[rec.i].t} (${(rec.ms / 1000).toFixed(1)}s) ${rec.win ? '✅' : '❌'}\n${c.options[rec.i].pct}% of players agreed with me. What would you do?` : `Your call: "${c.hook}"\n${c.options.map((o, i) => `${'ABC'[i]}) ${o.t}`).join('\n')}\nAnswer in under 20 seconds on Hot Seat.`;
+  const t = rec ? `I sat in the hot seat: "${c.hook}"\nMy call: ${c.options[rec.i].t} (${(rec.ms / 1000).toFixed(1)}s) ${rec.win ? '✅' : '❌'}\n${c.options[rec.i].pct}% of players agreed with me. What would you do?` : `Your call: "${c.hook}"\n${c.options.map((o, i) => `${'ABC'[i]}) ${o.t}`).join('\n')}\nAnswer in under 30 seconds on Hot Seat.`;
   shareText(t);
 }
 
@@ -2920,8 +2944,8 @@ function xCard(it, mode) {
       bindVotes(box, b, render);
       $('.x-go', box).onclick = () => { go('ask'); setTimeout(openComposer, 350); };
     } else if (it.kind === 'end') {
-      const n = Object.keys(S.answers).length;
-      box.innerHTML = `<div class="eyebrow">You're all caught up</div><h2>${n} calls today. New ones drop at 7:00 AM.</h2>
+      const n = Object.values(S.answers).filter(r => r && dayKey(new Date(r.t)) === TODAY).length;
+      box.innerHTML = `<div class="eyebrow">You're all caught up</div><h2>${n} call${n === 1 ? '' : 's'} today. New ones drop at 7:00 AM.</h2>
         <p>Your streak is safe until midnight tomorrow. Keep the combo going in the Daily 5, or revisit the lessons you collected.</p>
         <div style="display:flex;gap:10px"><button class="btn heat x-d" style="flex:1">Daily 5</button><button class="btn ghost x-p" style="flex:1">Playbook</button></div>`;
       $('.x-d', box).onclick = () => switchFeed('dfeed'); $('.x-p', box).onclick = () => go('playbook');
@@ -2938,12 +2962,14 @@ function xCard(it, mode) {
   render();
   return ctrl;
 }
+let cdT = null;
 function tickCountdown() {
+  clearTimeout(cdT);
   const el = $('#dcd'); if (!el) return;
   const t = new Date(); t.setHours(24, 0, 0, 0);
   const s = Math.max(0, Math.round((t - Date.now()) / 1000));
   el.textContent = `${pad2(Math.floor(s / 3600))}:${pad2(Math.floor(s / 60) % 60)}:${pad2(s % 60)}`;
-  setTimeout(tickCountdown, 1000);
+  cdT = setTimeout(tickCountdown, 1000);
 }
 function ansHTML(a, k, voted) {
   const tier = a.tier || 'Member', cls = /Verified/.test(tier) ? 'v' : /VP/.test(tier) ? 'p' : '';
@@ -2951,16 +2977,24 @@ function ansHTML(a, k, voted) {
 }
 function bindVotes(box, b, rerender) {
   $$('.ans', box).forEach(btn => btn.onclick = () => {
-    const k = +btn.dataset.k, first = S.votes[b.id] == null;
+    const k = +btn.dataset.k; S.voteXp = S.voteXp || {};
     S.votes[b.id] = S.votes[b.id] === k ? null : k;
-    if (first && S.votes[b.id] != null) { S.xp += 5; S.weekXp += 5; }
+    const first = S.votes[b.id] != null && !S.voteXp[b.id];
+    if (first) { S.voteXp[b.id] = 1; S.xp += 5; S.weekXp += 5; }
     save(); haptic(); sfx('pop'); rerender(); updateTop();
-    if (first && S.votes[b.id] != null) { toast({ icon: '🗳️', title: 'Vote counted', sub: 'Helping the best answer rise. +5 XP', value: '+5' }); checkBadges(); }
+    if (first) { toast({ icon: '🗳️', title: 'Vote counted', sub: 'Helping the best answer rise. +5 XP', value: '+5' }); checkBadges(); }
   });
 }
 
 /* ---------- feed nav ---------- */
-function scrollFeed(dir) { const f = feeds[curFeed]; if (!f) return; f.root.scrollBy({ top: dir * f.root.clientHeight, behavior: REDUCE ? 'auto' : 'smooth' }); }
+function scrollFeed(dir) {
+  // jump to the exact top of the next/previous card (scrolling by a screen height can drift and get stuck on fractional heights)
+  const f = feeds[curFeed]; if (!f) return;
+  const els = f.ctrls.map(c => c.el), st = f.root.scrollTop;
+  let i = els.findIndex(el => el.offsetTop + el.offsetHeight / 2 > st); if (i < 0) i = els.length - 1;
+  const t = clamp(i + dir, 0, els.length - 1);
+  f.root.scrollTo({ top: els[t].offsetTop, behavior: REDUCE ? 'auto' : 'smooth' });
+}
 function switchFeed(id) {
   if (curPage !== 'home') go('home');
   if (curFeed === id) { feeds[id].root.scrollTo({ top: 0, behavior: 'smooth' }); return; }
@@ -3063,7 +3097,7 @@ function renderAsk() {
   $('#askBtn').onclick = openComposer;
   $$('.qcard', pg).forEach(q => { const b = BOARD.find(x => x.id === q.dataset.id); const rr = () => { $('.qans', q).innerHTML = (b.answers || []).map((a, k) => ansHTML(a, k, S.votes[b.id])).join(''); bindVotes($('.qans', q), b, rr); }; bindVotes($('.qans', q), b, rr); });
 }
-const timeAgo = t => { const m = Math.round((Date.now() - t) / 60000); return m < 1 ? 'just now' : m < 60 ? m + ' min ago' : Math.round(m / 60) + 'h ago'; };
+const timeAgo = t => { const m = Math.round((Date.now() - t) / 60000), h = Math.round(m / 60); return m < 1 ? 'just now' : m < 60 ? m + ' min ago' : h < 24 ? h + 'h ago' : Math.round(h / 24) + 'd ago'; };
 function openComposer() {
   const D = { q: '', opts: '', hard: '', files: [], who: 0, step: 0 };
   const WHO = [{ i: '👔', t: 'CEO-level members', s: 'Usually within 24 hours', c: 50 }, { i: '✅', t: 'A verified CEO', s: 'From the Edify roster, within 3 days', c: 120 }];
@@ -3091,7 +3125,7 @@ function openComposer() {
       if (S.coins < cost) { toast({ icon: '🪙', title: `You need ${cost - S.coins} more coins`, sub: 'Make calls in the feed to earn them, or ask CEO-level members instead.' }); return; }
       S.coins -= cost; S.myQ.unshift({ q: D.q.trim(), who: WHO[D.who].t.replace('A verified', 'a verified'), cost, files: D.files.length, t: Date.now() }); save();
       closeSheet(); sfx('coin'); haptic('success');
-      setTimeout(() => { renderAsk(); const p = rel($('#coinN') || $('#askBtn')); fx.burst(p.x, p.y, { n: 30, speed: 6, colors: ['#ffd23f', '#fff', '#ff8a1f'], shape: 1 }); toast({ icon: '📨', bg: 'rgb(53 227 161/.16)', title: 'Sent to the Board', sub: `You'll get a notification when ${WHO[D.who].t.toLowerCase().replace('a verified', 'a verified')} answer${D.who ? 's' : ''}.`, value: `−${cost}` }); }, 380);
+      setTimeout(() => { renderAsk(); const p = rel($('#coinN') || $('#askBtn')); fx.burst(p.x, p.y, { n: 30, speed: 6, colors: ['#ffd23f', '#fff', '#ff8a1f'], shape: 1 }); toast({ icon: '📨', bg: 'rgb(53 227 161/.16)', title: 'Sent to the Board', sub: D.who ? 'You will get a notification when a verified CEO answers.' : 'You will get a notification when CEO-level members answer.', value: `−${cost}` }); }, 380);
     };
   };
   openSheet({ title: 'Ask the Board', body: '', onMount: draw });
@@ -3121,10 +3155,13 @@ function renderPlaybook() {
 }
 function openCase(id) {
   go('home');
-  let f = feeds.feed, k = f.ctrls.findIndex(c => c.c && c.c.id === id);
-  if (k < 0) { f = feeds.dfeed; k = f.ctrls.findIndex(c => c.c && c.c.id === id); if (k >= 0) switchFeed('dfeed'); }
-  else if (curFeed !== 'feed') switchFeed('feed');
-  if (k >= 0) setTimeout(() => f.root.scrollTo({ top: k * f.root.clientHeight, behavior: 'auto' }), 60);
+  const daily = !!(S.daily.a[id] && !S.answers[id]);
+  let f = daily ? feeds.dfeed : feeds.feed, k = f.ctrls.findIndex(c => c.c && c.c.id === id);
+  if (k < 0 && !daily) { f = feeds.dfeed; k = f.ctrls.findIndex(c => c.c && c.c.id === id); }
+  if (k < 0) return;
+  const want = f === feeds.dfeed ? 'dfeed' : 'feed';
+  if (curFeed !== want) switchFeed(want);
+  setTimeout(() => f.root.scrollTo({ top: f.ctrls[k].el.offsetTop, behavior: 'auto' }), 60);
 }
 
 /* ---------- you ---------- */
@@ -3149,7 +3186,7 @@ function renderYou() {
   const B = [['first', '🎯', 'First call'], ['streak7', '🔥', '7-day streak'], ['speed', '⚡', 'Under 5s'], ['contra', '🦄', 'Contrarian'], ['combo3', '🎰', '3 in a row'], ['voter', '🗳️', 'Board voice'], ['ten', '📚', '10 lessons'], ['ceo', '👑', 'CEO']];
   pg.innerHTML = `<div class="pad">
     <div class="prof"><div class="bigav">${esc(initials(myName()) || 'Y')}</div><div><h1>${esc(myName())}</h1><div class="t">${esc(L.name)} · Level ${L.i + 1} · ${S.xp.toLocaleString()} XP</div></div><button class="iconbtn" id="setBtn" aria-label="Settings">${icon('sliders')}</button></div>
-    <div class="panel ladder"><div class="rungs"><span class="fillline" style="width:86%;transform:scaleX(${((L.i + L.p) / 6).toFixed(3)})"></span>${LV.map((l, k) => `<div class="rung ${k < L.i ? 'done' : ''} ${k === L.i ? 'cur' : ''} ${k === 6 ? 'ceo' : ''}"><i>${k === 6 ? '👑' : k + 1}</i>${l[0]}</div>`).join('')}</div>
+    <div class="panel ladder"><div class="rungs"><span class="fillline" style="width:86%;transform:scaleX(${Math.min(1, (L.i + L.p) / 6).toFixed(3)})"></span>${LV.map((l, k) => `<div class="rung ${k < L.i ? 'done' : ''} ${k === L.i ? 'cur' : ''} ${k === 6 ? 'ceo' : ''}"><i>${k === 6 ? '👑' : k + 1}</i>${l[0]}</div>`).join('')}</div>
       <div class="lt"><span><b class="num">${L.next ? (L.next - S.xp).toLocaleString() : 0} XP</b> to ${esc(L.nextName || 'the top')}</span><span>CEO unlocks answering for coins</span></div></div>
     <div class="section-t"><h2>How you decide</h2><span>${S.made} calls</span></div>
     <div class="stats">
@@ -3190,6 +3227,7 @@ function checkBadges(rec, c) {
   if (S.combo >= 3) add('combo3', '🎰', '3 in a row');
   if (Object.values(S.votes).filter(v => v != null).length >= 2) add('voter', '🗳️', 'Board voice');
   if (allAnswered().length >= 10) add('ten', '📚', '10 lessons');
+  if (lvl(S.xp).i >= 6) add('ceo', '👑', 'CEO');
 }
 
 /* ================= sheets ================= */
@@ -3221,7 +3259,7 @@ $('#sheetX').onclick = () => closeSheet();
   handles.forEach(h => {
     h.addEventListener('pointerdown', e => { if (e.target.closest('button')) return; id = e.pointerId; y0 = e.clientY; dy = 0; t0 = performance.now(); sheet.getAnimations().forEach(a => a.cancel()); sheet.style.transform = 'translateY(0)'; try { h.setPointerCapture(id); } catch (er) {} });
     h.addEventListener('pointermove', e => { if (e.pointerId !== id) return; dy = e.clientY - y0; sheet.style.transform = `translateY(${dy > 0 ? dy : dy / 6}px)`; });
-    const up = e => { if (e.pointerId !== id) return; id = null; const v = dy / Math.max(1, performance.now() - t0); if (dy > 110 || v > 0.7) closeSheet(dy); else { anim(sheet, [{ transform: `translateY(${dy}px)` }, { transform: 'translateY(0)' }], { duration: SPR.bouncy.d, easing: SPR.bouncy.e, fill: 'forwards' }); } };
+    const up = e => { if (e.pointerId !== id) return; id = null; const v = dy / Math.max(1, performance.now() - t0); if (dy > 110 || v > 0.7) closeSheet(dy); else { anim(sheet, [{ transform: `translateY(${dy > 0 ? dy : dy / 6}px)` }, { transform: 'translateY(0)' }], { duration: SPR.bouncy.d, easing: SPR.bouncy.e, fill: 'forwards' }); } };
     h.addEventListener('pointerup', up); h.addEventListener('pointercancel', up);
   });
 })();
@@ -3265,7 +3303,7 @@ function openDebate(c) {
   const draw = () => `${[...mine.map(t => [myName(), lvl(S.xp).name + ' tier', t, 1, true]), ...pick].map(([n, t, p, l, me]) => `<div class="comment"><span class="av" style="width:36px;height:36px;background:${me ? 'var(--heat-grad)' : avColor(n)}">${esc(initials(n))}</span><div><b>${esc(n)} <span class="tier" style="font:800 9.5px/1 var(--font-t);letter-spacing:.06em;text-transform:uppercase;padding:3px 5px;border-radius:5px;background:var(--s3);color:${/Verified/.test(t) ? 'var(--cool)' : /CEO/.test(t) ? 'var(--xp)' : 'var(--fg3)'}">${esc(t)}</span></b><p>${esc(p)}</p></div><span class="lk">${icon('heart')}<span class="num">${l}</span></span></div>`).join('')}`;
   openSheet({ title: `${fmt(stat(c).comments + mine.length)} takes`, body: `<div id="cmts">${draw()}</div><form class="inputrow" id="cform"><input id="cin" placeholder="Add your take…" autocomplete="off" maxlength="200"><button class="sendb" aria-label="Post">${icon('send')}</button></form>`,
     onMount() {
-      $('#cform').onsubmit = e => { e.preventDefault(); const v = $('#cin').value.trim(); if (!v) return; mine.unshift(v); S.comments[c.id] = mine; save(); $('#cmts').innerHTML = draw(); $('#cin').value = ''; anim($('#cmts .comment'), [{ opacity: 0, transform: 'translateY(-10px) scale(.96)' }, { opacity: 1, transform: 'none' }], { duration: SPR.bouncy.d, easing: SPR.bouncy.e }); haptic(); sfx('pop'); };
+      $('#cform').onsubmit = e => { e.preventDefault(); const v = $('#cin').value.trim(); if (!v) return; mine.unshift(v); S.comments[c.id] = mine; save(); $('#cmts').innerHTML = draw(); $('#sheetT').textContent = `${fmt(stat(c).comments + mine.length)} takes`; $('#cin').value = ''; anim($('#cmts .comment'), [{ opacity: 0, transform: 'translateY(-10px) scale(.96)' }, { opacity: 1, transform: 'none' }], { duration: SPR.bouncy.d, easing: SPR.bouncy.e }); haptic(); sfx('pop'); };
     } });
 }
 function openStreak() {
@@ -3275,7 +3313,7 @@ function openStreak() {
     <div class="row"><span class="ri" style="color:var(--cool)">${icon('snow')}</span><span>${S.freezes} streak freeze${S.freezes === 1 ? '' : 's'}<small>Used automatically if you miss a day. Earn more at each new level.</small></span><span></span></div>
     <div class="row"><span class="ri" style="color:var(--xp)">${icon('trophy')}</span><span>Best streak: ${S.best} days<small>Reach 30 for the Iron Seat badge.</small></span><span></span></div></div>
     ${S.lastDay !== TODAY ? '<button class="btn heat" id="stGo" style="width:100%;margin-top:14px">Make today\'s call</button>' : ''}`,
-    onMount() { const b = $('#stGo'); if (b) b.onclick = () => { closeSheet(); go('home'); }; } });
+    onMount() { const b = $('#stGo'); if (b) b.onclick = () => { closeSheet(); if (curPage !== 'home') go('home'); }; } });
 }
 function openInterests() {
   const T = ['Strategy', 'Growth', 'Crisis', 'People', 'Money', 'Marketing', 'Product', 'Founder life'], sel = new Set(S.interests || []);
@@ -3290,27 +3328,27 @@ function openGoal() {
 function openAbout() {
   openSheet({ title: 'About this concept', body: `<div style="display:grid;gap:14px;font:500 15px/1.5 var(--font-t);color:var(--fg2)">
     <div style="display:flex;gap:12px;align-items:center">${LOGO(48)}<div><b style="font:800 20px/1 var(--font-d);color:var(--fg1)">Hot Seat</b><div style="font-size:13px;color:var(--fg3);margin-top:4px">A concept for Edify by Team 10, Babson EPS 1210</div></div></div>
-    <p style="margin:0">We logged 277 issues in CEO Wisdom, then rebuilt the core loop as a vertical feed: one decision per screen, twenty seconds to make the call, then what really happened and how everyone else chose.</p>
+    <p style="margin:0">We logged 277 issues in CEO Wisdom, then rebuilt the core loop as a vertical feed: one decision per screen, thirty seconds to make the call, then what really happened and how everyone else chose.</p>
     <p style="margin:0">Real cases are summarized from public reporting and never quoted as a CEO's own words. Player counts, splits, leagues, comments and member answers are sample data for this prototype.</p>
     <p style="margin:0">Add it to your Home Screen from Safari's Share menu to run it full screen like an app.</p></div>` });
 }
 
 /* ================= onboarding ================= */
 function showOnboarding(replay) {
-  const o = $('#onb'); o.hidden = false; o.classList.remove('out');
+  const o = $('#onb'); o.hidden = false; o.classList.remove('out', 'deep');
   const tiles = CASES.slice(0, 18);
   const col = k => { const t = tiles.filter((_, i) => i % 3 === k); const h = t.map(c => `<div class="wt" style="--c1:${c.palette[0]};--c2:${c.palette[1]}"><span>${c.emoji}</span><b>${esc(c.hook.length > 54 ? c.hook.slice(0, 52) + '…' : c.hook)}</b></div>`).join(''); return `<div class="col">${h}${h}</div>`; };
   const T = ['Strategy', 'Growth', 'Crisis', 'People', 'Money', 'Marketing', 'Product', 'Founder life'], sel = new Set(S.interests && S.interests.length ? S.interests : []);
   let goal = S.goal || 5;
-  o.innerHTML = `<div class="wall">${col(0)}${col(1)}${col(2)}</div><div class="fade"></div>
-    <div class="ostep" data-s="0"><div class="logo">${LOGO(40)}<b>Hot Seat</b></div><h1>Make the call.</h1><p>Real CEO decisions, twenty seconds each. See what really happened, how everyone else chose, and climb from Intern to CEO.</p>
+  o.innerHTML = `<div class="wall">${col(0)}${col(1)}${col(2)}</div><div class="fade"></div><div class="fade2"></div>
+    <div class="ostep" data-s="0"><div class="logo">${LOGO(40)}<b>Hot Seat</b></div><h1>Make the call.</h1><p>Real CEO decisions, thirty seconds each. See what really happened, how everyone else chose, and climb from Intern to CEO.</p>
       <div class="proof"><div class="avs">${['Priya S.', 'Marcus T.', 'Lena K.', 'Diego R.'].map(n => `<span class="av" style="background:${avColor(n)}">${initials(n)}</span>`).join('')}</div>3,412 people made today's calls</div>
       <button class="btn heat" data-next>Start</button></div>
     <div class="ostep hidden" data-s="1"><button class="skipb" data-done>Skip</button><div class="topgap"></div><h2>What's your world?</h2><p>Pick as many as you like. You can change this any time.</p><div class="chips" id="och">${T.map(t => `<button class="tchip ${sel.has(t) ? 'on' : ''}" data-t="${t}"><span class="ck">${icon('check')}</span>${t}</button>`).join('')}</div><button class="btn heat" data-next id="o1n">Continue</button></div>
     <div class="ostep hidden" data-s="2"><button class="skipb" data-done>Skip</button><div class="topgap"></div><h2>How many calls a day?</h2><div class="goal">${[[3, 'Casual', '☕️'], [5, 'Regular', '🔥'], [10, 'Serious', '🚀']].map(([n, t, e]) => `<button class="choice ${goal === n ? 'on' : ''}" data-g="${n}"><span class="ci">${e}</span><span><b>${t}</b><small>${n} calls · about ${Math.round(n * 0.8)} min</small></span><span></span></button>`).join('')}</div>
       <input class="namein" id="oname" placeholder="Your first name (optional)" maxlength="20" autocomplete="given-name" value="${esc(S.name || '')}"><button class="btn heat" data-done>Take the hot seat</button></div>`;
   const steps = $$('.ostep', o); let s = 0;
-  const show = k => { steps.forEach((st, j) => { st.classList.toggle('hidden', j > k); st.classList.toggle('gone', j < k); }); s = k; haptic(); sfx('tap'); };
+  const show = k => { steps.forEach((st, j) => { st.classList.toggle('hidden', j > k); st.classList.toggle('gone', j < k); }); o.classList.toggle('deep', k > 0); s = k; haptic(); sfx('tap'); };
   $$('[data-next]', o).forEach(b => b.onclick = () => show(s + 1));
   $$('#och .tchip', o).forEach(b => b.onclick = () => { const t = b.dataset.t; sel.has(t) ? sel.delete(t) : sel.add(t); b.classList.toggle('on'); haptic(); sfx('tap'); $('#o1n').textContent = sel.size ? `Continue with ${sel.size}` : 'Continue'; });
   $$('[data-g]', o).forEach(b => b.onclick = () => { goal = +b.dataset.g; $$('[data-g]', o).forEach(x => x.classList.toggle('on', x === b)); haptic(); sfx('tap'); });
@@ -3319,7 +3357,7 @@ function showOnboarding(replay) {
     S.onboarded = true; save();
     o.classList.add('out'); sfx('swoosh'); haptic('success');
     rebuildFeed(); go('home');
-    setTimeout(() => { o.hidden = true; toast({ icon: '🪑', bg: 'rgb(255 90 43/.18)', title: S.name ? `Welcome, ${S.name}. Your seat is ready.` : 'Your seat is ready.', sub: 'Twenty seconds per call. Faster calls earn bonus XP.' }); }, 750);
+    setTimeout(() => { o.hidden = true; activeCtrl && activeCtrl.startTimer && activeCtrl.startTimer(); toast({ icon: '🪑', bg: 'rgb(255 90 43/.18)', title: S.name ? `Welcome, ${S.name}. Your seat is ready.` : 'Your seat is ready.', sub: 'Thirty seconds per call. Faster calls earn bonus XP.' }); }, 750);
   });
   if (!REDUCE) [...steps[0].children].forEach((n, k) => anim(n, [{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'none' }], { duration: 800, delay: 150 + k * 90, easing: SPR.soft.e, fill: 'backwards' }));
 }
@@ -3361,6 +3399,7 @@ function boot() {
   const unlock = () => { actx(); removeEventListener('pointerdown', unlock); };
   addEventListener('pointerdown', unlock);
   addEventListener('keydown', e => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
     if (e.target.closest && e.target.closest('input,textarea')) return;
     if ($('#lvlup').classList.contains('on')) { if (e.key !== 'Tab') e.preventDefault(); if (e.key === 'Enter' || e.key === 'Escape' || e.key === ' ') $('#lvlGo') && $('#lvlGo').click(); return; }
     if (sheetOpen) { if (e.key === 'Escape') closeSheet(); return; }
@@ -3373,7 +3412,7 @@ function boot() {
   });
   addEventListener('resize', () => { moveInd(); fitDevice(); });
   requestAnimationFrame(fitDevice); setTimeout(fitDevice, 400);
-  document.addEventListener('visibilitychange', () => { if (document.hidden) activeCtrl && activeCtrl.pauseTimer && activeCtrl.pauseTimer(); else if (curPage === 'home' && !sheetOpen && activeCtrl && activeCtrl.startTimer) activeCtrl.startTimer(); });
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && dayKey(new Date()) !== TODAY) { location.reload(); return; } if (document.hidden) activeCtrl && activeCtrl.pauseTimer && activeCtrl.pauseTimer(); else if (curPage === 'home' && !sheetOpen && activeCtrl && activeCtrl.startTimer) activeCtrl.startTimer(); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(moveInd);
 }
 boot();
