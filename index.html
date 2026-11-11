@@ -993,7 +993,7 @@ svg{display:block}
 .demo3 i{font-style:normal;font-size:20px;line-height:1}
 .demo3 b{font:800 16px/1 var(--font-d);letter-spacing:-.02em}
 .demo3 small{font:500 11.5px/1.25 var(--font-t);color:var(--fg3)}
-/* ---- Exemplify: schools ---- */
+/* ---- schools ---- */
 .schools{display:grid;gap:12px;padding:14px 14px 16px;margin-bottom:6px}
 .sch{display:grid;grid-template-columns:18px minmax(0,1.1fr) minmax(0,1fr) auto;gap:10px;align-items:center;font:650 14.5px/1.2 var(--font-t)}
 .sch .r{color:var(--fg3);font-size:13px}
@@ -1093,7 +1093,7 @@ svg{display:block}
 .lip-cover{height:62px;background:linear-gradient(120deg,#a0b4b7,#d6c7b0)}
 .lip-me{background:#fff;padding:0 16px 14px;display:grid;gap:3px}
 .lip-av{width:72px;height:72px;margin-top:-38px;border-radius:50%;display:grid;place-items:center;background:#5b6b8c;color:#fff;font:800 28px/1 var(--font-d);box-shadow:0 0 0 4px #fff}
-.lip-me b{font:750 21px/1.2 var(--font-t);margin-top:4px}.lip-me span{font:500 14.5px/1.3 var(--font-t);color:#555}
+.lip-me b{font:750 21px/1.2 var(--font-t);margin-top:4px}.lip-me>span:not(.lip-av){font:500 14.5px/1.3 var(--font-t);color:#555}
 .lip-sec{background:#fff;margin-top:8px;padding:14px 16px 16px}
 .lip-sec h4{margin:0 0 12px;font:750 17px/1.2 var(--font-t)}
 .lip-item{display:flex;gap:12px;align-items:flex-start;padding:10px;margin:0 -10px;border-radius:12px;transition:background .6s,box-shadow .6s}
@@ -3458,7 +3458,7 @@ function pushNote(t) {
   anim(el, [{ transform: 'translateY(-130%)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 640, easing: SPR.bouncy.e, fill: 'both' });
   el.onclick = hide; setTimeout(hide, t.ms || 7000); haptic('tap'); sfx('tap');
 }
-/* ---------- Exemplify: schools and creators ---------- */
+/* ---------- schools and creators ---------- */
 const SCHOOLS = [['Babson', 48210], ['Bentley', 45930], ['Northeastern', 39880], ['Boston University', 35140], ['Brandeis', 28760]];
 function showShorts() {
   if (curPage !== 'home') go('home');
@@ -3466,7 +3466,7 @@ function showShorts() {
   const f = feeds.feed, k = f.ctrls.findIndex(c => c.el.classList.contains('short'));
   if (k >= 0) setTimeout(() => f.root.scrollTo({ top: f.ctrls[k].el.offsetTop, behavior: 'smooth' }), 150);
 }
-/* ---------- demo shortcuts (You → Demo, or #gamify / #certify / #exemplify) ---------- */
+/* ---------- demo shortcuts (#gamify / #certify) ---------- */
 const DEMOS = ['gamify', 'certify'];
 function runDemo(kind) {
   if (sheetOpen) closeSheet();
