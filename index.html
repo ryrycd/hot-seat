@@ -1170,6 +1170,145 @@ svg{display:block}
 .rc .tag{white-space:normal;line-height:1.2}
 @media (min-width:820px) and (min-height:620px){.kp-mode .side{display:none}.kp-mode .stage{gap:0}.kp-mode .device{height:calc(100% - 24px)}}
 
+/* ===== Key Points v2: one hero moment per screen ===== */
+.kp-mode .fx{z-index:85}
+.kp{background:#07070a}
+.kp::before{content:"";position:absolute;inset:0;pointer-events:none}
+.kp.d-menu::before{background:radial-gradient(85% 50% at 50% 0%,rgb(255 90 43/.24),transparent 70%)}
+.kp.d-certify::before{background:radial-gradient(95% 55% at 50% 0%,rgb(242 176 30/.22),transparent 70%),radial-gradient(80% 40% at 50% 100%,rgb(10 102 194/.20),transparent 70%)}
+.kp.d-verify::before{background:radial-gradient(95% 55% at 50% 0%,rgb(29 155 240/.22),transparent 70%),radial-gradient(80% 40% at 50% 100%,rgb(242 176 30/.14),transparent 70%)}
+.kp-top,.kp-stage,.kp-nav{position:relative;z-index:1}
+.kp-stage:has(.c1){overflow:hidden}
+.kw{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
+.kw>span{display:inline-block}
+.kps .kp-h{font-size:36px;line-height:1.04}
+/* menu */
+.kpm{gap:0}
+.kpm .kp-eye{margin-bottom:16px}
+.kpm-w{display:grid;grid-template-columns:1fr auto;grid-template-areas:"n i" "b i" "s i";align-items:center;row-gap:3px;width:100%;padding:16px 2px 18px;text-align:left;border-bottom:1px solid rgb(255 255 255/.09);color:var(--fg1)}
+.kpm-w:first-of-type{border-top:1px solid rgb(255 255 255/.09)}
+.kpm-w .n{grid-area:n;font:800 12px/1 var(--font-t);letter-spacing:.2em;color:var(--fg3)}
+.kpm-w b{grid-area:b;justify-self:start;font:800 60px/.98 var(--font-d);letter-spacing:-.05em;-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:4px}
+.kpm-w.gamify b{background-image:linear-gradient(100deg,#ffb020,#ff4d2e 60%,#ff2d6f)}
+.kpm-w.certify b{background-image:linear-gradient(100deg,#fff0a8,#f2b01e 55%,#d9890c)}
+.kpm-w.verify b{background-image:linear-gradient(100deg,#9fdcff,#1d9bf0 60%,#5b6bff)}
+.kpm-w small{grid-area:s;font:600 16px/1.2 var(--font-t);color:var(--fg2)}
+.kpm-w i{grid-area:i;font:700 22px/1 var(--font-t);font-style:normal;color:var(--fg2);width:46px;height:46px;border-radius:23px;display:grid;place-items:center;background:rgb(255 255 255/.07)}
+.kpm .kpm-f{margin:22px 0 0;text-align:left;font:800 28px/1.1 var(--font-d);letter-spacing:-.03em;color:var(--fg1)}
+/* certify 1: promoted */
+.c1{align-items:center;text-align:center;gap:12px}
+.c1-hero{position:relative;height:120px;width:100%;display:grid;place-items:center}
+.kp-rays{position:absolute;left:50%;top:50%;width:640px;height:640px;margin:-320px 0 0 -320px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgb(255 210 63/.16) 0deg 6deg,transparent 6deg 18deg);-webkit-mask:radial-gradient(closest-side,#000 25%,transparent);mask:radial-gradient(closest-side,#000 25%,transparent);animation:spin 40s linear infinite;pointer-events:none}
+.c1-badge{position:relative;width:112px;height:112px;border-radius:34px;display:grid;place-items:center;font-size:58px;background:linear-gradient(135deg,#fff0a8,#f2b01e 55%,#c98a0c);box-shadow:0 30px 60px -20px rgb(242 176 30/.8),inset 0 2px 0 rgb(255 255 255/.55)}
+.c1 .kp-big{font-size:88px;margin:0}
+.kpcert .cn{font-size:21px}
+.kpcert .tkw{display:inline-flex}.kpcert .tkw .tick{width:24px;height:24px;margin-left:7px}
+.btn.li.pulse{animation:lipulse 1.6s ease-in-out infinite}
+@keyframes lipulse{0%,100%{box-shadow:0 0 0 0 rgb(10 102 194/.6)}50%{box-shadow:0 0 0 12px rgb(10 102 194/0)}}
+/* certify 2: LinkedIn */
+.c2{gap:12px}
+.lip-cover{height:44px}
+.lip-av{width:60px;height:60px;margin-top:-32px;font-size:24px}
+.lip-me{padding:0 14px 12px}.lip-me b{font-size:19px}
+.lip-sec{padding:12px 14px 6px}.lip-sec h4{margin:0 0 4px;font-size:16px}
+.lip-item{align-items:center;padding:9px 10px;margin:0 -10px;border-bottom:1px solid #eeece8;border-radius:10px}
+.lip-item:last-child{border-bottom:0}
+.lip-item b{font-size:15.5px}.lip-item span{font-size:13.5px;color:#555}
+.lip-lg{width:64px;height:44px;border-radius:9px;display:grid;place-items:center;background:#fff;box-shadow:inset 0 0 0 1px #e3e1dc;flex:none;overflow:hidden}
+.lip-lg img{max-width:56px;max-height:28px;display:block}
+.lip-lg.e{box-shadow:none}.lip-lg.e svg{width:38px;height:38px}
+.lip-item.new{position:relative;z-index:2;background:#fff}
+.lip-item.new.lit{background:#e8f1fb;box-shadow:inset 0 0 0 2px #0a66c2}
+.trust{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.trust div{padding:12px;border-radius:16px;background:var(--s2);box-shadow:inset 0 0 0 1px var(--line);display:grid;gap:5px;align-content:start}
+.trust b{font:800 30px/1 var(--font-d);letter-spacing:-.03em;color:#ffd23f}
+.trust span{font:600 13.5px/1.3 var(--font-t);color:var(--fg2)}
+/* certify 3: blue check */
+.c3{gap:16px}
+.bigtick{display:flex;align-items:center;gap:16px}
+.bigtick>span{display:block}
+.bigtick svg{width:112px;height:112px;display:block;filter:drop-shadow(0 18px 30px rgb(29 155 240/.55))}
+.bigtick .dr{stroke-dasharray:90}
+.bigtick b{font:800 66px/1 var(--font-d);letter-spacing:-.05em}
+.kp-lead.xl{font:800 36px/1.08 var(--font-d);letter-spacing:-.035em}
+.blu .kw>span{color:#45b0ff}
+.kplr.ceo .n{color:#fff}
+.kplr .tick{width:20px;height:20px}
+/* certify 4: roster */
+.rc{justify-items:center;text-align:center;padding:14px 10px 12px;gap:3px}
+.rc-ph{width:72px;height:72px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 3px rgb(255 255 255/.14);display:block}
+.rc-ph img{width:100%;height:100%;object-fit:cover;display:block}
+.rc.room .rc-ph{box-shadow:0 0 0 3px #35e3a1,0 0 26px rgb(53 227 161/.5)}
+.rc .plate{height:30px;min-width:0;padding:4px 8px;margin-top:-13px;position:relative;border-radius:9px}
+.rc .rc-ph+.plate{margin-top:-13px}.rc>.plate:first-child{margin-top:0;height:44px}
+.rc .plate img{max-height:20px;max-width:84px}.rc>.plate:first-child img{max-height:30px;max-width:110px}
+.rc .plate.wm{font:800 10.5px/1.05 var(--font-d);color:#0f2a4a}
+.rc b{font-size:15.5px;margin-top:4px}
+.rc .rc-t{font:550 12px/1.25 var(--font-t);color:var(--fg3)}
+.tag.room i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#35e3a1;margin-right:6px;vertical-align:1px;animation:blink 1.4s infinite}
+/* brag sheets */
+.brag{gap:12px}
+.brag .bhead{display:flex;align-items:center;gap:14px}
+.brag .bav{width:96px;height:96px}
+.brag .bav.room{box-shadow:0 0 0 3px #35e3a1,0 0 28px rgb(53 227 161/.5)}
+.brag .bid{display:grid;gap:4px}
+.brag h2{font-size:30px;margin:0}
+.brag .btitle{font-size:15px}
+.brag .bmeta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.brag .bmeta .tag{margin-top:0}
+.bhero{padding:16px;border-radius:18px;background:linear-gradient(135deg,rgb(255 210 63/.15),rgb(255 138 31/.07));box-shadow:inset 0 0 0 1px rgb(255 210 63/.32);display:grid;gap:6px}
+.bhero b{font:800 min(56px,13cqw)/.95 var(--font-d);letter-spacing:-.045em;color:#ffd23f;overflow-wrap:anywhere}
+.bhero span{font:700 18px/1.3 var(--font-t);color:var(--fg1)}
+.brag .bfacts div{padding:10px 13px}.brag .bfacts b{font-size:19px}
+.brag .bban{aspect-ratio:16/7}
+/* verify: one chat thread */
+.vth{gap:12px}
+.kp-h.vt.sm{font-size:22px;color:var(--fg3)}
+.vq{padding:14px 16px;border-radius:20px 20px 20px 6px;background:var(--s2);box-shadow:inset 0 0 0 1px var(--line2);display:grid;gap:8px}
+.vqh{display:flex;align-items:center;gap:9px}.vqh b{font:750 16px/1 var(--font-t)}.vqh span:last-child{font:600 13px/1 var(--font-t);color:var(--fg3)}
+.vq p{margin:0;font:650 19px/1.38 var(--font-t)}
+.vq.dim,.vbot.dim{opacity:.42}
+.vq.dim p,.vbot.dim .vbt{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:15px}
+.vbot{padding:14px 16px;border-radius:20px 20px 6px 20px;background:#1b1c22;box-shadow:inset 0 0 0 1px var(--line);display:grid;gap:8px;margin-left:16px}
+.vbh{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.vbh b{font:750 16px/1 var(--font-t);color:var(--fg2)}
+.vbot .botav{width:30px;height:30px;font-size:11px}
+.vbt{margin:0;font:500 18px/1.45 var(--font-t);color:var(--fg3);min-height:26px}
+.dots{display:inline-flex;gap:5px;padding:8px 0}.dots i{width:8px;height:8px;border-radius:50%;background:var(--fg3);animation:typ 1s infinite}.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+.vceo{padding:16px;border-radius:22px;background:linear-gradient(160deg,#241c0d,#121014 70%);box-shadow:inset 0 0 0 1.5px rgb(242 176 30/.65),0 30px 60px -30px rgb(242 176 30/.6);display:grid;gap:10px}
+.vch{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.vwho{font:800 21px/1.15 var(--font-d);letter-spacing:-.02em}
+.vceo blockquote{margin:0;font:600 17.5px/1.45 var(--font-t);color:#f3eadb}
+.vceo mark{color:#fff;background:linear-gradient(transparent 55%,rgb(255 210 63/.6) 55%) no-repeat 0 0/0% 100%;animation:hl .7s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes hl{to{background-size:100% 100%}}
+.vwho2{display:grid;gap:6px;padding-top:10px;border-top:1px solid rgb(242 176 30/.28)}
+.vwho2 span{display:flex;gap:10px;align-items:baseline;font:600 14.5px/1.3 var(--font-t);color:var(--fg2)}
+.vwho2 b{font:800 18px/1 var(--font-d);color:#ffd23f;min-width:46px}
+/* verify 4: the moat */
+.v4{gap:14px}
+.kp-h.xl2{display:block;font-size:38px}
+.kp-h.hot .kw>span{color:#ff5a3c}
+.moat{display:grid;gap:10px}
+.mrow{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:10px 12px;border-radius:16px;background:var(--s2);box-shadow:inset 0 0 0 1px var(--line)}
+.mav{width:48px;height:48px;border-radius:50%;object-fit:cover;display:block}
+.mrow .plate{height:48px;min-width:0;padding:6px 8px}.mrow .plate img{max-width:84px;max-height:30px}
+.mn{display:grid;gap:3px}.mn b{font:750 16px/1.15 var(--font-t)}.mn small{font:600 13px/1.2 var(--font-t);color:var(--fg3)}
+/* verify 5: earn it */
+.v5{gap:12px}
+.tr{padding:7px 12px}
+.tq b{font-size:42px}
+.tfly{position:absolute;z-index:96;font-size:26px;line-height:1;pointer-events:none}
+/* closer */
+.kp-close span{display:block}
+.endw .kp-close{font-size:58px}
+@media (max-height:700px){.kps .kp-h{font-size:28px}.kpm-w b{font-size:46px}.c1 .kp-big{font-size:64px}.c1-hero{height:90px}.c1-badge{width:84px;height:84px;font-size:44px}.bigtick svg{width:84px;height:84px}.bigtick b{font-size:52px}.kp-lead.xl{font-size:28px}.endw .kp-close{font-size:44px}}
+
+.roster.big .rc{padding:10px 8px 10px;gap:2px}.roster.big .rc-ph{width:60px;height:60px}.roster.big .rc .rc-t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}.roster.big{gap:8px}.c4{gap:12px}
+.vth:has(.vceo) .kp-h.vt{display:none}.vth:has(.vceo) .vq p,.vth:has(.vceo) .vbt{-webkit-line-clamp:1}.vth:has(.vceo) .vq,.vth:has(.vceo) .vbot{padding:10px 14px;gap:5px}.vceo blockquote{font-size:16.5px;line-height:1.42}
+
+.mrow .plate{height:40px;padding:5px 7px}.mrow .plate img{max-width:62px;max-height:24px}.mn b{white-space:nowrap}.mn small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mrow{gap:10px}
+
+@media (min-width:820px) and (min-height:620px){.device,.kp-mode .device{height:874px;width:402px;aspect-ratio:auto;zoom:var(--dz,1)}}
+
 [hidden]{display:none!important}
 
 </style>
@@ -3518,7 +3657,7 @@ function dblTap(el, fn) {
   el.addEventListener('pointerup', e => {
     if (e.target.closest('button,.opt,.rail,.acts,.sw-card,input,a,.tapzone,.skip')) return;
     const now = performance.now();
-    if (now - lt < 300 && Math.hypot(e.clientX - lx, e.clientY - ly) < 40) { const d = dev.getBoundingClientRect(); fn(e.clientX - d.left, e.clientY - d.top); lt = 0; }
+    if (now - lt < 300 && Math.hypot(e.clientX - lx, e.clientY - ly) < 40) { const d = dev.getBoundingClientRect(), z = DZ(); fn((e.clientX - d.left) / z, (e.clientY - d.top) / z); lt = 0; }
     else { lt = now; lx = e.clientX; ly = e.clientY; }
   });
 }
@@ -4191,6 +4330,14 @@ function rebuildFeed() {
   if (curFeed === 'feed' && curPage === 'home') { f.active = f.ctrls[0]; setActive(f.ctrls[0]); }
 }
 /* ================= 3 Key Points: Gamify · Certify · Verify (You → 3 Key Points, or #keypoints) ================= */
+const DZ = () => parseFloat(document.documentElement.style.getPropertyValue('--dz')) || 1;
+function fitZoom() {
+  const de = document.documentElement;
+  if (!matchMedia('(min-width:820px) and (min-height:620px)').matches) { de.style.removeProperty('--dz'); return; }
+  const kp = de.classList.contains('kp-mode');
+  de.style.setProperty('--dz', Math.max(.5, Math.min(kp ? 1.5 : 1, (innerHeight - 36) / 874, (innerWidth - 60) / 402)).toFixed(4));
+}
+fitZoom(); addEventListener('resize', fitZoom);
 const KI = window.KP_IMG || {};
 const TICK = '<svg class="tick" viewBox="0 0 24 24" role="img" aria-label="CEO level"><circle cx="12" cy="12" r="11" fill="#1d9bf0"/><path d="m7.1 12.3 3.3 3.3 6.5-6.9" fill="none" stroke="#fff" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const VSTAMP = '<span class="vstamp">★ Verified CEO</span>';
@@ -4202,11 +4349,11 @@ const ROSTER = [
   { id: 'ralph', name: 'Ralph de la Vega', short: 'Former Vice Chairman, AT&T', title: 'Former Vice Chairman, AT&T Inc.', co: 'AT&T', logo: 'att', av: 'ralph', room: 1, verified: 1,
     facts: [['2007', 'CEO of AT&T Mobility when the iPhone launched'], ['42 years', 'BellSouth → AT&T, 1974–2016'], ['Author', '“Obstacles Welcome” (2009)']], call: 'The iPhone launch (2007)', credit: 'Photo: Zrqdon, Wikimedia Commons, CC BY-SA 3.0' },
   { id: 'robert', name: 'Robert Reiss', short: 'Founder, The CEO Forum Group', title: 'Founder, The CEO Forum Group & The CEO Show', co: 'The CEO Forum', logo: null, av: 'robert', room: 1, verified: 1,
-    facts: [['2007', 'Founded The CEO Forum Group & The CEO Show'], ['1,914', 'CEO interviews'], ['Forbes.com', 'Writing there since 2009']], call: 'Starting The CEO Show (2007)' },
-  { id: 'conant', name: 'Doug Conant', short: 'CEO, Campbell’s 2001–2011', title: 'CEO, Campbell Soup Company, 2001–2011', co: 'Campbell’s', logo: 'campbells', banner: 'conant', av: 'conant_av', credit: 'Headshot: LEADERS Magazine (2025)',
+    facts: [['1,914', 'CEO interviews'], ['2007', 'Founded The CEO Forum Group & The CEO Show'], ['Forbes.com', 'Writing there since 2009']], call: 'Starting The CEO Show (2007)' },
+  { id: 'conant', name: 'Doug Conant', short: 'CEO, Campbell’s 2001–2011', title: 'CEO, Campbell Soup Company, 2001–2011', co: 'Campbell’s', logo: 'campbells', banner: 'conant', av: 'conant_av',
     facts: [['+31.5%', 'Shareholder return, 2001–09'], ['−14.4%', 'S&P 500 over the same years'], ['10 years', 'CEO of Campbell’s']] },
   { id: 'meyer', name: 'Danny Meyer', short: 'Founder, Shake Shack', title: 'Founder, Shake Shack & Union Square Hospitality Group', co: 'Shake Shack', logo: 'shakeshack', banner: 'meyer', av: 'meyer_av', credit: 'Headshot: Financial Times, Wikimedia Commons, CC BY 2.0',
-    facts: [['1985', 'Opened Union Square Cafe'], ['1 cart', 'Started Shake Shack as a park hot-dog cart'], ['2015', 'Shake Shack IPO']], call: 'Turning a park hot-dog cart into Shake Shack' },
+    facts: [['1 cart', 'Started Shake Shack as a park hot-dog cart'], ['1985', 'Opened Union Square Cafe'], ['2015', 'Shake Shack IPO']], call: 'Turning a park hot-dog cart into Shake Shack' },
   { id: 'lafley', name: 'A.G. Lafley', short: 'CEO, Procter & Gamble', title: 'Chairman & CEO, Procter & Gamble, from 2000', co: 'P&G', logo: 'pg', banner: 'lafley', av: 'lafley_av', credit: 'Headshot: Procter & Gamble, Wikimedia Commons, CC BY 3.0',
     facts: [['$40B → $80B', 'P&G sales, about doubled'], ['10 → 23', 'Billion-dollar brands'], ['$57B', 'Bought Gillette']], call: 'Buying Gillette for $57B' },
   { id: 'forbes', name: 'Steve Forbes', short: 'Chairman, Forbes Media', title: 'Chairman & Editor-in-Chief, Forbes Media', co: 'Forbes', logo: 'forbes', banner: 'forbes_ph', av: 'forbes_av', credit: 'Headshot: Gage Skidmore, Wikimedia Commons, CC BY-SA 3.0',
@@ -4214,68 +4361,115 @@ const ROSTER = [
   { id: 'barefoot', name: 'Co-founding CEO, Barefoot Wines', short: 'Answered on Edify, Nov 10', title: 'Answered Team 10’s question on Edify, Nov 10', co: 'Barefoot', logo: 'barefoot', verified: 1, tag: 'Answered our question · Nov 10',
     facts: [['1986', 'Relaunched Barefoot out of a laundry room'], ['2005', 'Sold Barefoot to E&J Gallo']], call: 'Relaunching Barefoot from a laundry room' },
 ];
-const rosterTag = r => r.room ? '<em class="tag room">In the room today</em>' : r.tag ? `<em class="tag gold">${esc(r.tag)}</em>` : '<em class="tag">Sample profile</em>';
-function bragHTML(r) {
-  const banner = r.banner && KI[r.banner] ? `<div class="bban"><img src="${KI[r.banner]}" alt=""><span>With Robert Reiss on The CEO Show</span></div>` : '';
-  const av = r.av && KI[r.av] ? `<img class="bav" src="${KI[r.av]}" alt="">` : '';
-  return `<div class="brag">${banner}<div class="bhead">${av}<div class="bid">${plate(r.logo, r.co)}${rosterTag(r)}</div></div>
-    <h2>${esc(r.name)}</h2>${r.verified ? `<div class="bmeta">${VSTAMP}</div>` : ''}<p class="btitle">${esc(r.title)}</p>
-    <div class="bfacts">${r.facts.map(([a, b]) => `<div><b>${esc(a)}</b><span>${esc(b)}</span></div>`).join('')}</div>
-    ${r.call ? `<div class="bcall"><small>Famous call</small><b>${esc(r.call)}</b></div>` : ''}${r.credit ? `<small class="credit">${esc(r.credit)}</small>` : ''}</div>`;
+const rosterTag = r => r.room ? '<em class="tag room"><i></i>In the room today</em>' : r.tag ? `<em class="tag gold">${esc(r.tag)}</em>` : '<em class="tag">Sample profile</em>';
+/* motion: elements carry data-fx (+ data-d delay in ms); kpFx plays them */
+const KFX = {
+  up: [[{ opacity: 0, transform: 'translateY(26px)' }, { opacity: 1, transform: 'none' }], 640, 'soft'],
+  fade: [[{ opacity: 0 }, { opacity: 1 }], 700, 'ease-out'],
+  pop: [[{ opacity: 0, transform: 'scale(.5)' }, { opacity: 1, transform: 'none' }], 720, 'bouncy'],
+  rise: [[{ opacity: 0, transform: 'perspective(900px) translateY(150px) rotateX(38deg) scale(.9)' }, { opacity: 1, transform: 'none' }], 950, 'soft'],
+  slam: [[{ opacity: 0, transform: 'scale(2.7) rotate(-14deg)' }, { opacity: 1, transform: 'scale(.93) rotate(-2deg)', offset: .7 }, { opacity: 1, transform: 'none' }], 480, 'cubic-bezier(.4,0,.7,1)'],
+  fly: [[{ opacity: 0, transform: 'translateY(-170px) scale(1.3) rotate(-4deg)' }, { opacity: 1, transform: 'none' }], 900, 'bouncy'],
+  left: [[{ opacity: 0, transform: 'translateX(-46px)' }, { opacity: 1, transform: 'none' }], 640, 'soft'],
+  wd: [[{ transform: 'translateY(110%)' }, { transform: 'none' }], 700, 'soft'],
+};
+function kpFx(root) {
+  if (REDUCE) return;
+  $$('[data-fx]', root).forEach(el => {
+    const f = KFX[el.dataset.fx]; if (!f) return; const d = +el.dataset.d || 0;
+    anim(el, f[0], { duration: f[1], delay: d, easing: SPR[f[2]] ? SPR[f[2]].e : f[2], fill: 'backwards' });
+    if (el.dataset.fx === 'slam') setTimeout(() => { if (!el.isConnected) return; haptic('heavy'); const b = rel(el); fx.burst(b.x, b.y, { n: 28, speed: 7, colors: ['#ffd23f', '#fff6d0', '#f2b01e'] }); }, d + 340);
+  });
 }
-const rosterCard = r => `<button class="rc" data-ceo="${r.id}" type="button"><span class="rc-top">${r.av && KI[r.av] ? `<img class="rc-av" src="${KI[r.av]}" alt="">` : ''}${plate(r.logo, r.co)}</span><b>${esc(r.name)}</b><span>${esc(r.short)}</span>${rosterTag(r)}</button>`;
-function openBrag(id) { const r = ROSTER.find(x => x.id === id); if (r) openSheet({ title: 'CEO profile', body: bragHTML(r) }); }
+const KW = (t, d0 = 0, step = 70) => t.split(' ').map((w, k) => `<span class="kw"><span data-fx="wd" data-d="${d0 + k * step}">${w}</span></span>`).join(' ');
+function bragHTML(r, d0 = 0) {
+  const [h, ...rest] = r.facts, D = n => d0 + n;
+  const av = r.av && KI[r.av] ? `<img class="bav ${r.room ? 'room' : ''}" src="${KI[r.av]}" alt="">` : '';
+  return `<div class="brag">
+    <div class="bhead" data-fx="up" data-d="${D(0)}">${av}<div class="bid"><h2>${esc(r.name)}</h2><p class="btitle">${esc(r.title)}</p></div></div>
+    <div class="bmeta" data-fx="up" data-d="${D(120)}">${plate(r.logo, r.co)}${rosterTag(r)}${r.verified ? `<span data-fx="slam" data-d="${D(650)}">${VSTAMP}</span>` : ''}</div>
+    <div class="bhero" data-fx="up" data-d="${D(300)}"><b>${esc(h[0])}</b><span>${esc(h[1])}</span></div>
+    ${rest.length ? `<div class="bfacts">${rest.map(([a, b], k) => `<div data-fx="up" data-d="${D(450 + k * 110)}"><b>${esc(a)}</b><span>${esc(b)}</span></div>`).join('')}</div>` : ''}
+    ${r.call ? `<div class="bcall" data-fx="up" data-d="${D(700)}"><small>Famous call</small><b>${esc(r.call)}</b></div>` : ''}
+    ${r.banner && KI[r.banner] ? `<div class="bban" data-fx="up" data-d="${D(800)}"><img src="${KI[r.banner]}" alt=""><span>With Robert Reiss on The CEO Show</span></div>` : ''}
+    ${r.credit ? `<small class="credit">${esc(r.credit)}</small>` : ''}</div>`;
+}
+const rosterCard = (r, d) => `<button class="rc ${r.room ? 'room' : ''}" data-ceo="${r.id}" type="button"${d != null ? ` data-fx="pop" data-d="${d}"` : ''}>${r.av && KI[r.av] ? `<span class="rc-ph"><img src="${KI[r.av]}" alt=""></span>` : ''}${plate(r.logo, r.co)}<b>${esc(r.name)}</b><span class="rc-t">${esc(r.short)}</span>${rosterTag(r)}</button>`;
+function openBrag(id) { const r = ROSTER.find(x => x.id === id); if (r) openSheet({ title: 'CEO profile', body: bragHTML(r), onMount() { kpFx($('#sheetB') || document); } }); }
 
 /* ----- the walkthroughs ----- */
-const kpCert = () => `<div class="cert kpcert"><div class="ch">${LOGO(26)}<span>Edify Certified</span><small>Level 7 of 7</small></div><b>CEO</b><p class="cn">${esc(kpName())}${TICK}</p><p>Awarded ${kpWhen()} · earned, not bought</p>
-  <div class="ca"><button class="btn li" data-act="next" type="button">${LI_ICON}Add to LinkedIn</button></div></div>`;
 function kpLeagueRows() {
   const rows = leagueRows().filter(r => !r.me), ceo = rows.filter(r => isCEOName(r.n)).slice(0, 2), oth = rows.filter(r => !isCEOName(r.n)).slice(0, 2);
   return [...ceo, ...oth].sort((a, b) => b.x - a.x);
 }
-function kpBoardAns() { for (const b of BOARD) for (const a of (b.answers || [])) if (String(a.tier) === 'CEO') return a; return null; }
+const OMAR_Q = '“We’re starting a staffing service for Latino laborers. Placement only, only workers in our English/skills plan, or sell the plan to owners: which do we start with?”';
+const BOT_A = 'It depends on your goals, budget and market. Placement may bring faster revenue, while a skills plan could build long-term value. Consider your resources, competition and customer needs before…';
+const QUOTES = ['“I would suggest you <mark>start small</mark>”', '“providing them to just <mark>a few local companies</mark> to start”', '“If successful get <mark>testimonials</mark> from owners who see your services as unique.”', '“So, start slow, I would distinguish, show success, use that <mark>3rd party endorsement</mark> to expand.”'];
+function vThread(stage) {
+  const fxa = (n, k, d) => stage === n ? ` data-fx="${k}" data-d="${d}"` : '';
+  const ceo = stage >= 2 ? `<div class="vceo"${fxa(2, 'up', 150)}><div class="vch">${plate('barefoot', 'Barefoot Wines')}<span${fxa(2, 'slam', 1000)}>${VSTAMP}</span></div><b class="vwho">Co-founding CEO, Barefoot Wines</b>
+    <blockquote>${QUOTES.map((q, k) => `<span class="q"${fxa(2, 'up', 1350 + k * 520)}>${q.replace('<mark>', `<mark style="animation-delay:${stage === 2 ? 1750 + k * 520 : 0}ms">`)}${k < 3 ? ' …' : ''}</span>`).join(' ')}</blockquote>
+    <div class="vwho2"${fxa(2, 'up', 3700)}><span><b>1986</b>Relaunched Barefoot out of a laundry room</span><span><b>2005</b>Sold it to E&amp;J Gallo</span></div></div>` : '';
+  return `<h2 class="kp-h vt ${stage ? 'sm' : ''}">${stage === 0 ? KW('Same question. Two answers.', 0) : 'Same question. Two answers.'}</h2>
+    <div class="vq ${stage ? 'dim' : ''}"${fxa(0, 'up', 450)}><div class="vqh"><span class="av" style="width:34px;height:34px;background:${avColor('Omar')}">O</span><b>Omar</b><span>asked on Edify · Nov 10</span></div><p>${OMAR_Q}</p></div>
+    ${stage >= 1 ? `<div class="vbot ${stage >= 2 ? 'dim' : ''}"${fxa(1, 'up', 0)}><div class="vbh"><span class="botav">AI</span><b>AI chatbot</b><span class="smp">sample · no name, no source</span></div><p class="vbt">${stage === 1 ? '<span class="dots"><i></i><i></i><i></i></span>' : esc(BOT_A)}</p>${stage === 1 ? `<div class="flags"><span data-fx="pop" data-d="3000">✕ No name</span><span data-fx="pop" data-d="3250">✕ No source</span><span data-fx="pop" data-d="3500">✕ No track record</span></div>` : ''}</div>` : ''}
+    ${ceo}`;
+}
+function typeBot(st) {
+  const p = $('.vbt', st); if (!p) return;
+  const words = BOT_A.split(' ');
+  setTimeout(() => { if (!p.isConnected) return; p.textContent = ''; let k = 0; const step = () => { if (!p.isConnected || k >= words.length) return; p.textContent += (k ? ' ' : '') + words[k++]; setTimeout(step, 62); }; step(); }, 900);
+}
+function flyTickets(st) {
+  const box = $('#kpqn', st); if (!box) return;
+  $$('.tr.done .tk', st).filter(t => t.textContent).forEach((t, k) => setTimeout(() => {
+    if (!t.isConnected) return;
+    const z = DZ(), a = rel(t), b = rel(box), s = document.createElement('span'); s.className = 'tfly'; s.textContent = '🎟'; s.style.left = a.x / z + 'px'; s.style.top = a.y / z + 'px'; dev.appendChild(s);
+    const dx = (b.x - a.x) / z, dy = (b.y - a.y) / z;
+    anim(s, [{ transform: 'translate(-50%,-50%) scale(1)' }, { transform: `translate(calc(-50% + ${dx * .45}px), calc(-50% + ${dy * .45 - 70}px)) scale(1.9) rotate(-12deg)`, offset: .5 }, { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(.7)` }], { duration: 760, easing: 'cubic-bezier(.45,0,.4,1)', fill: 'forwards' }).finished.then(() => {
+      s.remove(); if (!box.isConnected) return; box.textContent = k + 1; anim(box, [{ transform: 'scale(1.6)' }, { transform: 'none' }], { duration: 480, easing: SPR.bouncy.e }); haptic('tap');
+      const p = rel(box); fx.burst(p.x, p.y, { n: 18, speed: 5, colors: ['#ffd23f', '#fff'] });
+    });
+  }, 1500 + k * 520));
+  setTimeout(() => { const btn = $('.kp-ask', st); if (btn && btn.isConnected) { btn.classList.add('open'); btn.innerHTML = `${icon('check')}<span>Ask this CEO</span>`; anim(btn, [{ transform: 'scale(.9)' }, { transform: 'scale(1.06)' }, { transform: 'none' }], { duration: 600, easing: SPR.bouncy.e }); } }, 1500 + 3 * 520 + 700);
+}
 const DECKS = {
   certify: { name: 'Certify', icon: '🎓', slides: [
-    { html: () => `<div class="kp-k">Promoted</div><div class="kp-crown">👑</div><h2 class="kp-big">CEO</h2><p class="kp-sub">Level 7 of 7 · the top of the ladder</p>${ladderHTML({ i: 6 })}${kpCert()}`,
-      after: st => { setTimeout(() => { const c = $('.kp-crown', st); if (!c || !KP) return; const p = rel(c); fx.burst(p.x, p.y, { n: 90, speed: 12 }); }, 380); } },
-    { cls: 'lipw', html: () => `<div class="lip"><div class="lip-bar"><b>LinkedIn</b><span>Profile</span><span class="smp">Illustration</span></div><div class="lip-cover"></div>
-        <div class="lip-me"><span class="lip-av">${esc(initials(kpName()))}</span><b>${esc(kpName())}</b><span>Student at Babson College</span></div>
-        <div class="lip-sec"><h4>Licenses &amp; certifications</h4><div class="lip-item new">${LOGO(48)}<div><b>Edify Certified · CEO</b><span>Edify</span><small>Issued ${kpWhen()}</small><em>Show credential ↗</em></div></div></div></div>
-      <p class="kp-cap">From your rank to your LinkedIn in one tap.</p>`,
-      after: st => { const n = $('.lip-item.new', st); anim(n, [{ opacity: 0, transform: 'translateX(70px)' }, { opacity: 1, transform: 'none' }], { duration: 760, delay: 850, easing: SPR.bouncy.e, fill: 'backwards' }); setTimeout(() => n && n.classList.add('lit'), 1500); } },
-    { html: () => `<div class="kp-eye">Certificates people already trust</div><h2 class="kp-h">Just like…</h2>
-      <div class="like">${plate('duolingo', 'Duolingo')}<b>Duolingo English Test</b><p>An app test, accepted by <strong>6,000+</strong> programs.</p></div>
-      <div class="like">${plate('coursera', 'Coursera')}<b>Coursera</b><p>Certificates go to LinkedIn in one tap. One of LinkedIn’s top certification providers.</p></div>
-      <p class="kp-cap">Edify does it for CEO judgment.</p>` },
-    { html: () => { const a = kpBoardAns(); return `<h2 class="kp-h xl">${TICK}<span>= CEO.</span></h2><p class="kp-lead">You can’t buy it.<br>You earn it.</p>
-      <div class="panel kpl"><div class="kpl-h"><span>League this week</span><span class="smp">Sample players</span></div>${kpLeagueRows().map(r => { const c = isCEOName(r.n); return `<div class="kplr"><span class="av" style="width:34px;height:34px;background:${avColor(r.n)}">${esc(initials(r.n))}</span><span class="n">${esc(r.n)}${c ? TICK : ''}<small>${c ? 'CEO level' : 'Climbing'}</small></span><span class="x num">${r.x} XP</span></div>`; }).join('')}</div>
-      ${a ? `<div class="panel kpl"><div class="kpl-h"><span>Board answer</span><span class="smp">Sample answer</span></div><div class="kplr"><span class="av" style="width:34px;height:34px;background:${avColor(a.name)}">${esc(initials(a.name))}</span><span class="n">${esc(a.name)}${TICK}<small>CEO level</small></span></div><p class="kpq">${esc(String(a.text).slice(0, 110))}${String(a.text).length > 110 ? '…' : ''}</p></div>` : ''}`; } },
-    { html: () => `<div class="kp-eye">The Edify roster</div><h2 class="kp-h">CEOs get profiles too</h2><div class="roster">${ROSTER.filter(r => r.id !== 'barefoot').map(rosterCard).join('')}</div>`, ceoNext: 'ralph' },
-    { cls: 'bragw', html: () => bragHTML(ROSTER[0]) },
+    { cls: 'c1', html: () => `<div class="c1-hero"><div class="kp-rays" data-fx="fade" data-d="200"></div><div class="c1-badge" data-fx="pop" data-d="180">👑</div></div>
+        <div class="kp-k" data-fx="up" data-d="60">Promoted</div><h2 class="kp-big" data-fx="up" data-d="320">CEO</h2><p class="kp-sub" data-fx="up" data-d="420">Level 7 of 7 · the top of the ladder</p>
+        <div class="cert kpcert" data-fx="rise" data-d="950"><div class="ch">${LOGO(26)}<span>Edify Certified</span><small>Level 7 of 7</small></div><b>CEO</b><p class="cn">${esc(kpName())}<span class="tkw" data-fx="pop" data-d="1950">${TICK}</span></p><p>Awarded ${kpWhen()} · earned, not bought</p>
+          <div class="ca"><button class="btn li" data-act="next" type="button">${LI_ICON}Add to LinkedIn</button></div></div>`,
+      after: st => { setTimeout(() => { const c = $('.c1-badge', st); if (!c || !c.isConnected) return; const p = rel(c); fx.burst(p.x, p.y, { n: 130, speed: 14 }); fx.rain(70); }, 430); setTimeout(() => { const b = $('.kpcert .li', st); if (b && b.isConnected) b.classList.add('pulse'); }, 2400); } },
+    { cls: 'c2', html: () => `<h2 class="kp-h">${KW('One tap to LinkedIn.', 0)}</h2>
+        <div class="lip" data-fx="up" data-d="200"><div class="lip-bar"><b>LinkedIn</b><span class="smp">Illustration</span></div><div class="lip-cover"></div>
+          <div class="lip-me"><span class="lip-av">${esc(initials(kpName()))}</span><b>${esc(kpName())}</b><span>Student at Babson College</span></div>
+          <div class="lip-sec"><h4>Licenses &amp; certifications</h4>
+            <div class="lip-item new" data-fx="fly" data-d="950"><span class="lip-lg e">${LOGO(38)}</span><div><b>Edify Certified · CEO</b><span>Edify · Issued ${kpWhen()}</span></div></div>
+            <div class="lip-item"><span class="lip-lg">${KI.duolingo ? `<img src="${KI.duolingo}" alt="Duolingo">` : 'Duolingo'}</span><div><b>Duolingo English Test</b><span>Duolingo</span></div></div>
+            <div class="lip-item"><span class="lip-lg">${KI.coursera ? `<img src="${KI.coursera}" alt="Coursera">` : 'Coursera'}</span><div><b>Professional Certificate</b><span>Coursera</span></div></div></div></div>
+        <div class="trust"><div data-fx="up" data-d="2000"><b>6,000+</b><span>programs accept the Duolingo English Test, an app test</span></div><div data-fx="up" data-d="2250"><b>1 tap</b><span>Coursera certificates go straight to LinkedIn</span></div></div>`,
+      after: st => setTimeout(() => { const n = $('.lip-item.new', st); if (n && n.isConnected) n.classList.add('lit'); }, 1700) },
+    { cls: 'c3', html: () => `<div class="bigtick"><span data-fx="pop" data-d="80"><svg viewBox="0 0 120 120" aria-label="Blue check"><circle cx="60" cy="60" r="56" fill="#1d9bf0"/><path class="dr" d="M33 62 51 80 88 41" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b data-fx="left" data-d="750">= CEO.</b></div>
+        <p class="kp-lead xl">${KW('You can’t buy it.', 1050)}<br><span class="blu">${KW('You earn it.', 1450)}</span></p>
+        <div class="panel kpl" data-fx="up" data-d="1900"><div class="kpl-h"><span>League this week</span><span class="smp">Sample players</span></div>${kpLeagueRows().map(r => { const c = isCEOName(r.n); return `<div class="kplr ${c ? 'ceo' : ''}"><span class="av" style="width:36px;height:36px;background:${avColor(r.n)}">${esc(initials(r.n))}</span><span class="n">${esc(r.n)}${c ? TICK : ''}<small>${c ? 'CEO level' : 'Still climbing'}</small></span><span class="x num">${r.x} XP</span></div>`; }).join('')}</div>`,
+      after: st => { const p = $('.bigtick .dr', st); if (p && !REDUCE) anim(p, [{ strokeDashoffset: 90 }, { strokeDashoffset: 0 }], { duration: 650, delay: 420, easing: 'cubic-bezier(.6,0,.2,1)', fill: 'backwards' }); if (!REDUCE) $$('.kplr .tick', st).forEach((t, k) => anim(t, [{ transform: 'scale(0) rotate(-90deg)' }, { transform: 'none' }], { duration: 650, delay: 2450 + k * 300, easing: SPR.bouncy.e, fill: 'backwards' })); } },
+    { cls: 'c4', ceoNext: 'ralph', html: () => `<h2 class="kp-h">${KW('CEOs get profiles too.', 0)}</h2><div class="roster big">${ROSTER.filter(r => r.id !== 'barefoot').map((r, k) => rosterCard(r, 300 + k * 90)).join('')}</div>` },
+    { cls: 'bragw', html: () => bragHTML(ROSTER[0], 0) },
   ] },
   verify: { name: 'Verify', icon: '✓', slides: [
-    { html: () => `<div class="kp-eye">A real question from our team · Nov 10</div><h2 class="kp-h">Same question.<br>Two answers.</h2>
-      <div class="qb"><div class="qbh"><span class="av" style="width:36px;height:36px;background:${avColor('Omar')}">O</span><b>Omar</b><span>asked on Edify</span></div><p>“We’re starting a staffing service for Latino laborers. Placement only, only workers in our English/skills plan, or sell the plan to owners: which do we start with?”</p></div>` },
-    { html: () => `<div class="kp-eye">Answer 1</div><div class="bot"><div class="both"><span class="botav">AI</span><b>AI chatbot</b></div><span class="smp">AI chatbot · sample · no name, no source</span><p>It depends on your goals, budget and market. Placement may bring faster revenue, while a skills plan could build long-term value. Consider your resources, competition and customer needs before…</p></div>
-      <div class="flags"><span>✕ No name</span><span>✕ No source</span><span>✕ No track record</span></div>` },
-    { html: () => `<div class="kp-eye">Answer 2 · on Edify, Nov 10</div><div class="real"><div class="rh">${plate('barefoot', 'Barefoot Wines')}${VSTAMP}</div><b class="rwho">Co-founding CEO, Barefoot Wines</b>
-      <blockquote>“I would suggest you start small” … “providing them to just a few local companies to start” … “If successful get testimonials from owners who see your services as unique.” … “So, start slow, I would distinguish, show success, use that 3rd party endorsement to expand.”</blockquote></div>
-      <p class="kp-cap">Tap to see who answered →</p>` },
-    { cls: 'bragw', html: () => bragHTML(ROSTER.find(r => r.id === 'barefoot')) },
-    { html: () => `<h2 class="kp-h xl2"><span>ChatGPT can scrape the internet.</span><span class="hot">It can’t scrape this.</span></h2>
-      <div class="moat"><div class="mrow">${plate('barefoot', 'Barefoot Wines')}${VSTAMP}</div><div class="mrow">${plate('att', 'AT&T')}${VSTAMP}</div><div class="mrow">${plate(null, 'The CEO Forum')}${VSTAMP}</div></div>
-      <p class="kp-lead">Verified CEOs = the moat.</p>` },
-    { html: () => `<div class="kp-eye">Earn it</div><h2 class="kp-h">Every level-up earns 1 question to a real CEO.</h2>
-      <div class="tlad">${LV.map((l, k) => `<div class="tr ${k <= 3 ? 'done' : ''} ${k === 3 ? 'cur' : ''}"><span class="tn">${k === 6 ? '👑' : k + 1}</span><b>${l[0]}</b><span class="tk">${k ? '🎟' : ''}</span></div>`).join('')}</div>
-      <div class="tq"><span>Questions earned</span><b class="num" id="kpqn">0</b></div><button class="btn heat kp-ask" data-act="next" type="button">${icon('lock')}<span>Ask this CEO</span></button>`,
-      after: st => {
-        $$('.tr.done .tk', st).forEach((t, k) => anim(t, [{ transform: 'scale(0) rotate(-30deg)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 520, delay: 700 + k * 380, easing: SPR.bouncy.e, fill: 'backwards' }));
-        const n = $('#kpqn', st), done = $$('.tr.done .tk', st).filter(t => t.textContent).length;
-        for (let k = 1; k <= done; k++) setTimeout(() => { if (n.isConnected) { n.textContent = k; anim(n, [{ transform: 'scale(1.4)' }, { transform: 'none' }], { duration: 380, easing: SPR.bouncy.e }); } }, 700 + (k) * 380);
-        setTimeout(() => { const b = $('.kp-ask', st); if (b && b.isConnected) { b.classList.add('open'); b.innerHTML = `${icon('check')}<span>Ask this CEO</span>`; anim(b, [{ transform: 'scale(.92)' }, { transform: 'none' }], { duration: 500, easing: SPR.bouncy.e }); } }, 900 + done * 380);
-      } },
-    { cls: 'endw', html: () => `<h2 class="kp-close"><span>Gamify.</span><span>Certify.</span><span>Verify.</span></h2><p class="kp-lead big">That’s how you <b>Edify.</b></p>
-      <div class="kp-qr">${kpQR()}</div><p class="kp-cap">Scan to play · ryrycd.github.io/hot-seat</p>` },
+    { cls: 'vth', html: () => vThread(0) },
+    { cls: 'vth', html: () => vThread(1), after: typeBot },
+    { cls: 'vth', html: () => vThread(2) },
+    { cls: 'v4', html: () => `<h2 class="kp-h xl2">${KW('ChatGPT can scrape the internet.', 0, 85)}</h2>
+        <div class="moat">${[['barefoot', 'Co-founding CEO', 'Barefoot Wines'], ['ralph', 'Ralph de la Vega', 'AT&T'], ['robert', 'Robert Reiss', 'The CEO Forum']].map(([id, n, o], k) => { const r = ROSTER.find(x => x.id === id); return `<div class="mrow" data-fx="left" data-d="${750 + k * 380}">${r.av && KI[r.av] ? `<img class="mav" src="${KI[r.av]}" alt="">` : plate(r.logo, r.co)}<span class="mn"><b>${esc(n)}</b><small>${esc(o)}</small></span><span data-fx="slam" data-d="${1050 + k * 380}">${VSTAMP}</span></div>`; }).join('')}</div>
+        <h2 class="kp-h xl2 hot">${KW('It can’t scrape this.', 2350, 95)}</h2><p class="kp-lead" data-fx="up" data-d="2950">Verified CEOs are the moat.</p>` },
+    { cls: 'v5', html: () => `<h2 class="kp-h">${KW('Every level-up earns 1 question to a real CEO.', 0, 55)}</h2>
+        <div class="tlad" data-fx="up" data-d="450">${LV.map((l, k) => `<div class="tr ${k <= 3 ? 'done' : ''} ${k === 3 ? 'cur' : ''}"><span class="tn">${k === 6 ? '👑' : k + 1}</span><b>${l[0]}</b><span class="tk">${k ? '🎟' : ''}</span></div>`).join('')}</div>
+        <div class="tq" data-fx="up" data-d="650"><span>Questions earned</span><b class="num" id="kpqn">0</b></div>
+        <button class="btn heat kp-ask" data-act="next" type="button" data-fx="up" data-d="800">${icon('lock')}<span>Ask this CEO</span></button>`, after: flyTickets },
+    { cls: 'endw', html: () => `<h2 class="kp-close"><span data-fx="slam" data-d="100">Gamify.</span><span data-fx="slam" data-d="600">Certify.</span><span data-fx="slam" data-d="1100">Verify.</span></h2><p class="kp-lead big" data-fx="up" data-d="1700">That’s how you <b>Edify.</b></p>
+        <div class="kp-qr" data-fx="pop" data-d="2100">${kpQR()}</div><p class="kp-cap" data-fx="up" data-d="2300">Scan to play · ryrycd.github.io/hot-seat</p>`,
+      after: st => setTimeout(() => { if (st.isConnected) fx.rain(90); }, 1800) },
   ] },
 };
 function kpQR() {
@@ -4283,6 +4477,7 @@ function kpQR() {
   return KI.qr ? `<img src="${KI.qr}" alt="QR code for ryrycd.github.io/hot-seat">` : '';
 }
 let KP = null, kpGamify = false;
+const kpRelayout = () => requestAnimationFrame(() => dispatchEvent(new Event('resize')));
 function kpEl() {
   let o = $('#kp');
   if (!o) { o = document.createElement('div'); o.id = 'kp'; o.className = 'kp'; o.setAttribute('role', 'dialog'); o.setAttribute('aria-modal', 'true'); o.setAttribute('aria-label', '3 Key Points'); dev.appendChild(o); o.addEventListener('click', kpClick); }
@@ -4296,23 +4491,22 @@ function openKP(deck = null, i = 0) {
   if (!S.onboarded) { S.onboarded = true; save(); }
   activeCtrl && activeCtrl.pauseTimer && activeCtrl.pauseTimer();
   KP = { deck, i };
-  document.documentElement.classList.add('kp-mode'); requestAnimationFrame(fitDevice);
+  if (!document.documentElement.classList.contains('kp-mode')) { document.documentElement.classList.add('kp-mode'); kpRelayout(); }
   const o = kpEl(); o.classList.add('on'); kpDraw(1);
 }
 function closeKP(keepQuiet) {
   KP = null; const o = $('#kp'); if (o) o.classList.remove('on');
-  if (!keepQuiet) { window.__kpQuiet = false; document.documentElement.classList.remove('kp-mode'); requestAnimationFrame(fitDevice); }
+  if (!keepQuiet) { window.__kpQuiet = false; document.documentElement.classList.remove('kp-mode'); kpRelayout(); }
   if (curPage === 'home' && !sheetOpen && activeCtrl && activeCtrl.startTimer) activeCtrl.startTimer();
 }
 function kpDraw(dir) {
   const o = kpEl();
+  o.className = 'kp on d-' + (KP.deck || 'menu');
   if (!KP.deck) {
     o.innerHTML = `<div class="kp-top"><button class="kp-x" data-act="x" type="button" aria-label="Close 3 Key Points">✕</button><span></span><span class="kp-tag">Team 10</span></div>
-      <div class="kp-stage"><div class="kps kpm"><div class="kp-eye">Team 10</div><h1 class="kp-h">3 Key Points</h1>
-        <button class="kpm-b g" data-deck="gamify" type="button"><i>🔥</i><span><b>Gamify</b><small>Make it a daily habit</small></span><em>1</em></button>
-        <button class="kpm-b c" data-deck="certify" type="button"><i>🎓</i><span><b>Certify</b><small>Make your rank count</small></span><em>2</em></button>
-        <button class="kpm-b v" data-deck="verify" type="button"><i>✓</i><span><b>Verify</b><small>Real CEOs, earned</small></span><em>3</em></button>
-        <p class="kpm-f">Gamify. Certify. Verify.<br><b>That’s how you Edify.</b></p></div></div>`;
+      <div class="kp-stage"><div class="kps kpm"><div class="kp-eye" data-fx="up">3 Key Points · Team 10</div>
+        ${[['gamify', '01', 'Gamify', 'Make it a daily habit'], ['certify', '02', 'Certify', 'Make your rank count'], ['verify', '03', 'Verify', 'Real CEOs, earned']].map(([d, n, t, s], k) => `<button class="kpm-w ${d}" data-deck="${d}" type="button" data-fx="up" data-d="${120 + k * 120}"><span class="n">${n}</span><b>${t}.</b><small>${s}</small><i>→</i></button>`).join('')}
+        <p class="kpm-f" data-fx="up" data-d="560">That’s how you <b>Edify.</b></p></div></div>`;
   } else {
     const D = DECKS[KP.deck], s = D.slides[KP.i], last = KP.i === D.slides.length - 1;
     o.innerHTML = `<div class="kp-top"><button class="kp-x" data-act="x" type="button" aria-label="Back to 3 Key Points">✕</button><div class="kp-dots">${D.slides.map((_, k) => `<i class="${k < KP.i ? 'done' : k === KP.i ? 'on' : ''}"></i>`).join('')}</div><span class="kp-tag">${D.icon} ${D.name}</span></div>
@@ -4320,7 +4514,7 @@ function kpDraw(dir) {
       <div class="kp-nav"><button class="kp-b" data-act="prev" type="button" aria-label="Back" ${KP.i ? '' : 'disabled'}>←</button><span class="kp-hint">${last ? 'Tap to finish' : `${KP.i + 1} of ${D.slides.length} · tap to continue`}</span><button class="kp-b" data-act="next" type="button" aria-label="Next">→</button></div>`;
   }
   const st = $('.kps', o);
-  if (!REDUCE) [...st.children].forEach((n, k) => anim(n, [{ opacity: 0, transform: `translate(${dir < 0 ? -22 : 22}px,8px)` }, { opacity: 1, transform: 'none' }], { duration: 560, delay: 40 + k * 85, easing: SPR.soft.e, fill: 'backwards' }));
+  kpFx(st);
   const s = KP.deck && DECKS[KP.deck].slides[KP.i]; if (s && s.after) s.after(st);
 }
 function kpAct(act, arg) {
@@ -4349,8 +4543,9 @@ function kpClick(e) {
     const s = KP.deck && DECKS[KP.deck].slides[KP.i];
     if (s && s.ceoNext === t.dataset.ceo) return kpAct('next');
     const r = ROSTER.find(x => x.id === t.dataset.ceo); if (!r) return;
-    const m = document.createElement('div'); m.className = 'kp-modal'; m.innerHTML = `<div class="kp-mc">${bragHTML(r)}<span class="kp-mx">Tap anywhere to close</span></div>`; kpEl().appendChild(m);
-    anim($('.kp-mc', m), [{ transform: 'translateY(40px)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 420, easing: SPR.soft.e });
+    const m = document.createElement('div'); m.className = 'kp-modal'; m.innerHTML = `<div class="kp-mc">${bragHTML(r, 150)}<span class="kp-mx">Tap anywhere to close</span></div>`; kpEl().appendChild(m);
+    anim($('.kp-mc', m), [{ transform: 'translateY(60px)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 480, easing: SPR.soft.e });
+    kpFx(m);
     return;
   }
   if (t && t.dataset.act) return kpAct(t.dataset.act);
