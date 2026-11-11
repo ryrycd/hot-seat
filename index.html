@@ -3610,7 +3610,7 @@ function renderMolly() {
     <div class="mchat" id="mchat"><div class="mm molly">${mAv('sm')}<div class="mb"><p>Hi, I'm Molly. Bring me a call you're stuck on: a price, a hire, a deal, a partner. I'll show you how real CEOs handled something like it, then help you decide.</p></div></div>
       ${S.molly.length ? '' : `<div class="msugg" id="msugg">${MOLLY_SUGG.map(t => `<button>${esc(t)}</button>`).join('')}</div>`}
       ${S.molly.map(mollyMsgHTML).join('')}</div>
-    <div class="mcomp"><div class="mpend" id="mpend"></div><div class="mrowin"><label class="matt" for="mfile" aria-label="Attach a file">${icon('clip')}</label><input id="mfile" type="file" hidden><textarea id="minput" rows="1" placeholder="Describe the call you're stuck on" aria-label="Message Molly"></textarea><button class="msend" id="msend" aria-label="Send">${icon('send')}</button></div></div></div>`;
+    <div class="mcomp"><div class="mpend" id="mpend"></div><div class="mrowin"><label class="matt" for="mfile" aria-label="Attach a file">${icon('clip')}</label><input id="mfile" type="file" hidden><textarea id="minput" rows="1" placeholder="What decision are you facing?" aria-label="Message Molly"></textarea><button class="msend" id="msend" aria-label="Send">${icon('send')}</button></div></div></div>`;
   segBind($('#aseg'), v => { askSeg = v; renderAsk(); });
   const chat = $('#mchat'), inp = $('#minput');
   const toEnd = () => { chat.scrollTop = chat.scrollHeight; };
