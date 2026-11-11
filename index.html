@@ -1006,6 +1006,9 @@ svg{display:block}
 .smp{display:inline-block;margin-left:8px;padding:3px 7px;border-radius:6px;background:rgb(255 255 255/.09);color:var(--fg3);font:700 10.5px/1 var(--font-t);letter-spacing:.06em;text-transform:uppercase;vertical-align:2px}
 .shortsbtn{height:42px;margin-top:12px;font-size:14.5px;border-radius:13px}
 .shortsbtn svg{width:16px;height:16px}
+/* the hero's decorative gradient must not swallow taps on its button */
+.league-hero::before{pointer-events:none}
+.league-hero .btn,.league-hero .eyebrow,.league-hero .smp{position:relative;z-index:1}
 
 [hidden]{display:none!important}
 
