@@ -1326,6 +1326,113 @@ svg{display:block}
   .kb .ship{font:800 clamp(18px,2.6vh,26px)/1.2 var(--font-d);letter-spacing:-.02em;background:var(--heat-grad);-webkit-background-clip:text;background-clip:text;color:transparent;justify-self:start}
 }
 
+/* ===== Key Points v3: Gamify as scripted scenes, AI-chat moat, not-for-sale ===== */
+.kp.d-gamify::before{background:radial-gradient(95% 55% at 50% 0%,rgb(255 90 43/.26),transparent 70%),radial-gradient(80% 40% at 50% 100%,rgb(255 45 111/.16),transparent 70%)}
+.kp-stage:has(.gpro){overflow:hidden}
+.g1,.g2{gap:14px}
+.lock{position:relative;border-radius:32px;padding:22px 12px 14px;min-height:440px;display:flex;flex-direction:column;align-items:center;gap:8px;overflow:hidden;
+  background:radial-gradient(110% 65% at 15% 8%,#ff8a3d 0%,transparent 55%),radial-gradient(120% 75% at 95% 95%,#6a3bff 0%,transparent 60%),linear-gradient(165deg,#3a1240,#0b0716);
+  box-shadow:0 34px 70px -30px rgb(0 0 0/.85),inset 0 0 0 1px rgb(255 255 255/.10)}
+.lk-date{font:650 17px/1 var(--font-t);color:rgb(255 255 255/.86)}
+.lk-time{font:700 88px/1 var(--font-t);letter-spacing:-.045em;color:rgb(255 255 255/.94);margin-bottom:14px}
+.lk-n{width:100%;display:flex;gap:10px;align-items:flex-start;padding:12px;border-radius:22px;background:rgb(255 255 255/.17);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);color:#fff;box-shadow:0 12px 30px -12px rgb(0 0 0/.55);text-align:left}
+.lk-n.new{box-shadow:0 0 0 1.5px rgb(255 170 90/.7),0 18px 40px -14px rgb(255 90 43/.7)}
+.lk-n.old{width:93%;opacity:.72}
+.lk-n svg{flex:none;width:38px;height:38px}
+.lk-n>div{display:grid;gap:3px;flex:1;min-width:0}
+.lk-h{display:flex;justify-content:space-between;font:650 12px/1 var(--font-t);color:rgb(255 255 255/.72);letter-spacing:.03em}
+.lk-h b{font:700 12px/1 var(--font-t)}
+.lk-n>div>b{font:750 16.5px/1.25 var(--font-t)}.lk-n small{font:500 15px/1.3 var(--font-t);color:rgb(255 255 255/.86)}
+.lk-btns{margin-top:auto;width:100%;display:flex;justify-content:space-between;padding:0 14px}
+.lk-btns span{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:rgb(0 0 0/.32);font-size:19px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.gcase{position:relative;border-radius:24px;padding:16px;display:grid;gap:10px;background:radial-gradient(90% 60% at 80% 0%,rgb(255 77 46/.30),transparent 70%),linear-gradient(165deg,#3b0d1d,#14070c);box-shadow:0 34px 70px -30px rgb(0 0 0/.85),inset 0 0 0 1px rgb(255 255 255/.10)}
+.gc-h{display:flex;align-items:center;gap:10px}
+.gc-ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:24px;background:rgb(0 0 0/.4);box-shadow:inset 0 0 0 1px rgb(255 255 255/.12)}
+.gc-h>div{display:grid;gap:3px;flex:1}.gc-h b{font:800 19px/1 var(--font-d);letter-spacing:-.02em}.gc-h small{font:600 13px/1 var(--font-t);color:rgb(255 255 255/.7)}
+.gc-t{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font:800 16px/1 var(--font-t);box-shadow:inset 0 0 0 3px #ffd23f;color:#fff}
+.gc-q{margin:2px 0 4px;font:800 23px/1.13 var(--font-d);letter-spacing:-.025em;text-wrap:balance}
+.gc-o{position:relative;display:flex;align-items:center;gap:10px;padding:13px 12px;border-radius:15px;background:rgb(255 255 255/.06);box-shadow:inset 0 0 0 1px rgb(255 255 255/.14);overflow:hidden;transition:box-shadow .3s,background .3s}
+.gc-o>*{position:relative;z-index:1}
+.gc-o s{position:absolute;inset:0;z-index:0;transform-origin:left;transform:scaleX(0);background:rgb(255 255 255/.12);transition:transform 1s cubic-bezier(.3,0,.2,1)}
+.gc-o i{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;flex:none;font:800 13px/1 var(--font-t);font-style:normal;background:rgb(255 255 255/.14)}
+.gc-o span{flex:1;font:700 16.5px/1.2 var(--font-t)}
+.gc-o em{font:800 17px/1 var(--font-t);font-style:normal;opacity:0;transition:opacity .3s}
+.gcase.rev .gc-o s{transform:scaleX(var(--w))}.gcase.rev .gc-o em{opacity:1}
+.gc-o.pick{box-shadow:inset 0 0 0 2px #35e3a1;background:rgb(53 227 161/.10)}.gc-o.pick s{background:rgb(53 227 161/.30)}.gc-o.pick i{background:#35e3a1;color:#04140d}
+.gc-v{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px 12px;border-radius:13px;background:rgb(255 210 63/.12);color:#ffd23f;font:650 15px/1.3 var(--font-t);opacity:0;transform:translateY(10px);transition:opacity .45s,transform .45s}
+.gc-v b{color:#fff}.gc-v .smp{margin-left:auto}
+.gc-v.on{opacity:1;transform:none}
+.tapdot{position:absolute;z-index:3;width:50px;height:50px;margin:-25px 0 0 -25px;border-radius:50%;background:rgb(255 255 255/.38);box-shadow:0 0 0 2px rgb(255 255 255/.8);opacity:0;pointer-events:none}
+.tapdot.go{animation:tapgo .75s ease-out forwards}
+@keyframes tapgo{0%{opacity:0;transform:scale(1.7)}35%{opacity:1;transform:scale(.8)}100%{opacity:0;transform:scale(1.5)}}
+.xpfly{position:absolute;z-index:4;padding:6px 10px;border-radius:12px;background:#ffd23f;color:#2a1a00;font:800 15px/1 var(--font-t);pointer-events:none;white-space:nowrap}
+.g3{gap:14px}
+.gstreak{display:grid;justify-items:center;gap:4px;text-align:center}
+.gfl{width:96px;height:96px;display:block;animation:flick 1.6s ease-in-out infinite;filter:drop-shadow(0 14px 30px rgb(255 90 43/.7))}
+.gfl svg{width:100%;height:100%;display:block}
+@keyframes flick{0%,100%{transform:scale(1) rotate(-2deg)}50%{transform:scale(1.07) rotate(2deg)}}
+.gnum{height:88px;overflow:hidden;font:800 88px/88px var(--font-d);letter-spacing:-.05em}
+.odo{display:grid;transition:transform .8s cubic-bezier(.5,-.3,.3,1.4)}
+.odo i{font-style:normal;height:88px}
+.odo.up{transform:translateY(-88px)}
+.gsl{font:800 20px/1 var(--font-d);letter-spacing:-.02em;color:#ffb020;margin-top:-2px}
+.wk{display:flex;gap:7px;margin-top:10px}
+.wk i{width:22px;height:22px;border-radius:50%;background:rgb(255 255 255/.10)}
+.wk i.on{background:linear-gradient(135deg,#ffb020,#ff4d2e);box-shadow:0 0 12px rgb(255 120 40/.5)}
+.glg{padding:12px 14px;display:grid;gap:6px;position:relative}
+.glr{display:grid;grid-template-columns:22px 1fr;align-items:center;gap:8px}
+.glr .r{font:800 14px/1 var(--font-t);color:var(--fg3);text-align:center}
+.glr .mv{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:6px 8px;border-radius:12px;position:relative}
+.glr .n{font:700 16px/1.2 var(--font-t)}.glr .x{font:700 14px/1 var(--font-t);color:var(--fg2)}
+.glr.me .mv{background:rgb(255 90 43/.14);box-shadow:inset 0 0 0 1.5px rgb(255 120 60/.55);z-index:2}
+.glr.me.hi .mv{background:rgb(255 90 43/.22);box-shadow:inset 0 0 0 2px #ff7a3d,0 10px 26px -10px rgb(255 90 43/.8)}
+.gpass{justify-self:center;margin-top:4px;padding:8px 14px;border-radius:14px;background:rgb(53 227 161/.14);color:#4ff0b0;font:750 14.5px/1 var(--font-t);opacity:0;transform:translateY(8px) scale(.95);transition:opacity .4s,transform .5s cubic-bezier(.3,1.4,.5,1)}
+.gpass.on{opacity:1;transform:none}
+.g4{align-items:center;text-align:center}
+.gpro{display:grid;justify-items:center;gap:10px;width:100%}
+.gp-hero{position:relative;height:150px;width:100%;display:grid;place-items:center}
+.gp-rays{opacity:0;transition:opacity .8s}
+.gpro.up .gp-rays{opacity:1}
+.gp-badge{position:relative;width:128px;height:128px;border-radius:38px;overflow:hidden;background:linear-gradient(135deg,#3a3d4a,#22242d);box-shadow:0 26px 60px -24px rgb(0 0 0/.9),inset 0 2px 0 rgb(255 255 255/.15);transition:background .4s,box-shadow .6s}
+.gpro.up .gp-badge{background:var(--heat-grad);box-shadow:0 30px 70px -20px rgb(255 61 60/.85),inset 0 2px 0 rgb(255 255 255/.35)}
+.gp-badge span{position:absolute;inset:0;display:grid;place-items:center;font:800 60px/1 var(--font-d);transition:transform .7s cubic-bezier(.5,-.3,.3,1.4)}
+.gp-badge .b2{transform:translateY(100%)}
+.gpro.up .gp-badge .b1{transform:translateY(-100%)}.gpro.up .gp-badge .b2{transform:none}
+.gp-k,.gp-name{position:relative;overflow:hidden;display:grid}
+.gp-k span,.gp-name span{grid-area:1/1;transition:transform .6s cubic-bezier(.5,-.3,.3,1.4),opacity .4s}
+.gp-k{font:800 13px/1.4 var(--font-t);letter-spacing:.24em;text-transform:uppercase;color:var(--fg3)}
+.gp-k .k2{color:#ffd23f}
+.gp-name{margin:0;font:800 66px/1.05 var(--font-d);letter-spacing:-.05em}
+.gp-k .k2,.gp-name .n2{transform:translateY(100%);opacity:0}
+.gpro.up .gp-k .k1,.gpro.up .gp-name .n1{transform:translateY(-100%);opacity:0}
+.gpro.up .gp-k .k2,.gpro.up .gp-name .n2{transform:none;opacity:1}
+.gp-bar{width:100%;height:14px;border-radius:7px;background:rgb(255 255 255/.10);overflow:hidden}
+.gp-bar i{display:block;height:100%;border-radius:7px;background:var(--heat-grad);transform-origin:left;transform:scaleX(.81)}
+.gp-xp{font:650 15px/1 var(--font-t);color:var(--fg2)}.gp-xp b{color:#fff;font-weight:800}
+.gp-lad{width:100%}
+.gp-q{padding:10px 16px;border-radius:14px;background:rgb(255 210 63/.14);box-shadow:inset 0 0 0 1px rgb(255 210 63/.4);color:#ffd23f;font:800 17px/1 var(--font-t);opacity:0;transform:translateY(12px);transition:opacity .5s .9s,transform .6s .9s cubic-bezier(.3,1.4,.5,1)}
+.gpro.up .gp-q{opacity:1;transform:none}
+/* not for sale */
+.nfs{display:grid;place-items:center}
+.nfs>*{grid-area:1/1}
+.nfs-b{display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:16px;background:var(--s2);box-shadow:inset 0 0 0 1px var(--line2);color:var(--fg3);font:750 17px/1 var(--font-t);text-decoration:line-through;opacity:.75}
+.nfs-b .tick{margin:0;width:20px;height:20px;opacity:.5}
+.nfs-s b{display:block;padding:8px 16px;border:3px solid #ff4d6d;border-radius:12px;color:#ff4d6d;font:900 22px/1 var(--font-d);letter-spacing:.06em;text-transform:uppercase;transform:rotate(-8deg);background:rgb(20 4 8/.75)}
+/* verify moat: an AI chat that comes up empty */
+.aichat{padding:14px;border-radius:20px;background:#17181d;box-shadow:inset 0 0 0 1px var(--line2),0 24px 50px -30px rgb(0 0 0/.8);display:grid;gap:10px}
+.ac-h{display:flex;align-items:center;gap:8px}.ac-h .botav{width:30px;height:30px;font-size:11px}.ac-h b{font:750 15px/1 var(--font-t);color:var(--fg2)}.ac-h .smp{margin-left:auto}
+.ac-u{justify-self:end;max-width:86%;padding:10px 14px;border-radius:18px 18px 5px 18px;background:#2c2e38;font:600 16px/1.35 var(--font-t)}
+.ac-b{max-width:92%;font:500 18px/1.4 var(--font-t);color:var(--fg2);min-height:26px}
+.v4{gap:12px}
+.moat3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.m3{display:grid;justify-items:center;gap:6px;padding:12px 4px 10px;border-radius:16px;background:var(--s2);box-shadow:inset 0 0 0 1px rgb(242 176 30/.35)}
+.m3>img{width:58px;height:58px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px rgb(242 176 30/.6)}
+.m3p{width:58px;height:58px;border-radius:50%;background:#fff;display:grid;place-items:center;overflow:hidden;box-shadow:0 0 0 2px rgb(242 176 30/.6)}
+.m3p .plate{box-shadow:none;padding:4px;min-width:0;height:auto;background:none}.m3p .plate img{max-width:50px;max-height:24px}
+.m3 small{font:700 12.5px/1.2 var(--font-t);color:var(--fg2);text-align:center}
+.m3 .vstamp{height:22px;padding:0 8px;font-size:10.5px}
+@media (max-height:700px){.lock{min-height:380px}.lk-time{font-size:70px}.gnum{height:70px;font-size:70px;line-height:70px}.odo i{height:70px}.odo.up{transform:translateY(-70px)}.gfl{width:76px;height:76px}.gp-name{font-size:52px}.gp-badge{width:100px;height:100px}.gp-hero{height:120px}}
+
 [hidden]{display:none!important}
 
 </style>
@@ -4387,6 +4494,7 @@ const KFX = {
   rise: [[{ opacity: 0, transform: 'perspective(900px) translateY(150px) rotateX(38deg) scale(.9)' }, { opacity: 1, transform: 'none' }], 950, 'soft'],
   slam: [[{ opacity: 0, transform: 'scale(2.7) rotate(-14deg)' }, { opacity: 1, transform: 'scale(.93) rotate(-2deg)', offset: .7 }, { opacity: 1, transform: 'none' }], 480, 'cubic-bezier(.4,0,.7,1)'],
   fly: [[{ opacity: 0, transform: 'translateY(-170px) scale(1.3) rotate(-4deg)' }, { opacity: 1, transform: 'none' }], 900, 'bouncy'],
+  drop: [[{ opacity: 0, transform: 'translateY(-90px) scale(.9)' }, { opacity: 1, transform: 'none' }], 850, 'bouncy'],
   left: [[{ opacity: 0, transform: 'translateX(-46px)' }, { opacity: 1, transform: 'none' }], 640, 'soft'],
   wd: [[{ transform: 'translateY(110%)' }, { transform: 'none' }], 700, 'soft'],
 };
@@ -4450,7 +4558,83 @@ function flyTickets(st) {
   }, 1500 + k * 520));
   setTimeout(() => { const btn = $('.kp-ask', st); if (btn && btn.isConnected) { btn.classList.add('open'); btn.innerHTML = `${icon('check')}<span>Ask this CEO</span>`; anim(btn, [{ transform: 'scale(.9)' }, { transform: 'scale(1.06)' }, { transform: 'none' }], { duration: 600, easing: SPR.bouncy.e }); } }, 1500 + 3 * 520 + 700);
 }
+
+function glgData() {
+  const r = leagueRows().filter(x => !x.me).slice(0, 4), [A, B, C, D] = r;
+  return { A, B, C, D, me: { n: 'You', x: Math.round((B.x + C.x) / 2), x0: D.x - 23, me: 1 } };
+}
+function playCall(st) {
+  const c = $('.gcase', st); if (!c) return;
+  const tm = $('.gc-t', c); let t = 30;
+  const tick = setInterval(() => { if (!tm.isConnected || c.classList.contains('done')) return clearInterval(tick); tm.textContent = --t; }, 230);
+  const opts = $$('.gc-o', c), A = opts[0];
+  setTimeout(() => { if (!A.isConnected) return; const d = $('.tapdot', c); d.style.left = (A.offsetLeft + A.offsetWidth * .32) + 'px'; d.style.top = (A.offsetTop + A.offsetHeight / 2) + 'px'; d.classList.add('go'); }, 1250);
+  setTimeout(() => { if (!A.isConnected) return; c.classList.add('done'); A.classList.add('pick'); haptic('success'); }, 1480);
+  setTimeout(() => { if (!c.isConnected) return; c.classList.add('rev'); opts.forEach(o => { const e = $('em', o), v = +e.dataset.v; let k = 0; const step = () => { if (!e.isConnected) return; k = Math.min(v, k + Math.ceil(v / 16)); e.textContent = k + '%'; if (k < v) setTimeout(step, 38); }; step(); }); }, 1750);
+  setTimeout(() => { if (!c.isConnected) return; $('.gc-v', c).classList.add('on');
+    const x = document.createElement('span'); x.className = 'xpfly'; x.textContent = '+35 XP'; x.style.left = (A.offsetLeft + A.offsetWidth - 92) + 'px'; x.style.top = (A.offsetTop - 6) + 'px'; c.appendChild(x);
+    anim(x, [{ opacity: 0, transform: 'translateY(10px) scale(.7)' }, { opacity: 1, transform: 'translateY(-18px) scale(1.2)', offset: .3 }, { opacity: 0, transform: 'translateY(-80px) scale(1)' }], { duration: 1600, easing: 'ease-out', fill: 'forwards' });
+    const p = rel(A); fx.burst(p.x, p.y, { n: 36, speed: 7, colors: ['#35e3a1', '#ffd23f', '#fff'] }); }, 2650);
+}
+function playStreak(st) {
+  const odo = $('.odo', st);
+  setTimeout(() => { if (!odo || !odo.isConnected) return; odo.classList.add('up'); const today = $('.wk i:last-child', st); today.classList.add('on'); anim(today, [{ transform: 'scale(0)' }, { transform: 'scale(1.35)' }, { transform: 'none' }], { duration: 650, easing: SPR.bouncy.e }); const p = rel($('.gfl', st)); fx.burst(p.x, p.y, { n: 70, speed: 10, colors: ['#ffb020', '#ff4d2e', '#ffd23f', '#fff'] }); haptic('success'); }, 950);
+  const me = $('.glr.me .mv', st), passed = $$('.glr.p .mv', st);
+  if (!me || REDUCE) return;
+  const h = me.parentElement.offsetHeight + 6;
+  me.style.transform = `translateY(${2 * h}px)`; passed.forEach(m => m.style.transform = `translateY(${-h}px)`);
+  const xe = $('.glr.me .x', st), x0 = +xe.dataset.x0, x1 = +xe.dataset.x1; xe.textContent = x0 + ' XP';
+  setTimeout(() => {
+    if (!me.isConnected) return;
+    [me, ...passed].forEach(m => { const from = m.style.transform; m.style.transform = ''; anim(m, [{ transform: from }, { transform: 'none' }], { duration: 1000, easing: SPR.soft.e }); });
+    me.parentElement.classList.add('hi');
+    const t0 = performance.now(); const step = () => { if (!xe.isConnected) return; const k = Math.min(1, (performance.now() - t0) / 900); xe.textContent = Math.round(x0 + (x1 - x0) * k) + ' XP'; if (k < 1) requestAnimationFrame(step); }; step();
+    setTimeout(() => { const g = $('.gpass', st); if (g && g.isConnected) { g.classList.add('on'); haptic('success'); } }, 900);
+  }, 2100);
+}
+function playPromo(st) {
+  const bar = $('.gp-bar i', st), xp = $('.gp-xp b', st);
+  setTimeout(() => { if (!bar.isConnected) return; anim(bar, [{ transform: 'scaleX(.81)' }, { transform: 'scaleX(1)' }], { duration: 1000, easing: 'cubic-bezier(.6,0,.4,1)', fill: 'forwards' });
+    const t0 = performance.now(); const step = () => { if (!xp.isConnected) return; const k = Math.min(1, (performance.now() - t0) / 1000); xp.textContent = Math.round(352 + 48 * k); if (k < 1) requestAnimationFrame(step); }; step(); }, 700);
+  setTimeout(() => { if (!st.isConnected) return; $('.gpro', st).classList.add('up'); const b = rel($('.gp-badge', st)); fx.burst(b.x, b.y, { n: 150, speed: 15 }); fx.rain(80); haptic('heavy'); $('.gp-lad', st).innerHTML = ladderHTML({ i: 2 }); }, 1750);
+}
+function lockHTML() {
+  const d = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+  return `<div class="lock" data-fx="up" data-d="150"><div class="lk-date">${esc(d)}</div><div class="lk-time">9:41</div>
+    <div class="lk-n new" data-fx="drop" data-d="1250">${LOGO(38)}<div><div class="lk-h"><b>EDIFY</b><span>now</span></div><b>Your 7-day streak ends tonight 🔥</b><small>One call keeps it. Thirty seconds.</small></div></div>
+    <div class="lk-n old" data-fx="up" data-d="550">${LOGO(38)}<div><div class="lk-h"><b>EDIFY</b><span>2h ago</span></div><b>Your Daily 5 is ready</b><small>Five real CEO calls, picked for you.</small></div></div>
+    <div class="lk-btns"><span>🔦</span><span>📷</span></div></div>`;
+}
+function callHTML() {
+  const O = [['A', 'Buy it for $50M', 54], ['B', 'Pass. Stores are the moat', 31], ['C', 'Counter at $25M', 15]];
+  return `<div class="gcase" data-fx="up" data-d="200"><div class="gc-h"><span class="gc-ic">📼</span><div><b>Blockbuster</b><small>You’re the CEO · 2000</small></div><span class="gc-t num">30</span></div>
+    <p class="gc-q">A money-losing DVD-by-mail startup walks into your office with a price tag.</p>
+    ${O.map(([l, t, v]) => `<div class="gc-o"><s style="--w:${v / 100}"></s><i>${l}</i><span>${t}</span><em class="num" data-v="${v}">0%</em></div>`).join('')}
+    <div class="gc-v"><b>What they did:</b> Blockbuster passed.<span class="smp">Sample votes</span></div><span class="tapdot"></span></div>`;
+}
+function streakHTML() {
+  const g = glgData(), list = [g.A, g.B, g.me, g.C, g.D];
+  return `<div class="gstreak" data-fx="up" data-d="0"><span class="gfl">${FLAME.replace('class="flame"', 'class="gflame"')}</span><div class="gnum"><span class="odo"><i>7</i><i>8</i></span></div><div class="gsl">day streak</div>
+      <div class="wk">${[...Array(8)].map((_, k) => `<i class="${k < 7 ? 'on' : ''}"></i>`).join('')}</div></div>
+    <div class="panel glg" data-fx="up" data-d="350"><div class="kpl-h"><span>Gold League · this week</span><span class="smp">Sample players</span></div>
+      ${list.map((r, k) => `<div class="glr ${r.me ? 'me' : ''} ${r === g.C || r === g.D ? 'p' : ''}"><span class="r num">${k + 1}</span><div class="mv"><span class="av" style="width:34px;height:34px;background:${r.me ? 'var(--heat-grad)' : avColor(r.n)}">${esc(r.me ? initials(kpName()) : initials(r.n))}</span><span class="n">${esc(r.n)}</span><span class="x num"${r.me ? ` data-x0="${r.x0}" data-x1="${r.x}"` : ''}>${r.x} XP</span></div></div>`).join('')}
+      <div class="gpass">↑ You passed ${esc(g.C.n)} and ${esc(g.D.n)}</div></div>`;
+}
+function promoHTML() {
+  return `<div class="gpro"><div class="gp-hero"><div class="kp-rays gp-rays"></div><div class="gp-badge" data-fx="pop" data-d="100"><span class="b1">2</span><span class="b2">3</span></div></div>
+    <div class="gp-k"><span class="k1">Level 2 of 7</span><span class="k2">Promoted</span></div>
+    <h2 class="gp-name"><span class="n1">Analyst</span><span class="n2">Manager</span></h2>
+    <div class="gp-bar" data-fx="up" data-d="250"><i></i></div><div class="gp-xp"><b class="num">352</b> / 400 XP to Manager</div>
+    <div class="gp-lad" data-fx="up" data-d="350">${ladderHTML({ i: 1 })}</div>
+    <div class="gp-q">🎟 +1 question to a real CEO</div></div>`;
+}
 const DECKS = {
+  gamify: { name: 'Gamify', icon: '🔥', slides: [
+    { cls: 'g1', html: () => `<h2 class="kp-h">${KW('Every day, a nudge.', 0)}</h2>${lockHTML()}` },
+    { cls: 'g2', html: () => `<h2 class="kp-h">${KW('Thirty seconds. One call.', 0)}</h2>${callHTML()}`, after: playCall },
+    { cls: 'g3', html: () => streakHTML(), after: playStreak },
+    { cls: 'g4', html: () => promoHTML(), after: playPromo },
+  ] },
   certify: { name: 'Certify', icon: '🎓', slides: [
     { cls: 'c1', html: () => `<div class="c1-hero"><div class="kp-rays" data-fx="fade" data-d="200"></div><div class="c1-badge" data-fx="pop" data-d="180">👑</div></div>
         <div class="kp-k" data-fx="up" data-d="60">Promoted</div><h2 class="kp-big" data-fx="up" data-d="320">CEO</h2><p class="kp-sub" data-fx="up" data-d="420">Level 7 of 7 · the top of the ladder</p>
@@ -4468,8 +4652,9 @@ const DECKS = {
       after: st => setTimeout(() => { const n = $('.lip-item.new', st); if (n && n.isConnected) n.classList.add('lit'); }, 1700) },
     { cls: 'c3', html: () => `<div class="bigtick"><span data-fx="pop" data-d="80"><svg viewBox="0 0 120 120" aria-label="Blue check"><circle cx="60" cy="60" r="56" fill="#1d9bf0"/><path class="dr" d="M33 62 51 80 88 41" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b data-fx="left" data-d="750">= CEO.</b></div>
         <p class="kp-lead xl">${KW('You can’t buy it.', 1050)}<br><span class="blu">${KW('You earn it.', 1450)}</span></p>
-        <div class="panel kpl" data-fx="up" data-d="1900"><div class="kpl-h"><span>League this week</span><span class="smp">Sample players</span></div>${kpLeagueRows().map(r => { const c = isCEOName(r.n); return `<div class="kplr ${c ? 'ceo' : ''}"><span class="av" style="width:36px;height:36px;background:${avColor(r.n)}">${esc(initials(r.n))}</span><span class="n">${esc(r.n)}${c ? TICK : ''}<small>${c ? 'CEO level' : 'Still climbing'}</small></span><span class="x num">${r.x} XP</span></div>`; }).join('')}</div>`,
-      after: st => { const p = $('.bigtick .dr', st); if (p && !REDUCE) anim(p, [{ strokeDashoffset: 90 }, { strokeDashoffset: 0 }], { duration: 650, delay: 420, easing: 'cubic-bezier(.6,0,.2,1)', fill: 'backwards' }); if (!REDUCE) $$('.kplr .tick', st).forEach((t, k) => anim(t, [{ transform: 'scale(0) rotate(-90deg)' }, { transform: 'none' }], { duration: 650, delay: 2450 + k * 300, easing: SPR.bouncy.e, fill: 'backwards' })); } },
+        <div class="nfs" data-fx="up" data-d="1800"><span class="nfs-b">${TICK} Buy a blue check</span><span class="nfs-s" data-fx="slam" data-d="2350"><b>Not for sale</b></span></div>
+        <div class="panel kpl" data-fx="up" data-d="2800"><div class="kpl-h"><span>League this week</span><span class="smp">Sample players</span></div>${kpLeagueRows().map(r => { const c = isCEOName(r.n); return `<div class="kplr ${c ? 'ceo' : ''}"><span class="av" style="width:36px;height:36px;background:${avColor(r.n)}">${esc(initials(r.n))}</span><span class="n">${esc(r.n)}${c ? TICK : ''}<small>${c ? 'CEO level' : 'Still climbing'}</small></span><span class="x num">${r.x} XP</span></div>`; }).join('')}</div>`,
+      after: st => { const p = $('.bigtick .dr', st); if (p && !REDUCE) anim(p, [{ strokeDashoffset: 90 }, { strokeDashoffset: 0 }], { duration: 650, delay: 420, easing: 'cubic-bezier(.6,0,.2,1)', fill: 'backwards' }); if (!REDUCE) $$('.kplr .tick', st).forEach((t, k) => anim(t, [{ transform: 'scale(0) rotate(-90deg)' }, { transform: 'none' }], { duration: 650, delay: 3350 + k * 300, easing: SPR.bouncy.e, fill: 'backwards' })); } },
     { cls: 'c4', ceoNext: 'ralph', html: () => `<h2 class="kp-h">${KW('CEOs get profiles too.', 0)}</h2><div class="roster big">${ROSTER.filter(r => r.id !== 'barefoot').map((r, k) => rosterCard(r, 300 + k * 90)).join('')}</div>` },
     { cls: 'bragw', html: () => bragHTML(ROSTER[0], 0) },
   ] },
@@ -4478,8 +4663,11 @@ const DECKS = {
     { cls: 'vth', html: () => vThread(1), after: typeBot },
     { cls: 'vth', html: () => vThread(2) },
     { cls: 'v4', html: () => `<h2 class="kp-h xl2">${KW('ChatGPT can scrape the internet.', 0, 85)}</h2>
-        <div class="moat">${[['barefoot', 'Co-founding CEO', 'Barefoot Wines'], ['ralph', 'Ralph de la Vega', 'AT&T'], ['robert', 'Robert Reiss', 'The CEO Forum']].map(([id, n, o], k) => { const r = ROSTER.find(x => x.id === id); return `<div class="mrow" data-fx="left" data-d="${750 + k * 380}">${r.av && KI[r.av] ? `<img class="mav" src="${KI[r.av]}" alt="">` : plate(r.logo, r.co)}<span class="mn"><b>${esc(n)}</b><small>${esc(o)}</small></span><span data-fx="slam" data-d="${1050 + k * 380}">${VSTAMP}</span></div>`; }).join('')}</div>
-        <h2 class="kp-h xl2 hot">${KW('It can’t scrape this.', 2350, 95)}</h2><p class="kp-lead" data-fx="up" data-d="2950">Verified CEOs are the moat.</p>` },
+        <div class="aichat" data-fx="up" data-d="550"><div class="ac-h"><span class="botav">AI</span><b>AI chatbot</b><span class="smp">Illustration</span></div><div class="ac-u">What did Barefoot’s CEO tell Team 10 on Edify?</div><div class="ac-b"><span class="dots"><i></i><i></i><i></i></span></div></div>
+        <h2 class="kp-h xl2 hot">${KW('It can’t scrape this.', 3000, 95)}</h2>
+        <div class="moat3">${[['barefoot', 'Barefoot Wines'], ['ralph', 'AT&T'], ['robert', 'The CEO Forum']].map(([id, o], k) => { const r = ROSTER.find(x => x.id === id); return `<div class="m3" data-fx="pop" data-d="${3500 + k * 300}">${r.av && KI[r.av] ? `<img src="${KI[r.av]}" alt="">` : `<span class="m3p">${plate(r.logo, r.co)}</span>`}<small>${esc(o)}</small><span data-fx="slam" data-d="${3800 + k * 300}">${VSTAMP}</span></div>`; }).join('')}</div>
+        <p class="kp-lead" data-fx="up" data-d="4800">Verified CEOs are the moat.</p>`,
+      after: st => { const b = $('.ac-b', st); setTimeout(() => { if (!b || !b.isConnected) return; const w = 'I can’t see that. It isn’t on the public internet.'.split(' '); b.textContent = ''; let k = 0; const step = () => { if (!b.isConnected || k >= w.length) return; b.textContent += (k ? ' ' : '') + w[k++]; setTimeout(step, 80); }; step(); }, 1700); } },
     { cls: 'v5', html: () => `<h2 class="kp-h">${KW('Every level-up earns 1 question to a real CEO.', 0, 55)}</h2>
         <div class="tlad" data-fx="up" data-d="450">${LV.map((l, k) => `<div class="tr ${k <= 3 ? 'done' : ''} ${k === 3 ? 'cur' : ''}"><span class="tn">${k === 6 ? '👑' : k + 1}</span><b>${l[0]}</b><span class="tk">${k ? '🎟' : ''}</span></div>`).join('')}</div>
         <div class="tq" data-fx="up" data-d="650"><span>Questions earned</span><b class="num" id="kpqn">0</b></div>
@@ -4530,8 +4718,7 @@ function kpDraw(dir) {
   if (!KP.deck) {
     o.innerHTML = `<div class="kp-top"><button class="kp-x" data-act="x" type="button" aria-label="Close 3 Key Points">✕</button><span></span><span class="kp-tag">Team 10</span></div>
       <div class="kp-stage"><div class="kps kpm"><div class="kp-eye" data-fx="up">3 Key Points · Team 10</div>
-        ${[['gamify', '01', 'Gamify', 'Make it a daily habit'], ['certify', '02', 'Certify', 'Make your rank count'], ['verify', '03', 'Verify', 'Real CEOs, earned']].map(([d, n, t, s], k) => `<button class="kpm-w ${d}" data-deck="${d}" type="button" data-fx="up" data-d="${120 + k * 120}"><span class="n">${n}</span><b>${t}.</b><small>${s}</small><i>→</i></button>`).join('')}
-        <p class="kpm-f" data-fx="up" data-d="560">That’s how you <b>Edify.</b></p></div></div>`;
+        ${[['gamify', '01', 'Gamify', 'Make it a daily habit'], ['certify', '02', 'Certify', 'Make your rank count'], ['verify', '03', 'Verify', 'Real CEOs, earned']].map(([d, n, t, s], k) => `<button class="kpm-w ${d}" data-deck="${d}" type="button" data-fx="up" data-d="${120 + k * 120}"><span class="n">${n}</span><b>${t}.</b><small>${s}</small><i>→</i></button>`).join('')}</div></div>`;
   } else {
     const D = DECKS[KP.deck], s = D.slides[KP.i], last = KP.i === D.slides.length - 1;
     o.innerHTML = `<div class="kp-top"><button class="kp-x" data-act="x" type="button" aria-label="Back to 3 Key Points">✕</button><div class="kp-dots">${D.slides.map((_, k) => `<i class="${k < KP.i ? 'done' : k === KP.i ? 'on' : ''}"></i>`).join('')}</div><span class="kp-tag">${D.icon} ${D.name}</span></div>
@@ -4548,7 +4735,6 @@ function kpAct(act, arg) {
   if (modal && act !== 'x') { modal.remove(); return; }
   if (modal) modal.remove();
   if (act === 'deck') {
-    if (arg === 'gamify') { closeKP(true); kpGamify = true; runDemo('gamify'); return; }
     KP = { deck: arg, i: 0 }; haptic(); kpDraw(1); return;
   }
   if (!KP.deck) { if (act === 'x') closeKP(); return; }
@@ -4587,7 +4773,7 @@ addEventListener('keydown', e => {
   e.preventDefault(); e.stopImmediatePropagation();
 }, true);
 const KP_ROUTES = { keypoints: null, 'kp-gamify': 'gamify', 'kp-certify': 'certify', 'kp-verify': 'verify' };
-function kpRoute(r) { if (!(r in KP_ROUTES)) return false; const d = KP_ROUTES[r]; if (d === 'gamify') { openKP(); kpAct('deck', 'gamify'); } else openKP(d); return true; }
+function kpRoute(r) { if (!(r in KP_ROUTES)) return false; openKP(KP_ROUTES[r]); return true; }
 
 function boot() {
   if (!CASES.length) { $('#feed').innerHTML = '<div class="empty" style="height:100%;align-content:center"><b>No cases loaded</b><p>The case content failed to load.</p></div>'; return; }
