@@ -762,6 +762,77 @@ svg{display:block}
 
 .ostep .skipb{top:calc(var(--sat) + 16px)}
 
+/* ===== video: faces, meet button, watch row, video sheet, CEO shorts ===== */
+.bg .face{position:absolute;inset:0 0 30% 0;opacity:.22;-webkit-mask-image:linear-gradient(to bottom,#000 35%,transparent 100%);mask-image:linear-gradient(to bottom,#000 35%,transparent 100%)}
+.bg .face img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:saturate(.9) contrast(1.05)}
+.card.has-face.t-dilemma .bg .face{opacity:.5;inset:0 0 22% 0}
+.card.has-face.t-dilemma .emoji{display:none}
+.card.has-face.t-dilemma .scrim{background:linear-gradient(to bottom,rgb(0 0 0/.45) 0%,rgb(0 0 0/.05) 22%),linear-gradient(to top,rgb(0 0 0/.9) 0%,rgb(0 0 0/.65) 36%,rgb(0 0 0/.15) 62%,rgb(0 0 0/0) 75%)}
+.meet{position:absolute;left:0;bottom:8px;z-index:2;display:flex;align-items:center;gap:9px;padding:5px 12px 5px 5px;border-radius:26px;background:rgb(10 10 14/.55);box-shadow:inset 0 0 0 1px rgb(255 255 255/.18),0 10px 24px -10px rgb(0 0 0/.6);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);text-align:left;transition:transform .35s var(--sp)}
+.meet:active{transform:scale(.95)}
+.meet .mf{width:40px;height:40px;border-radius:50%;background-size:cover;background-position:50% 30%;box-shadow:0 0 0 2px #fff}
+.meet b{display:block;font:750 14px/1.15 var(--font-t)}
+.meet small{display:block;font:600 11.5px/1.2 var(--font-t);color:rgb(255 255 255/.75);max-width:170px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meet .mp{width:28px;height:28px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center}
+.meet .mp svg{width:13px;height:13px;margin-left:2px}
+.mrow{display:grid;grid-template-columns:88px 1fr auto;gap:12px;align-items:center;width:100%;padding:8px;border-radius:16px;background:rgb(255 255 255/.08);box-shadow:inset 0 0 0 1px rgb(255 255 255/.12);text-align:left;transition:transform .35s var(--sp)}
+.mrow:active{transform:scale(.98)}
+.mrow .mthumb{width:88px;height:50px;border-radius:10px;background-size:cover;background-position:center;display:grid;place-items:center;position:relative;overflow:hidden}
+.mrow .mthumb::before{content:"";position:absolute;inset:0;background:rgb(0 0 0/.25)}
+.mrow .mthumb i{position:relative;width:28px;height:28px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;font-style:normal}
+.mrow .mthumb i svg{width:13px;height:13px;margin-left:2px}
+.mrow b{display:block;font:750 14.5px/1.2 var(--font-t)}
+.mrow small{display:block;font:600 12px/1.25 var(--font-t);color:rgb(255 255 255/.7);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mrow .mtx{min-width:0}
+.mrow .mlen{font:800 12px/1 var(--font-t);color:rgb(255 255 255/.75);padding-right:4px}
+.device.fit-tighter .mrow{grid-template-columns:72px 1fr auto;padding:6px}.device.fit-tighter .mrow .mthumb{width:72px;height:41px}
+.vwrap{display:grid;place-items:center;margin:2px 0 12px}
+.vframe{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 0 0 1px var(--line2)}
+.vwrap.vert .vframe{height:min(52vh,520px);width:auto;max-width:100%;aspect-ratio:9/16}
+.vframe .vposter,.vbox .vposter{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s}
+.vframe.on .vposter,.vbox.on .vposter{opacity:0}
+.vframe iframe,.vbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vspin{position:absolute;left:50%;top:50%;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;border:3px solid rgb(255 255 255/.25);border-top-color:#fff;animation:spin 1s linear infinite}
+.vframe.on .vspin,.vbox.on .vspin{display:none}
+.verr{position:absolute;inset:auto 12px 12px;z-index:3;display:flex;gap:8px;align-items:center;justify-content:center;height:44px;border-radius:14px;background:#fff;color:#000;font:750 14px/1 var(--font-t);text-decoration:none}
+.verr svg{width:14px;height:14px}
+.vmeta{display:grid;grid-template-columns:40px 1fr auto;gap:10px;align-items:center}
+.vface{width:40px;height:40px;border-radius:50%;background-size:cover;background-position:50% 30%;box-shadow:0 0 0 2px var(--s3)}
+.vwho b{display:block;font:750 15px/1.2 var(--font-t)}
+.vwho small{display:block;font:600 12.5px/1.25 var(--font-t);color:var(--fg3)}
+.vlen{font:800 13px/1 var(--font-t);color:var(--fg2)}
+.vtitle{margin:10px 0 12px;font:650 15px/1.4 var(--font-t);color:var(--fg2)}
+.vbtns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.vbtns .btn{text-decoration:none}
+.card.short .ui{padding-bottom:12px}
+.card.short .sh-hero{display:flex;flex-direction:column;align-items:center;gap:8px;container-type:normal;margin:2px 0 10px}
+.vbox{position:relative;flex:1 1 auto;min-height:0;height:100%;aspect-ratio:9/16;max-width:100%;border-radius:20px;overflow:hidden;background:#000;box-shadow:0 0 0 1px rgb(255 255 255/.14),0 30px 60px -30px rgb(0 0 0/.8)}
+.vbox.err::after{content:"Can't play here. Tap Watch on YouTube.";position:absolute;inset:auto 10px 10px;padding:10px;border-radius:12px;background:rgb(0 0 0/.7);font:650 12.5px/1.3 var(--font-t);text-align:center}
+.vsnd{flex:none;height:34px;padding:0 14px;border-radius:17px;display:inline-flex;gap:6px;align-items:center;font:750 13px/1 var(--font-t);background:#fff;color:#000;transition:transform .3s var(--sp),background .2s,color .2s}
+.vsnd svg{width:16px;height:16px}
+.vsnd.on{background:rgb(255 255 255/.14);color:#fff}
+.vsnd:active{transform:scale(.95)}
+.who .co.ph{background-size:cover;background-position:50% 30%;font-size:0}
+.shortchip{color:#fff;background:linear-gradient(135deg,#ff3b5c,#ff7a1f)!important;box-shadow:none!important}
+.shortchip svg{width:10px;height:10px}
+.claim{margin:0 0 8px;font:750 16px/1.3 var(--font-d);letter-spacing:-.015em;text-wrap:balance}
+.sopts{grid-template-columns:1fr 1fr}
+.sopts .opt{grid-template-columns:24px 1fr auto;min-height:46px}
+.sopts .opt .k{width:24px;height:24px;border-radius:8px;font-size:12px}
+.card.short.answered-short .opt .p{opacity:1;transform:none}
+.card.short .ask .q{font-size:14.5px}
+.device.fit-tighter .card.short .claim{font-size:14.5px}
+
+.meet{transition:transform .35s var(--sp),opacity .3s}
+.card.answered .meet{opacity:0;pointer-events:none;transform:translateY(10px)}
+
+.vplay{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;display:grid;place-items:center;background:rgb(255 255 255/.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 0 0 1px rgb(255 255 255/.22)}
+.vplay svg{width:28px;height:28px;margin-left:3px}
+.sopts .opt{min-width:0}
+.sopts .opt .t{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.device.fit-tightest .sopts .opt{grid-template-columns:1fr auto;padding-left:12px;padding-right:12px;gap:6px}
+.device.fit-tightest .sopts .opt .k{display:none}
+
 [hidden]{display:none!important}
 
 </style>
@@ -848,6 +919,9 @@ svg{display:block}
   <linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
 </defs></svg>
 <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script>
+window.HS_MEDIA={"netflix-blockbuster": {"v": "NnPzhPA29E0", "s": 119, "e": 172, "who": "Marc Randolph", "role": "Netflix co-founder", "title": "Pitching Blockbuster: \u201cThey laughed at us\u201d", "spoiler": true, "channel": "Marc Randolph", "interview": {"v": "HSVbD7RhOHU", "s": 5130, "title": "Randolph on Diary of a CEO: the Dallas pitch"}, "face": null}, "costco-hot-dog": {"v": "uXk4-oB50HQ", "s": 1416, "e": 1466, "who": "Ron Vachris", "role": "Costco CEO", "title": "Costco\u2019s CEO on the $1.50 hot dog", "spoiler": true, "channel": "The Economic Club of Chicago", "interview": {"v": "uXk4-oB50HQ", "s": 1360, "title": "Vachris at the Economic Club of Chicago"}, "face": null}, "fedex-blackjack": {"v": "KQUQcVYusls", "s": 187, "e": 249, "who": "Fred Smith", "role": "FedEx founder (by phone)", "title": "Fred Smith sets the Vegas story straight", "spoiler": true, "channel": "Bussin' With The Boys", "interview": {"v": "KQUQcVYusls", "s": 158, "title": "Fred Smith's full call on the Vegas trip"}, "face": false}, "netflix-qwikster": {"v": "jYhP08uuffs", "s": 1344, "e": 1413, "who": "Reed Hastings", "role": "Netflix co-founder and CEO", "title": "Hastings on why Netflix split off DVDs", "spoiler": true, "channel": "Greylock", "interview": {"v": "jYhP08uuffs", "s": 1325, "title": "Hastings on Qwikster, with Reid Hoffman"}, "face": null}, "tylenol-recall": {"v": "l1R0EnzGB3I", "s": 160, "e": 226, "who": "Alan Hilburg", "role": "J&J's outside crisis PR adviser", "title": "Inside J&J\u2019s call to recall Tylenol", "spoiler": true, "channel": "RETRO REPORT", "interview": {"v": "l1R0EnzGB3I", "s": 312, "title": "Retro Report: Tylenol's triple-seal comeback"}, "face": null}, "dominos-video": {"v": "dem6eA7-A2I", "s": 1, "e": 45, "who": "Patrick Doyle", "role": "President, Domino's USA", "title": "Domino\u2019s president\u2019s 2009 YouTube apology", "spoiler": true, "channel": "swifttallon", "interview": null, "face": null}, "marvel-2005": {"v": "vZJrJwN6wQg", "s": 1829, "e": 1866, "who": "David Maisel", "role": "Marvel Studios founder", "title": "Maisel on the $525M bet to make own films", "spoiler": true, "channel": "Sean Callagy", "interview": {"v": "OqDrubLT2IA", "s": 846, "title": "Maisel on financing the first Iron Man"}, "face": null}, "airbnb-cereal": {"v": "W608u6sBFpo", "s": 990, "e": 1062, "who": "Brian Chesky", "role": "Airbnb co-founder and CEO", "title": "Chesky: broke, so we made cereal", "spoiler": true, "channel": "Greylock", "interview": {"v": "W608u6sBFpo", "s": 988, "title": "Chesky on Blitzscaling: the cereal years"}, "face": null}, "new-coke": {"v": "t_djFC9Uhuw", "s": 0, "e": 70.9, "who": "Don Keough", "role": "President, Coca-Cola", "title": "Keough: research missed the love for old Coke", "spoiler": true, "channel": "CokeConversations", "interview": {"v": "q3f52STVmck", "s": 285, "title": "Sergio Zyman on the New Coke decision"}, "face": null}, "instagram-pivot": {"v": "qNCDQfK2N54", "s": 136.4, "e": 202.5, "who": "Kevin Systrom", "role": "Cofounder, Instagram", "title": "Systrom on cutting Burbn down to photos", "spoiler": true, "channel": "Lex Clips", "interview": {"v": "N-C0wApn1vI", "s": 137, "title": "Systrom & Krieger at Stanford, 2011"}, "face": null}, "starbucks-2008": {"v": "83yInyY1KLs", "s": 948.5, "e": 1014.8, "who": "Howard Schultz", "role": "CEO, Starbucks", "title": "Schultz on closing every US store to retrain", "spoiler": true, "channel": "London Business Forum", "interview": {"v": "83yInyY1KLs", "s": 756, "title": "Schultz on his 2008 return and turnaround"}, "face": null}, "kodak-1975": {"v": "wfnpVRiiwnM", "s": 297.3, "e": 343.0, "who": "Steve Sasson", "role": "Kodak engineer, camera inventor", "title": "Sasson on showing Kodak a filmless camera", "spoiler": false, "channel": "Kodak", "interview": {"v": "t40pnhGR8pg", "s": 1731, "title": "Sasson on how Kodak bosses reacted (podcast)"}, "face": null}, "apple-1997": {"v": "jMSa9sSZpF8", "s": 24.1, "e": 80.0, "who": "Steve Jobs", "role": "Interim CEO, Apple", "title": "Jobs: we cut 70% of the product roadmap", "spoiler": true, "channel": "askphilipwilliams", "interview": {"v": "yQ16_YxLbB8", "s": 280, "title": "Jobs at WWDC 1997: focus means saying no"}, "face": null}, "zappos-pay-to-quit": {"v": "jJ5k_Byd9Fs", "s": 1000.4, "e": 1047.85, "who": "Tony Hsieh", "role": "CEO, Zappos", "title": "Hsieh on paying new hires $2,000 to quit", "spoiler": true, "channel": "Talks at Google", "interview": {"v": "jJ5k_Byd9Fs", "s": 934, "title": "Hsieh at Google on hiring and culture"}, "face": null}, "amazon-prime": {"v": "zN1PyNwjHpc", "s": 2380, "e": 2445, "who": "Jeff Bezos", "role": "Founder & CEO, Amazon", "title": "Bezos on the all-you-can-eat shipping idea", "spoiler": true, "channel": "The Economic Club of Washington, D.C.", "interview": {"v": "zN1PyNwjHpc", "s": 2306, "title": "Bezos with David Rubenstein: Prime origins"}, "face": null}, "chobani-plant": {"v": "ofNJk_r3I8A", "s": 145, "e": 212, "who": "Hamdi Ulukaya", "role": "Founder & CEO, Chobani", "title": "Ulukaya on the junk-mail yogurt plant", "spoiler": true, "channel": "Harvard Business Review", "interview": {"v": "KH7e0lZa5xY", "s": 437, "title": "Ulukaya at Stanford GSB View From The Top"}, "face": null}, "warby-parker-try-on": {"v": "CUBRL3oPRTo", "s": 695, "e": 740, "who": "Neil Blumenthal", "role": "Co-founder & co-CEO, Warby Parker", "title": "Blumenthal on removing the try-on barrier", "spoiler": true, "channel": "TEDx Talks", "interview": {"v": "zVIgimZUWOc", "s": 1820, "title": "Founders on home try-on demand (BoF)"}, "face": null}, "slack-from-glitch": {"v": "IS_wpAlkP48", "s": 372, "e": 410, "who": "Stewart Butterfield", "role": "Co-founder & CEO, Slack", "title": "Butterfield: the game failed, the chat tool won", "spoiler": true, "channel": "Qualtrics", "interview": {"v": "IS_wpAlkP48", "s": 270, "title": "Butterfield on Glitch and the Slack pivot"}, "face": null}, "dollar-shave-club": {"v": "ZUG9qYTJMsI", "s": 0, "e": 56, "who": "Michael Dubin", "role": "Founder & CEO, Dollar Shave Club", "title": "The original Dollar Shave Club launch video", "spoiler": true, "channel": "Dollar Shave Club", "interview": {"v": "cCGp94leMRQ", "s": 230, "title": "Dubin on the launch video, CNBC iConic 2017"}, "face": null}, "office-on-ipad": {"v": "nDFwa0bcs9I", "s": 3, "e": 49, "who": "Satya Nadella", "role": "CEO, Microsoft", "title": "Nadella at the Office for iPad launch", "spoiler": true, "channel": "CNET", "interview": {"v": "0RHlx2DPVp0", "s": 33, "title": "Nadella with Walter Isaacson, Fortune 2014"}, "face": null}, "nintendo-wii": {"v": "RMrj8gdUfCU", "s": 1185, "e": 1234, "who": "Satoru Iwata", "role": "President, Nintendo", "title": "Iwata: who are we leaving behind?", "spoiler": false, "channel": "GDC Festival of Gaming", "interview": {"v": "RMrj8gdUfCU", "s": 1056, "title": "Iwata's GDC 2005 keynote, Heart of a Gamer"}, "face": null}, "customer-ultimatum": {"v": "smb74WIUnL4", "s": 0, "e": 38, "who": "Alex Hormozi", "role": "Founder, Acquisition.com", "title": "Never cut your price just to close", "claim": "Lowering the same offer's price kills trust; offer a different, smaller package for less instead.", "topic": "Money", "forCase": "customer-ultimatum", "question": "Would you offer less for less, not a straight discount?", "channel": "Alex Hormozi", "vertical": true, "spoiler": false, "interview": null}, "acquisition-offer": {"v": "W7BSddOqeAU", "s": 0, "e": 22, "who": "Alex Hormozi", "role": "Founder, Acquisition.com", "title": "He sold for a third. No regrets.", "claim": "He sold Gym Launch far below its pre-COVID value because he was done, and says the sale was the right step.", "topic": "Founder life", "forCase": "acquisition-offer", "question": "Would you take a lowball offer if you were done?", "channel": "Alex Hormozi", "vertical": true, "spoiler": false, "interview": null}, "ship-beta": {"v": "Vg2Z-_guEwk", "s": 0, "e": 39, "who": "Gary Vaynerchuk", "role": "CEO, VaynerMedia", "title": "Speed is a startup's unfair edge", "claim": "A young company's real edge is moving fast; big incumbents often see it coming but are too slow to react.", "topic": "Product", "forCase": "ship-beta", "question": "Is shipping fast worth a few bugs?", "channel": "GaryVee", "vertical": true, "spoiler": false, "interview": null}, "promote-or-hire": {"v": "4aU4y02V8AA", "s": 0, "e": 37, "who": "Brian Chesky", "role": "Cofounder & CEO, Airbnb", "title": "Chesky's 3 stages of a company", "claim": "First build the product, then the company that grows it, then go professional and hire an exec team.", "topic": "People", "forCase": "promote-or-hire", "question": "Should a scaling startup hire outside executives?", "channel": "a16z", "vertical": true, "spoiler": false, "interview": null}, "bakery-runway": {"v": "ec9cXZSaoQk", "s": 0, "e": 51.0, "who": "Alex Hormozi", "role": "Founder, Acquisition.com", "title": "$600K a month, almost no profit", "claim": "His meal company sold $600K a month, but $9 costs on a $10 meal left about 7% margin. Revenue isn't profit.", "topic": "Money", "forCase": "bakery-runway", "question": "Would you cut a unit that sells well but earns little?", "channel": "Alex Hormozi", "vertical": true, "spoiler": false, "interview": null}, "viral-review": {"v": "vmplEQOgn6E", "s": 0, "e": 19, "who": "Gary Vaynerchuk", "role": "CEO, VaynerMedia", "title": "Say sorry, then make it right", "claim": "People love to tear you down, yet they're ready to accept a real apology and amends, so own your mistakes.", "topic": "Marketing", "forCase": "viral-review", "question": "Should a business own a viral bad review publicly?", "channel": "GaryVee", "vertical": true, "spoiler": false, "interview": null}, "freemium-cost": {"v": "a8nNGbcfXsA", "s": 0, "e": 20.0, "who": "Alex Hormozi", "role": "Founder, Acquisition.com", "title": "Free if it scales. Paid if it doesn't", "claim": "He gives away anything that scales, like books and courses, and charges for help that costs his team time.", "topic": "Growth", "forCase": "freemium-cost", "question": "Should free users pay for the costly features?", "channel": "Alex Hormozi", "vertical": true, "spoiler": false, "interview": null}, "cofounder-wobble": {"v": "3p_T8u-mSvo", "s": 0, "e": 37, "who": "Alex Hormozi", "role": "Founder, Acquisition.com", "title": "How to fix a broken partnership", "claim": "Partners overrate their own effort. Say your expectations plainly, then fix the behavior, buy out, or split.", "topic": "Founder life", "forCase": "cofounder-wobble", "question": "Should partners talk it out before anyone walks?", "channel": "Alex Hormozi", "vertical": true, "spoiler": false, "interview": null}, "dtc-cac-rising": {"v": "dr27JNg8mLc", "s": 0, "e": 52.5, "who": "Alex Hormozi", "role": "Founder, Acquisition.com", "title": "Keep customers before buying new ones", "claim": "Two $3M firms: the one that keeps its customers grows cheaply; the one that churns has to buy them all again.", "topic": "Marketing", "forCase": "dtc-cac-rising", "question": "Would you fix repeat buys before adding ad spend?", "channel": "Alex Hormozi", "vertical": true, "spoiler": false, "interview": null}, "toxic-top-seller": {"v": "ZaixnNB-Kg4", "s": 0, "e": 39, "who": "Gary Vaynerchuk", "role": "CEO, VaynerMedia", "title": "Fire the toxic star, even if he sells", "claim": "A productive employee who poisons the team is the real problem; cut them and grind until others step up.", "topic": "People", "forCase": "toxic-top-seller", "question": "Would you fire a top seller who's toxic?", "channel": "GaryVee", "vertical": true, "spoiler": false, "interview": null}};window.HS_SHORTS=[{"v": "_aVYP6GGuG4", "s": 0, "e": 41, "who": "Alex Hormozi", "role": "Founder, Acquisition.com", "title": "A 10% price hike doubled his profit", "claim": "A thin-margin firm raised prices 10% and doubled profit with no drop in sales. Only buyers' reactions matter.", "topic": "Money", "forCase": null, "question": "Would you raise prices 10% tomorrow?", "channel": "Alex Hormozi"}, {"v": "smb74WIUnL4", "s": 0, "e": 38, "who": "Alex Hormozi", "role": "Founder, Acquisition.com", "title": "Never cut your price just to close", "claim": "Lowering the same offer's price kills trust; offer a different, smaller package for less instead.", "topic": "Money", "forCase": "customer-ultimatum", "question": "Would you offer less for less, not a straight discount?", "channel": "Alex Hormozi"}, {"v": "4fY6OiOlM3w", "s": 0, "e": 17, "who": "Mark Cuban", "role": "Billionaire investor, Shark Tank", "title": "Cuban's 2 rules of negotiating", "claim": "The best negotiators stay patient and don't fight every point; giving something up to close is fine.", "topic": "Strategy", "forCase": "customer-ultimatum", "question": "Is it OK to give ground to keep a big deal?", "channel": "CNBC Make It"}, {"v": "W7BSddOqeAU", "s": 0, "e": 22, "who": "Alex Hormozi", "role": "Founder, Acquisition.com", "title": "He sold for a third. No regrets.", "claim": "He sold Gym Launch far below its pre-COVID value because he was done, and says the sale was the right step.", "topic": "Founder life", "forCase": "acquisition-offer", "question": "Would you take a lowball offer if you were done?", "channel": "Alex Hormozi"}, {"v": "Vg2Z-_guEwk", "s": 0, "e": 39, "who": "Gary Vaynerchuk", "role": "CEO, VaynerMedia", "title": "Speed is a startup's unfair edge", "claim": "A young company's real edge is moving fast; big incumbents often see it coming but are too slow to react.", "topic": "Product", "forCase": "ship-beta", "question": "Is shipping fast worth a few bugs?", "channel": "GaryVee"}, {"v": "4aU4y02V8AA", "s": 0, "e": 37, "who": "Brian Chesky", "role": "Cofounder & CEO, Airbnb", "title": "Chesky's 3 stages of a company", "claim": "First build the product, then the company that grows it, then go professional and hire an exec team.", "topic": "People", "forCase": "promote-or-hire", "question": "Should a scaling startup hire outside executives?", "channel": "a16z"}, {"v": "x009YSCAQxU", "s": 0, "e": 33, "who": "Alex Hormozi", "role": "Founder, Acquisition.com", "title": "How to test a sales manager hire", "claim": "Ask a sales-manager candidate how they'd prove they lifted the team; the metrics they name show their skill.", "topic": "People", "forCase": "promote-or-hire", "question": "Is a great seller automatically a great manager?", "channel": "Alex Hormozi"}, {"v": "ec9cXZSaoQk", "s": 0, "e": 51.0, "who": "Alex Hormozi", "role": "Founder, Acquisition.com", "title": "$600K a month, almost no profit", "claim": "His meal company sold $600K a month, but $9 costs on a $10 meal left about 7% margin. Revenue isn't profit.", "topic": "Money", "forCase": "bakery-runway", "question": "Would you cut a unit that sells well but earns little?", "channel": "Alex Hormozi"}, {"v": "vmplEQOgn6E", "s": 0, "e": 19, "who": "Gary Vaynerchuk", "role": "CEO, VaynerMedia", "title": "Say sorry, then make it right", "claim": "People love to tear you down, yet they're ready to accept a real apology and amends, so own your mistakes.", "topic": "Marketing", "forCase": "viral-review", "question": "Should a business own a viral bad review publicly?", "channel": "GaryVee"}, {"v": "a8nNGbcfXsA", "s": 0, "e": 20.0, "who": "Alex Hormozi", "role": "Founder, Acquisition.com", "title": "Free if it scales. Paid if it doesn't", "claim": "He gives away anything that scales, like books and courses, and charges for help that costs his team time.", "topic": "Growth", "forCase": "freemium-cost", "question": "Should free users pay for the costly features?", "channel": "Alex Hormozi"}, {"v": "3p_T8u-mSvo", "s": 0, "e": 37, "who": "Alex Hormozi", "role": "Founder, Acquisition.com", "title": "How to fix a broken partnership", "claim": "Partners overrate their own effort. Say your expectations plainly, then fix the behavior, buy out, or split.", "topic": "Founder life", "forCase": "cofounder-wobble", "question": "Should partners talk it out before anyone walks?", "channel": "Alex Hormozi"}, {"v": "dr27JNg8mLc", "s": 0, "e": 52.5, "who": "Alex Hormozi", "role": "Founder, Acquisition.com", "title": "Keep customers before buying new ones", "claim": "Two $3M firms: the one that keeps its customers grows cheaply; the one that churns has to buy them all again.", "topic": "Marketing", "forCase": "dtc-cac-rising", "question": "Would you fix repeat buys before adding ad spend?", "channel": "Alex Hormozi"}, {"v": "ZaixnNB-Kg4", "s": 0, "e": 39, "who": "Gary Vaynerchuk", "role": "CEO, VaynerMedia", "title": "Fire the toxic star, even if he sells", "claim": "A productive employee who poisons the team is the real problem; cut them and grind until others step up.", "topic": "People", "forCase": "toxic-top-seller", "question": "Would you fire a top seller who's toxic?", "channel": "GaryVee"}, {"v": "dzAnrCFRjVU", "s": 0, "e": 43, "who": "Alex Hormozi", "role": "Founder, Acquisition.com", "title": "Should you fire your best salesperson?", "claim": "Cutting toxic stars usually lifts the team's average; first copy what she does right, then rally the others.", "topic": "People", "forCase": "toxic-top-seller", "question": "Can your team replace your top rep's numbers?", "channel": "Alex Hormozi"}, {"v": "ALbuCR4uH2E", "s": 0, "e": 26, "who": "Mark Zuckerberg", "role": "Founder & CEO, Meta", "title": "The biggest risk is taking none", "claim": "Any single bold move has a downside, but a company that never changes direction is sure to fail.", "topic": "Strategy", "forCase": null, "question": "Is standing still riskier than a bold bet?", "channel": "a16z"}, {"v": "k2rrfW2Px2w", "s": 0, "e": 46, "who": "Codie Sanchez", "role": "Founder, Contrarian Thinking", "title": "Fast and wrong beats undecided", "claim": "A wrong call costs a little and teaches you fast; a decision you keep putting off costs you every day.", "topic": "Strategy", "forCase": null, "question": "Agree: a fast wrong call beats a slow right one?", "channel": "Codie Sanchez"}];window.HS_NO_EMBED=false;
+</script>
 <script>
 window.HS_CASES = [
   {
@@ -2399,7 +2473,143 @@ function setActive(c) {
 }
 function makeCard(it, mode) {
   if (it.kind === 'case') return caseCard(it.c, mode);
+  if (it.kind === 'short') return shortCard(it.s, mode);
   return xCard(it, mode);
+}
+
+/* ---------- video: official YouTube embeds, timed clips ---------- */
+const MEDIA = window.HS_MEDIA || {}, NO_EMBED = !!window.HS_NO_EMBED;
+const SHORTS = (() => {
+  const all = (window.HS_SHORTS || []).filter(x => x && x.v);
+  const used = x => !!(x.forCase && MEDIA[x.forCase] && MEDIA[x.forCase].v === x.v);
+  const pool = [...all.filter(x => !used(x)), ...all.filter(used)], out = [];
+  while (pool.length) { const prev = out[out.length - 1]; let k = pool.findIndex(x => !prev || x.who !== prev.who); if (k < 0) k = 0; out.push(pool.splice(k, 1)[0]); }
+  return out;
+})();
+const thumb = (v, q = 'mqdefault') => `https://i.ytimg.com/vi/${v}/${q}.jpg`;
+const ytUrl = (v, s) => `https://www.youtube.com/watch?v=${v}${s ? '&t=' + (s | 0) + 's' : ''}`;
+const mmss = t => `${Math.floor((t || 0) / 60)}:${pad2(Math.floor((t || 0) % 60))}`;
+const first = who => String(who || '').split(/\s+/)[0];
+let ytP = null;
+function loadYT() {
+  if (ytP) return ytP;
+  ytP = new Promise((res, rej) => {
+    if (window.YT && window.YT.Player) return res(window.YT);
+    const prev = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = () => { try { prev && prev(); } catch (e) {} res(window.YT); };
+    const sc = document.createElement('script'); sc.src = 'https://www.youtube.com/iframe_api'; sc.async = true;
+    sc.onerror = () => { ytP = null; rej(new Error('YouTube unavailable')); };
+    document.head.appendChild(sc);
+    setTimeout(() => rej(new Error('YouTube timeout')), 15000);
+  });
+  return ytP;
+}
+function ytPlayer(mount, m, { muted = true, loop = false, onState } = {}) {
+  const h = { p: null, dead: false, tick: null };
+  const s0 = +m.s || 0, e0 = +m.e || 0;
+  const watch = () => { clearInterval(h.tick); if (!e0) return; h.tick = setInterval(() => { try { if (h.dead || !h.p) return clearInterval(h.tick); if (h.p.getCurrentTime() >= e0 - 0.04) { if (loop) { h.p.seekTo(s0, true); } else { clearInterval(h.tick); h.p.pauseVideo(); } } } catch (e) {} }, 80); };
+  h.ready = loadYT().then(YT => new Promise(res => {
+    if (h.dead) return;
+    const pv = { start: Math.floor(s0), autoplay: 1, mute: muted ? 1 : 0, playsinline: 1, rel: 0, modestbranding: 1, iv_load_policy: 3, controls: 1, fs: 1, origin: location.origin };
+    if (e0) pv.end = Math.ceil(e0);
+    h.p = new YT.Player(mount, { host: 'https://www.youtube-nocookie.com', videoId: m.v, width: '100%', height: '100%', playerVars: pv,
+      events: {
+        onReady: ev => { if (h.dead) { try { ev.target.destroy(); } catch (e) {} return; } try { if (muted) ev.target.mute(); if (s0 % 1) ev.target.seekTo(s0, true); ev.target.playVideo(); } catch (e) {} res(h); },
+        onStateChange: ev => { onState && onState(ev.data); if (ev.data === 1) watch(); else clearInterval(h.tick); if (ev.data === 0 && loop && !h.dead) { try { ev.target.seekTo(s0, true); ev.target.playVideo(); } catch (e) {} } },
+        onError: () => onState && onState('error'),
+      } });
+  }));
+  h.ready.catch(() => onState && onState('error'));
+  h.unmute = () => { try { h.p.unMute(); h.p.setVolume(100); h.p.playVideo(); } catch (e) {} };
+  h.destroy = () => { h.dead = true; clearInterval(h.tick); try { h.p && h.p.destroy && h.p.destroy(); } catch (e) {} h.p = null; };
+  return h;
+}
+let vHandle = null;
+function openVideo(m, mode) {
+  if (!m) return;
+  const iv = mode === 'interview' && m.interview && m.interview.v ? m.interview : null;
+  const vid = iv ? iv.v : m.v, start = iv ? (+iv.s || 0) : (+m.s || 0), end = mode === 'interview' ? 0 : (+m.e || 0);
+  const vert = !!m.vertical && mode !== 'interview', len = end ? Math.round(end - start) : 0;
+  const head = mode === 'interview' ? 'The interview' : m.vertical ? `What ${first(m.who)} says` : `Hear it from ${first(m.who)}`;
+  const err = `<a class="verr" href="${ytUrl(vid, start)}" target="_blank" rel="noopener">${icon('play', 1)} Watch on YouTube</a>`;
+  openSheet({ title: head, body: `
+    <div class="vwrap ${vert ? 'vert' : ''}"><div class="vframe" id="vframe"><img class="vposter" src="${thumb(vid, 'hqdefault')}" alt="" onerror="this.remove()">${NO_EMBED ? '' : '<div class="vspin"></div>'}<div id="vmount"></div></div></div>
+    <div class="vmeta"><span class="vface" style="background-image:url(${thumb(vid, vert ? 'hq2' : 'mq2')})"></span><div class="vwho"><b>${esc(m.who || '')}</b><small>${esc(m.role || '')}</small></div>${len ? `<span class="vlen num">${mmss(len)}</span>` : ''}</div>
+    <p class="vtitle">${esc((iv ? iv.title : m.title) || m.claim || '')}</p>
+    <div class="vbtns">${NO_EMBED ? '' : `<button class="btn heat sm" id="vsound">${icon('sound')} Tap for sound</button>`}<a class="btn ghost sm" href="${ytUrl(vid, start)}" target="_blank" rel="noopener">Open on YouTube</a></div>
+    <div class="src">${NO_EMBED ? 'In this preview, videos open on YouTube.' : `Plays from ${esc(m.channel || 'YouTube')} through YouTube's player${len ? `, ${mmss(start)} to ${mmss(end)}` : `, starting at ${mmss(start)}`}.`}</div>`,
+    onMount() {
+      const fr = $('#vframe');
+      if (NO_EMBED) { fr.innerHTML += err; return; }
+      vHandle = ytPlayer($('#vmount'), { v: vid, s: start, e: end }, { muted: true, onState: st => {
+        const f = $('#vframe'); if (!f) return;
+        if (st === 1) f.classList.add('on');
+        if (st === 'error') { f.classList.add('on'); f.insertAdjacentHTML('beforeend', err); }
+      } });
+      $('#vsound').onclick = () => { vHandle && vHandle.unmute(); const b = $('#vsound'); b.innerHTML = `${icon('sound')} Sound on`; b.classList.remove('heat'); b.classList.add('ghost'); haptic(); };
+    },
+    onClose() { vHandle && vHandle.destroy(); vHandle = null; },
+  });
+}
+const meetHTML = md => `<button class="meet" aria-label="Watch ${esc(md.who)}"><span class="mf" style="background-image:url(${thumb(md.v, 'mq2')})"></span><span class="mt"><b>Meet ${esc(first(md.who))}</b><small>${esc(md.role || '')}</small></span><span class="mp">${icon('play', 1)}</span></button>`;
+const watchRowHTML = md => `<button class="mrow a-watch"><span class="mthumb" style="background-image:url(${thumb(md.v, md.vertical ? 'hq2' : 'mq2')})"><i>${icon('play', 1)}</i></span><span class="mtx"><b>${md.vertical ? `What ${esc(first(md.who))} would say` : `Hear it from ${esc(first(md.who))}`}</b><small>${esc(md.who)} · ${esc(md.role || '')}</small></span><span class="mlen num">${mmss(Math.round((+md.e || 0) - (+md.s || 0)))}</span></button>`;
+
+/* ---------- CEO short card (vertical clip, autoplays muted) ---------- */
+function shortCard(sh, mode) {
+  const el = document.createElement('section'); el.className = 'card short';
+  el.style.setProperty('--c1', '#2a1d3a'); el.style.setProperty('--c2', '#060608');
+  const agree = 52 + hash(sh.v) % 33, opts = [{ t: 'Agree', pct: agree }, { t: 'Disagree', pct: 100 - agree }];
+  el.innerHTML = `<div class="bg"><i></i><i></i><div class="face"><img src="${thumb(sh.v, 'hq2')}" alt="" loading="lazy" decoding="async" onerror="this.parentNode.remove()"></div></div><div class="scrim"></div>
+    <div class="ui">
+      <div class="head"><div class="meta who"><span class="co ph" style="background-image:url(${thumb(sh.v, 'hq2')})"></span><span class="wn"><b>${esc(sh.who)}</b><small>${esc(sh.role || '')}</small></span><span class="chip shortchip">${icon('play', 1)} CEO Short</span></div></div>
+      <div class="hero sh-hero"><div class="vbox"><img class="vposter" src="${thumb(sh.v, 'hq2')}" alt="" onerror="this.remove()">${NO_EMBED ? `<div class="vplay">${icon('play', 1)}</div>` : '<div class="vspin"></div>'}<div class="vmount"></div></div>
+        <button class="vsnd">${icon('sound')} ${NO_EMBED ? 'Watch on YouTube' : 'Tap for sound'}</button></div>
+      <div class="body">
+        <p class="claim">${esc(sh.claim || sh.title || '')}</p>
+        <div class="ask"><span class="q">${esc(sh.question || 'Do you agree?')}</span></div>
+        <div class="opts sopts">${opts.map((o, i) => `<button class="opt" data-i="${i}"><span class="fillwrap"><span class="fill"></span></span><span class="k">${i ? '✕' : '✓'}</span><span class="t">${o.t}</span><span class="p num">${o.pct}%</span></button>`).join('')}</div>
+      </div>
+    </div>`;
+  let h = null;
+  const ctrl = { el, kind: 'short', mode, active: false, answered: !!(S.shortAns || {})[sh.v] };
+  el._ctrl = ctrl;
+  const box = $('.vbox', el);
+  const mountPlayer = () => {
+    if (NO_EMBED || h) return;
+    let mnt = $('.vmount', box); if (!mnt) { mnt = document.createElement('div'); mnt.className = 'vmount'; box.appendChild(mnt); }
+    box.classList.remove('on');
+    h = ytPlayer(mnt, sh, { muted: true, loop: true, onState: st => { if (st === 1) box.classList.add('on'); if (st === 'error') { box.classList.add('on', 'err'); } } });
+  };
+  const unmountPlayer = () => { if (h) { h.destroy(); h = null; } box.classList.remove('on'); $$('iframe', box).forEach(f => f.remove()); if (!$('.vmount', box)) { const d = document.createElement('div'); d.className = 'vmount'; box.appendChild(d); } };
+  ctrl.focus = () => { ctrl.active = true; el.classList.add('active'); mountPlayer(); };
+  ctrl.blur = () => { ctrl.active = false; el.classList.remove('active'); unmountPlayer(); };
+  const answer = i => {
+    if (ctrl.answered) return; ctrl.answered = true;
+    S.shortAns = S.shortAns || {}; S.shortAns[sh.v] = i + 1; S.xp += 5; S.weekXp += 5; save();
+    paint(i, true); haptic(); sfx('pop'); updateTop();
+    toast({ icon: '🎬', title: 'Take counted', sub: `${opts[i].pct}% of players ${i ? 'disagree' : 'agree'} with ${first(sh.who)}. +5 XP`, value: '+5' });
+  };
+  const paint = (i, animate) => {
+    el.classList.add('answered-short');
+    $$('.opt', el).forEach((b, k) => {
+      b.classList.toggle('mine', k === i); b.style.pointerEvents = 'none';
+      const f = $('.fill', b), pct = opts[k].pct / 100;
+      if (animate && !REDUCE) anim(f, [{ transform: 'scaleX(0)' }, { transform: `scaleX(${pct})` }], { duration: 900, easing: SPR.soft.e, fill: 'forwards' }); else f.style.transform = `scaleX(${pct})`;
+    });
+  };
+  if (ctrl.answered) paint(S.shortAns[sh.v] - 1, false);
+  $$('.opt', el).forEach(b => b.addEventListener('click', e => { e.stopPropagation(); answer(+b.dataset.i); }));
+  $('.vsnd', el).addEventListener('click', e => {
+    e.stopPropagation();
+    if (NO_EMBED) { window.open(ytUrl(sh.v, sh.s), '_blank'); return; }
+    if (!h) mountPlayer();
+    h && h.ready.then(() => h && h.unmute());
+    h && h.unmute();
+    const b = $('.vsnd', el); b.innerHTML = `${icon('sound')} Sound on`; b.classList.add('on'); haptic();
+  });
+  if (NO_EMBED) box.addEventListener('click', () => window.open(ytUrl(sh.v, sh.s), '_blank'));
+  ctrl.key = k => { if (k === '1' || k === '2') { answer(+k - 1); return true; } if (k === 'm') { $('.vsnd', el).click(); return true; } return false; };
+  return ctrl;
 }
 
 /* ---------- case card ---------- */
@@ -2425,7 +2635,9 @@ function caseCard(c, mode) {
   const el = document.createElement('section');
   el.className = `card t-${c.type}`;
   el.style.setProperty('--c1', c.palette[0]); el.style.setProperty('--c2', c.palette[1]);
-  const st = stat(c), real = c.kind === 'real';
+  const st = stat(c), real = c.kind === 'real', md = MEDIA[c.id];
+  const face = !!(md && md.face !== false);
+  if (face) el.classList.add('has-face');
   const ans = () => mode === 'daily' ? S.daily.a[c.id] : S.answers[c.id];
   const letters = c.type === 'swipe' ? ['← Swipe left', 'Swipe right →'] : ['A', 'B', 'C', 'D'];
   const opts = c.options.map((o, i) => `<button class="opt" data-i="${i}" aria-label="${esc(o.t)}"><span class="fillwrap"><span class="fill"></span></span><span class="k">${letters[i]}</span><span class="t">${esc(o.t)}</span><span class="p num">${o.pct}%</span></button>`).join('');
@@ -2451,7 +2663,7 @@ function caseCard(c, mode) {
       <button class="r-share" aria-label="Share"><span class="ic">${icon('share', 1)}</span><span>Share</span></button></nav>`;
   const facts = (c.facts && c.facts.length && c.type !== 'numbers' && c.type !== 'thread') ? `<div class="collapse q"><div><div class="facts">${c.facts.map(f => `<div class="fact"><b class="num">${esc(f.v)}</b><span>${esc(f.l)}</span></div>`).join('')}</div></div></div>` : '';
   const showHook = c.type !== 'swipe' && c.type !== 'thread' && c.type !== 'story';
-  el.innerHTML = `<div class="bg"><i></i><i></i><i></i></div><div class="scrim"></div><div class="scrim2"></div>
+  el.innerHTML = `<div class="bg"><i></i><i></i><i></i>${face ? `<div class="face"><img src="${thumb(md.v, md.vertical ? 'hq2' : 'maxres2')}" alt="" loading="lazy" decoding="async" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('maxres2','mq2')}else{this.parentNode.remove()}"></div>` : ''}</div><div class="scrim"></div><div class="scrim2"></div>
     ${c.type === 'story' ? `<div class="story-bars">${(c.lines || []).map(() => '<i><b></b></i>').join('')}</div>` : ''}
     <div class="ui">
       <div class="head">
@@ -2459,7 +2671,7 @@ function caseCard(c, mode) {
         ${showHook ? `<div class="collapse h"><div><h2 class="hook">${esc(c.hook)}</h2></div></div>` : ''}
         ${facts}
       </div>
-      <div class="hero">${hero}</div>
+      <div class="hero">${hero}${md && !md.spoiler && !md.vertical ? meetHTML(md) : ''}</div>
       <div class="body">
         <div class="${c.type === 'story' ? 'story-q' : ''}">
           <div class="collapse q"><div><div class="ask"><span class="q">${esc(c.question)}</span>${timer}</div></div></div>
@@ -2509,6 +2721,7 @@ function caseCard(c, mode) {
   $('.r-debate', el).addEventListener('click', e => { e.stopPropagation(); openDebate(c); });
   $('.r-save', el).addEventListener('click', e => { e.stopPropagation(); toggleSave(ctrl); });
   $('.r-share', el).addEventListener('click', e => { e.stopPropagation(); shareCase(c); });
+  if ($('.meet', el)) $('.meet', el).addEventListener('click', e => { e.stopPropagation(); openVideo(md, 'clip'); });
   dblTap(el, (x, y) => likeAt(ctrl, x, y));
   if (c.type === 'swipe') bindSwipe(ctrl);
   if (c.type === 'story') {
@@ -2787,12 +3000,13 @@ function renderAnswered(ctrl, rec, animate) {
   $('.reveal', el).innerHTML = `
     <div class="verdict ${v.cls}"><div class="vi">${icon(v.cls === 'win' ? 'check' : 'x')}</div><div><h3>${esc(v.h)}</h3><p>${esc(v.p)}</p></div><div class="vx"><span class="xpc num">+${rec.xp} XP</span><small class="num">${secs}s${rec.speed ? ' · +' + rec.speed + ' speed' : ''}</small>${rec.mult > 1 ? `<small class="cb num">x${rec.mult} combo</small>` : ''}</div></div>
     <div class="lesson"><small>The lesson</small><b>${esc(c.lesson)}</b></div>
+    ${MEDIA[c.id] ? watchRowHTML(MEDIA[c.id]) : ''}
     <button class="more a-more" aria-expanded="false">${c.kind === 'real' ? 'What really happened' : 'How experienced CEOs see it'}${icon('chevD')}</button>
     <div class="collapse o"><div><p class="outcome">${esc(c.outcome)}</p></div></div>
     <div class="acts">
       <button class="act primary a-why">${icon('spark', 1)} Why?</button>
-      ${c.listen ? `<button class="act a-listen" aria-label="Full story, ${c.listen.mins} minutes">${icon('headphones')}<span class="opt-l num">${c.listen.mins}m</span></button>` : ''}
-      <button class="act a-debate" aria-label="Debate">${icon('chat')}<span class="opt-l num">${fmt(st.comments)}</span></button>
+      ${MEDIA[c.id] ? (MEDIA[c.id].interview && MEDIA[c.id].interview.v ? `<button class="act a-listen" aria-label="Play the interview">${icon('headphones')}<span class="opt-l">Interview</span></button>` : `<button class="act a-listen" data-clip="1" aria-label="Watch ${esc(MEDIA[c.id].who || '')}">${icon('play', 1)}<span class="opt-l">Watch</span></button>`) : ''}
+      <button class="act ${MEDIA[c.id] ? 'io ' : ''}a-debate" aria-label="Debate, ${fmt(st.comments)} takes">${icon('chat')}${MEDIA[c.id] ? '' : `<span class="opt-l num">${fmt(st.comments)}</span>`}</button>
       <button class="act io a-like ${liked ? 'liked' : ''}" aria-label="Like">${icon('heart', liked)}</button>
       <button class="act io a-save ${saved ? 'on' : ''}" aria-label="Save">${icon('bookmark', saved)}</button>
       <button class="act io a-share" aria-label="Share">${icon('share')}</button>
@@ -2801,7 +3015,8 @@ function renderAnswered(ctrl, rec, animate) {
   const R = $('.reveal', el);
   $('.a-why', R).onclick = () => openCoach(c);
   $('.a-more', R).onclick = () => { const o = $('.collapse.o', el), b = $('.a-more', R), open = !o.classList.contains('open'); o.classList.toggle('open', open); b.classList.toggle('open', open); b.setAttribute('aria-expanded', String(open)); el.classList.toggle('more-open', open); haptic(); sfx('tap'); };
-  if ($('.a-listen', R)) $('.a-listen', R).onclick = () => openListen(c);
+  if ($('.a-listen', R)) $('.a-listen', R).onclick = e => openVideo(MEDIA[c.id], e.currentTarget.dataset.clip ? 'clip' : 'interview');
+  if ($('.a-watch', R)) $('.a-watch', R).onclick = () => openVideo(MEDIA[c.id], 'clip');
   $('.a-debate', R).onclick = () => openDebate(c);
   $('.a-like', R).onclick = () => toggleLike(ctrl);
   $('.a-save', R).onclick = () => toggleSave(ctrl);
@@ -3235,7 +3450,10 @@ function checkBadges(rec, c) {
 /* ================= sheets ================= */
 const sheet = $('#sheet'), scrim = $('#scrim');
 let sheetOpen = false;
-function openSheet({ title, body, onMount }) {
+let sheetOnClose = null;
+function openSheet({ title, body, onMount, onClose }) {
+  if (sheetOnClose) { try { sheetOnClose(); } catch (e) {} }
+  sheetOnClose = onClose || null;
   $('#sheetT').textContent = title || ''; $('#sheetB').innerHTML = body || ''; $('#sheetB').scrollTop = 0;
   $('#sheetX').innerHTML = icon('x');
   sheetOpen = true; activeCtrl && activeCtrl.pauseTimer && activeCtrl.pauseTimer();
@@ -3247,6 +3465,7 @@ function openSheet({ title, body, onMount }) {
 }
 function closeSheet(fromY = null) {
   if (!sheetOpen) return; sheetOpen = false;
+  if (sheetOnClose) { const f = sheetOnClose; sheetOnClose = null; try { f(); } catch (e) {} }
   dev.classList.remove('sheet-open'); scrim.classList.remove('on');
   const cur = fromY != null ? `translateY(${fromY}px)` : 'translateY(0)';
   sheet.getAnimations().forEach(a => a.cancel());
@@ -3368,8 +3587,10 @@ function showOnboarding(replay) {
 function rebuildFeed() {
   const cs = personalize(CASES);
   const items = [];
+  let si = 0;
   cs.forEach((c, i) => {
     items.push({ kind: 'case', c });
+    if (i % 3 === 1 && si < SHORTS.length) items.push({ kind: 'short', s: SHORTS[si++] });
     if (i === 3) items.push({ kind: 'league' });
     if (i === 8) items.push({ kind: 'daily' });
     if (i === 13 && BOARD[0]) items.push({ kind: 'board', b: BOARD[0] });

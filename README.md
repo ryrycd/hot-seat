@@ -4,4 +4,6 @@ A concept for Edify by Team 10 (Babson EPS 1210): a TikTok-style feed of real CE
 
 Open it in Safari on an iPhone and choose Share → Add to Home Screen to run it full screen like an app.
 
+Founder clips, interviews and CEO Shorts play through YouTube's own embedded player, trimmed with start and end times; nothing is downloaded or re-hosted.
+
 Real cases are summarized from public reporting. Player counts, splits, leaderboards, comments and member answers are sample data.
