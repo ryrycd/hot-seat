@@ -2693,7 +2693,7 @@ function shortCard(sh, mode) {
 /* ---------- case card ---------- */
 function whoHTML(c, mode) {
   const parts = (c.seat || '').split('·').map(x => x.trim()).filter(Boolean), real = c.kind === 'real';
-  const role = parts[0] || 'CEO', r = role === role.toUpperCase() ? role : role.toLowerCase();
+  const role = parts[0] || 'CEO', r = role.split(' ').map(w => w === w.toUpperCase() ? w : w.toLowerCase()).join(' ');
   let name, sub, badge;
   if (real) {
     name = c.company || parts[1] || '';
