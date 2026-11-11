@@ -1168,6 +1168,7 @@ svg{display:block}
 .kps .lad{width:100%}
 .lip-av{color:#fff!important}
 .rc .tag{white-space:normal;line-height:1.2}
+@media (min-width:820px) and (min-height:620px){.kp-mode .side{display:none}.kp-mode .stage{gap:0}.kp-mode .device{height:calc(100% - 24px)}}
 
 [hidden]{display:none!important}
 
@@ -4198,9 +4199,9 @@ const plate = (k, alt) => KI[k] ? `<span class="plate"><img src="${KI[k]}" alt="
 const kpName = () => (S.name || '').trim() || 'Ryan';
 const kpWhen = () => new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
 const ROSTER = [
-  { id: 'ralph', name: 'Ralph de la Vega', short: 'Former Vice Chairman, AT&T', title: 'Former Vice Chairman, AT&T Inc.', co: 'AT&T', logo: 'att', av: 'ralph', room: 1,
+  { id: 'ralph', name: 'Ralph de la Vega', short: 'Former Vice Chairman, AT&T', title: 'Former Vice Chairman, AT&T Inc.', co: 'AT&T', logo: 'att', av: 'ralph', room: 1, verified: 1,
     facts: [['2007', 'CEO of AT&T Mobility when the iPhone launched'], ['42 years', 'BellSouth → AT&T, 1974–2016'], ['Author', '“Obstacles Welcome” (2009)']], call: 'The iPhone launch (2007)', credit: 'Photo: Zrqdon, Wikimedia Commons, CC BY-SA 3.0' },
-  { id: 'robert', name: 'Robert Reiss', short: 'Founder, The CEO Forum Group', title: 'Founder, The CEO Forum Group & The CEO Show', co: 'The CEO Forum', logo: null, av: 'robert', room: 1,
+  { id: 'robert', name: 'Robert Reiss', short: 'Founder, The CEO Forum Group', title: 'Founder, The CEO Forum Group & The CEO Show', co: 'The CEO Forum', logo: null, av: 'robert', room: 1, verified: 1,
     facts: [['2007', 'Founded The CEO Forum Group & The CEO Show'], ['1,914', 'CEO interviews'], ['Forbes.com', 'Writing there since 2009']], call: 'Starting The CEO Show (2007)' },
   { id: 'conant', name: 'Doug Conant', short: 'CEO, Campbell’s 2001–2011', title: 'CEO, Campbell Soup Company, 2001–2011', co: 'Campbell’s', logo: 'campbells', banner: 'conant',
     facts: [['+31.5%', 'Shareholder return, 2001–09'], ['−14.4%', 'S&P 500 over the same years'], ['10 years', 'CEO of Campbell’s']] },
@@ -4210,7 +4211,7 @@ const ROSTER = [
     facts: [['$40B → $80B', 'P&G sales, about doubled'], ['10 → 23', 'Billion-dollar brands'], ['$57B', 'Bought Gillette']], call: 'Buying Gillette for $57B' },
   { id: 'forbes', name: 'Steve Forbes', short: 'Chairman, Forbes Media', title: 'Chairman & Editor-in-Chief, Forbes Media', co: 'Forbes', logo: 'forbes', banner: 'forbes_ph',
     facts: [['Chairman', 'Forbes Media'], ['Editor-in-chief', 'Forbes']] },
-  { id: 'barefoot', name: 'Co-founding CEO, Barefoot Wines', short: 'Answered on Edify, Nov 10', title: 'Answered Team 10’s question on Edify, Nov 10', co: 'Barefoot', logo: 'barefoot', tag: 'Answered our question · Nov 10',
+  { id: 'barefoot', name: 'Co-founding CEO, Barefoot Wines', short: 'Answered on Edify, Nov 10', title: 'Answered Team 10’s question on Edify, Nov 10', co: 'Barefoot', logo: 'barefoot', verified: 1, tag: 'Answered our question · Nov 10',
     facts: [['1986', 'Relaunched Barefoot out of a laundry room'], ['2005', 'Sold Barefoot to E&J Gallo']], call: 'Relaunching Barefoot from a laundry room' },
 ];
 const rosterTag = r => r.room ? '<em class="tag room">In the room today</em>' : r.tag ? `<em class="tag gold">${esc(r.tag)}</em>` : '<em class="tag">Sample profile</em>';
@@ -4218,7 +4219,7 @@ function bragHTML(r) {
   const banner = r.banner && KI[r.banner] ? `<div class="bban"><img src="${KI[r.banner]}" alt=""><span>With Robert Reiss on The CEO Show</span></div>` : '';
   const av = r.av && KI[r.av] ? `<img class="bav" src="${KI[r.av]}" alt="">` : '';
   return `<div class="brag">${banner}<div class="bhead">${av}<div class="bid">${plate(r.logo, r.co)}${rosterTag(r)}</div></div>
-    <h2>${esc(r.name)}</h2><div class="bmeta">${VSTAMP}</div><p class="btitle">${esc(r.title)}</p>
+    <h2>${esc(r.name)}</h2>${r.verified ? `<div class="bmeta">${VSTAMP}</div>` : ''}<p class="btitle">${esc(r.title)}</p>
     <div class="bfacts">${r.facts.map(([a, b]) => `<div><b>${esc(a)}</b><span>${esc(b)}</span></div>`).join('')}</div>
     ${r.call ? `<div class="bcall"><small>Famous call</small><b>${esc(r.call)}</b></div>` : ''}${r.credit ? `<small class="credit">${esc(r.credit)}</small>` : ''}</div>`;
 }
@@ -4262,7 +4263,7 @@ const DECKS = {
       <p class="kp-cap">Tap to see who answered →</p>` },
     { cls: 'bragw', html: () => bragHTML(ROSTER.find(r => r.id === 'barefoot')) },
     { html: () => `<h2 class="kp-h xl2"><span>ChatGPT can scrape the internet.</span><span class="hot">It can’t scrape this.</span></h2>
-      <div class="moat"><div class="mrow">${plate('barefoot', 'Barefoot Wines')}${VSTAMP}</div><div class="mrow">${plate('att', 'AT&T')}${VSTAMP}</div><div class="mrow">${plate('pg', 'P&G')}${VSTAMP}</div></div>
+      <div class="moat"><div class="mrow">${plate('barefoot', 'Barefoot Wines')}${VSTAMP}</div><div class="mrow">${plate('att', 'AT&T')}${VSTAMP}</div><div class="mrow">${plate(null, 'The CEO Forum')}${VSTAMP}</div></div>
       <p class="kp-lead">Verified CEOs = the moat.</p>` },
     { html: () => `<div class="kp-eye">Earn it</div><h2 class="kp-h">Every level-up earns 1 question to a real CEO.</h2>
       <div class="tlad">${LV.map((l, k) => `<div class="tr ${k <= 3 ? 'done' : ''} ${k === 3 ? 'cur' : ''}"><span class="tn">${k === 6 ? '👑' : k + 1}</span><b>${l[0]}</b><span class="tk">${k ? '🎟' : ''}</span></div>`).join('')}</div>
@@ -4295,11 +4296,12 @@ function openKP(deck = null, i = 0) {
   if (!S.onboarded) { S.onboarded = true; save(); }
   activeCtrl && activeCtrl.pauseTimer && activeCtrl.pauseTimer();
   KP = { deck, i };
+  document.documentElement.classList.add('kp-mode'); requestAnimationFrame(fitDevice);
   const o = kpEl(); o.classList.add('on'); kpDraw(1);
 }
 function closeKP(keepQuiet) {
   KP = null; const o = $('#kp'); if (o) o.classList.remove('on');
-  if (!keepQuiet) window.__kpQuiet = false;
+  if (!keepQuiet) { window.__kpQuiet = false; document.documentElement.classList.remove('kp-mode'); requestAnimationFrame(fitDevice); }
   if (curPage === 'home' && !sheetOpen && activeCtrl && activeCtrl.startTimer) activeCtrl.startTimer();
 }
 function kpDraw(dir) {
