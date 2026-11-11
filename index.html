@@ -6,11 +6,11 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="Hot Seat">
+<meta name="apple-mobile-web-app-title" content="Edify">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>Hot Seat</title>
+<title>Edify</title>
 
 <meta name="theme-color" content="#000000">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -955,6 +955,9 @@ svg{display:block}
 #minput{flex:1;min-height:40px;max-height:120px;resize:none;border:0;outline:0;border-radius:20px;background:var(--s2);color:var(--fg1);padding:10px 14px;font:500 16px/1.25 var(--font-t);box-shadow:inset 0 0 0 1px var(--line2)}
 #minput::placeholder{color:var(--fg4)}
 
+.ans .ah .tier.smp{background:rgb(255 255 255/.08);color:var(--fg3);margin-left:4px}
+.smpnote{margin:0 0 10px;font:600 12.5px/1.3 var(--font-t);color:var(--fg3)}
+
 [hidden]{display:none!important}
 
 </style>
@@ -962,7 +965,7 @@ svg{display:block}
 <body>
 <div class="stage" id="stage">
   <aside class="side l" aria-hidden="true">
-    <div class="brand"><svg width="44" height="44" viewBox="0 0 44 44"><rect width="44" height="44" rx="13" fill="url(#gHeat)"/><g transform="translate(10 10)" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5h8a1.5 1.5 0 0 1 1.5 1.5v7h-11V4A1.5 1.5 0 0 1 8 2.5z"/><path d="M4.5 11h15v2.2a1.8 1.8 0 0 1-1.8 1.8H6.3a1.8 1.8 0 0 1-1.8-1.8z"/><path d="M12 15v4.5M7.5 21.5 12 19.5l4.5 2"/></g></svg><b>Hot Seat</b></div>
+    <div class="brand"><svg width="44" height="44" viewBox="0 0 44 44"><rect width="44" height="44" rx="13" fill="url(#gHeat)"/><g fill="#fff"><rect x="13" y="11.5" width="5.4" height="21" rx="2.2"/><rect x="13" y="11.5" width="18.5" height="5.2" rx="2.4"/><rect x="13" y="19.4" width="14.2" height="5.2" rx="2.4"/><rect x="13" y="27.3" width="18.5" height="5.2" rx="2.4"/></g></svg><b>Edify</b></div>
     <h1>Real CEO decisions. <span>Thirty seconds each.</span></h1>
     <p>Scroll, make the call, see what really happened and how everyone else chose. Climb from Intern to CEO.</p>
     <div class="keys">
@@ -2370,7 +2373,7 @@ const IC = {
 };
 const icon = (n, fill) => `<svg viewBox="0 0 24 24" ${fill ? 'fill="currentColor" stroke="none"' : 'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"'} aria-hidden="true">${IC[n] || ''}</svg>`;
 const FLAME = `<svg class="flame" viewBox="0 0 24 24" aria-hidden="true"><path fill="url(#gFlame)" d="M12 2.5c.6 3.2 4.9 5.6 4.9 10.6A4.9 4.9 0 0 1 12 18a4.9 4.9 0 0 1-4.9-4.9c0-2.6 1.4-4.2 2.6-5.3.1 1.5.8 2.6 1.9 3.1-.3-2.9.1-5.8.4-8.4z"/><path fill="#ffe08a" d="M12 11.2c.3 1.5 2.3 2.4 2.3 4.6a2.3 2.3 0 0 1-4.6 0c0-1.3.8-2.1 1.4-2.6.1.7.4 1.1.8 1.3-.1-1.2 0-2.3.1-3.3z"/></svg>`;
-const LOGO = s => `<svg width="${s}" height="${s}" viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="13" fill="url(#gHeat)"/><g transform="translate(10 10)" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5h8a1.5 1.5 0 0 1 1.5 1.5v7h-11V4A1.5 1.5 0 0 1 8 2.5z"/><path d="M4.5 11h15v2.2a1.8 1.8 0 0 1-1.8 1.8H6.3a1.8 1.8 0 0 1-1.8-1.8z"/><path d="M12 15v4.5M7.5 21.5 12 19.5l4.5 2"/></g></svg>`;
+const LOGO = s => `<svg width="${s}" height="${s}" viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="13" fill="url(#gHeat)"/><g fill="#fff"><rect x="13" y="11.5" width="5.4" height="21" rx="2.2"/><rect x="13" y="11.5" width="18.5" height="5.2" rx="2.4"/><rect x="13" y="19.4" width="14.2" height="5.2" rx="2.4"/><rect x="13" y="27.3" width="18.5" height="5.2" rx="2.4"/></g></svg>`;
 
 /* ================= state ================= */
 const KEY = 'hotseat1:';
@@ -2804,8 +2807,8 @@ function caseCard(c, mode) {
     hero = `<div class="snapwrap"><figure class="snap float" style="--rot:${(hash(c.id) % 7) - 4}deg">${ph}<figcaption>${cap}</figcaption></figure></div>`;
   }
   const rail = `<nav class="rail">
-      <button class="r-like ${S.liked.includes(c.id) ? 'liked' : ''}" aria-label="Like"><span class="ic">${icon('heart', 1)}</span><span class="num lk">${fmt(st.likes + (S.liked.includes(c.id) ? 1 : 0))}</span></button>
-      <button class="r-debate" aria-label="Debate"><span class="ic">${icon('chat', 1)}</span><span class="num">${fmt(st.comments)}</span></button>
+      <button class="r-like ${S.liked.includes(c.id) ? 'liked' : ''}" aria-label="Like"><span class="ic">${icon('heart', 1)}</span><span class="lk">${S.liked.includes(c.id) ? 'Liked' : 'Like'}</span></button>
+      <button class="r-debate" aria-label="Debate"><span class="ic">${icon('chat', 1)}</span><span>Debate</span></button>
       <button class="r-save ${S.saved.includes(c.id) ? 'saved' : ''}" aria-label="Save"><span class="ic">${icon('bookmark', 1)}</span><span>Save</span></button>
       <button class="r-share" aria-label="Share"><span class="ic">${icon('share', 1)}</span><span>Share</span></button></nav>`;
   const facts = (c.facts && c.facts.length && c.type !== 'numbers' && c.type !== 'thread') ? `<div class="collapse q"><div><div class="facts">${c.facts.map(f => `<div class="fact"><b class="num">${esc(f.v)}</b><span>${esc(f.l)}</span></div>`).join('')}</div></div></div>` : '';
@@ -3258,7 +3261,7 @@ function toggleLike(ctrl, force) {
   const id = ctrl.c.id, on = force || !S.liked.includes(id);
   S.liked = S.liked.filter(x => x !== id); if (on) S.liked.push(id); save();
   const st = stat(ctrl.c), n = fmt(st.likes + (on ? 1 : 0));
-  const rb = $('.r-like', ctrl.el); rb.classList.toggle('liked', on); $('.lk', rb).textContent = n;
+  const rb = $('.r-like', ctrl.el); rb.classList.toggle('liked', on); $('.lk', rb).textContent = on ? 'Liked' : 'Like';
   anim($('.ic', rb), [{ transform: 'scale(1)' }, { transform: 'scale(1.35)' }, { transform: 'scale(1)' }], { duration: 500, easing: SPR.bouncy.e });
   const ab = $('.a-like', ctrl.el); if (ab) { ab.classList.toggle('liked', on); ab.innerHTML = icon('heart', on); }
   haptic(); sfx('pop');
@@ -3272,14 +3275,14 @@ function toggleSave(ctrl) {
   haptic(); sfx('pop');
   toast({ icon: '🔖', title: on ? 'Saved to your Playbook' : 'Removed from your Playbook', sub: on ? 'Find it under Playbook → Saved' : '', ms: 1500 });
 }
-async function shareText(text, title = 'Hot Seat') {
+async function shareText(text, title = 'Edify') {
   try { if (navigator.share) { await navigator.share({ title, text }); return; } } catch (e) { if (e && e.name === 'AbortError') return; }
   try { await navigator.clipboard.writeText(text); toast({ icon: '📋', title: 'Copied to clipboard', sub: 'Paste it into LinkedIn or a group chat', ms: 1800 }); }
   catch (e) { openSheet({ title: 'Copy your result', body: `<div class="sharecard"><pre style="-webkit-user-select:text;user-select:text">${esc(text)}</pre></div>` }); }
 }
 function shareCase(c, rec) {
   rec = rec || S.answers[c.id] || S.daily.a[c.id];
-  const t = rec ? `I sat in the hot seat: "${c.hook}"\nMy call: ${c.options[rec.i].t} (${(rec.ms / 1000).toFixed(1)}s) ${rec.win ? '✅' : '❌'}\n${c.options[rec.i].pct}% of players agreed with me. What would you do?` : `Your call: "${c.hook}"\n${c.options.map((o, i) => `${'ABC'[i]}) ${o.t}`).join('\n')}\nAnswer in under 30 seconds on Hot Seat.`;
+  const t = rec ? `I made the call: "${c.hook}"\nMy call: ${c.options[rec.i].t} (${(rec.ms / 1000).toFixed(1)}s) ${rec.win ? '✅' : '❌'}\n${c.options[rec.i].pct}% of players agreed with me. What would you do?` : `Your call: "${c.hook}"\n${c.options.map((o, i) => `${'ABC'[i]}) ${o.t}`).join('\n')}\nAnswer in under 30 seconds on Edify.`;
   shareText(t);
 }
 
@@ -3329,7 +3332,7 @@ function xCard(it, mode) {
         : `<div class="eyebrow">Daily 5 · done</div><h2>${w}/5 winning calls in ${avg}s average.</h2><div class="grid5">${res.map(r => `<i class="${r.win ? 'w' : 'm'}"></i>`).join('')}</div>
           <p>You beat ${clamp(38 + w * 11 + Math.round((20 - avg) * 0.8), 5, 99)}% of today's players. Next Daily 5 in <b class="num" id="dcd"></b>.</p>
           <button class="btn heat x-s">${icon('share')} Share your score</button>`;
-      if (done >= 5) { $('.x-s', box).onclick = () => shareText(`Hot Seat · Daily 5 · ${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}\n${res.map(r => r.win ? '🟩' : '🟥').join('')}  ${w}/5 winning calls\n⚡ ${avg}s average · 🔥 ${S.streak}-day streak`); tickCountdown(); }
+      if (done >= 5) { $('.x-s', box).onclick = () => shareText(`Edify · Daily 5 · ${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}\n${res.map(r => r.win ? '🟩' : '🟥').join('')}  ${w}/5 winning calls\n⚡ ${avg}s average · 🔥 ${S.streak}-day streak`); tickCountdown(); }
     }
   }
   render();
@@ -3345,8 +3348,8 @@ function tickCountdown() {
   cdT = setTimeout(tickCountdown, 1000);
 }
 function ansHTML(a, k, voted) {
-  const tier = a.tier || 'Member', cls = /Verified/.test(tier) ? 'v' : /VP/.test(tier) ? 'p' : '';
-  return `<button class="ans ${voted === k ? 'voted' : ''}" data-k="${k}"><div class="ah"><span class="av" style="width:22px;height:22px;font-size:9px;background:${avColor(a.name)}">${esc(initials(a.name))}</span>${esc(a.name)} <span class="tier ${cls}">${esc(tier)}</span></div><p>${esc(a.text)}</p><div class="vote">${icon('up')} <span class="num">${(a.votes || 0) + (voted === k ? 1 : 0)}</span> · ${esc(a.org || '')}</div></button>`;
+  const tier = String(a.tier || 'Member').replace(/^Verified CEO$/i, 'CEO'), cls = /VP/.test(tier) ? 'p' : '';
+  return `<button class="ans ${voted === k ? 'voted' : ''}" data-k="${k}"><div class="ah"><span class="av" style="width:22px;height:22px;font-size:9px;background:${avColor(a.name)}">${esc(initials(a.name))}</span>${esc(a.name)} <span class="tier ${cls}">${esc(tier)}</span><span class="tier smp">Sample answer</span></div><p>${esc(a.text)}</p><div class="vote">${icon('up')} <span class="num">${(a.votes || 0) + (voted === k ? 1 : 0)}</span> · ${esc(a.org || '')}</div></button>`;
 }
 function bindVotes(box, b, rerender) {
   $$('.ans', box).forEach(btn => btn.onclick = () => {
@@ -3797,14 +3800,14 @@ function openCoach(c) {
     <p style="margin:0;font:500 15px/1.5 var(--font-t);color:var(--fg2)">${esc(c.outcome)}</p>
     ${(c.deep || []).map((d, k) => `<div class="bul"><i>${k + 1}</i><span>${esc(d)}</span></div>`).join('')}
     <div class="lesson" style="margin-top:4px"><small>Take it with you</small><b>${esc(c.lesson)}</b></div>
-    ${c.source ? `<div class="src">Source: ${esc(c.source)}. Summary written by the Hot Seat team, not a quote.</div>` : '<div class="src">Scenario written by the Hot Seat team from common founder situations.</div>'}
+    ${c.source ? `<div class="src">Source: ${esc(c.source)}. Summary written by Team 10, not a quote.</div>` : '<div class="src">Scenario written by Team 10 from common founder situations.</div>'}
     <button class="btn ghost" id="coachAsk" style="width:100%">${icon('chat')} Ask the Board about this</button></div>`,
     onMount() { $('#coachAsk').onclick = () => { closeSheet(); askSeg = 'board'; go('ask'); setTimeout(openComposer, 420); }; } });
 }
 function openListen(c) {
   const L = c.listen || { title: c.hook, mins: 12 }, bars = 46;
   const chaps = ['The setup', 'The room', 'The call', 'What happened next'];
-  openSheet({ title: 'Full story', body: `<div class="ep" style="--c1:${c.palette[0]};--c2:${c.palette[1]}"><span class="cover">${c.emoji}</span><span><b>${esc(L.title)}</b><small>Hot Seat Stories · ${L.mins} min${c.company ? ' · ' + esc(c.company) : ''}</small></span></div>
+  openSheet({ title: 'Full story', body: `<div class="ep" style="--c1:${c.palette[0]};--c2:${c.palette[1]}"><span class="cover">${c.emoji}</span><span><b>${esc(L.title)}</b><small>Edify Stories · ${L.mins} min${c.company ? ' · ' + esc(c.company) : ''}</small></span></div>
     <div class="wave" id="wave">${Array.from({ length: bars }, (_, k) => `<i style="height:${18 + Math.abs(Math.sin(k * 1.7 + hash(c.id) % 7) * 70) + (k % 3) * 4}%"></i>`).join('')}</div>
     <div style="display:flex;justify-content:space-between;font:600 12px/1 var(--font-t);color:var(--fg3)"><span class="num">0:00</span><span class="num">${L.mins}:00</span></div>
     <div style="display:flex;justify-content:center;margin:14px 0 6px"><button class="btn heat" id="playB" style="width:64px;height:64px;border-radius:50%;padding:0">${icon('play', 1)}</button></div>
@@ -3818,7 +3821,7 @@ function openListen(c) {
 const COMMENTS = [
   ['Dana R.', 'CEO tier', 'Took me 4 seconds. The longer I think, the more I talk myself into the safe option.', 214],
   ['Sam K.', 'VP tier', 'Changed my answer at the last second. Gut was right the first time.', 131],
-  ['Ifeoma A.', 'Verified CEO', 'In the room this never feels obvious. You have half the data and a board breathing on you.', 388],
+  ['Ifeoma A.', 'CEO tier', 'In the room this never feels obvious. You have half the data and a board breathing on you.', 388],
   ['Luis M.', 'Manager tier', 'We faced almost this exact call with our biggest client last year. We blinked.', 97],
   ['Bea T.', 'Director tier', 'The split surprised me. Most people played it safe.', 76],
   ['Arjun V.', 'Analyst tier', 'Would love the full interview on this one. Saved it for the gym.', 52],
@@ -3828,9 +3831,9 @@ function openDebate(c) {
   const h = hash(c.id), pick = [0, 1, 2, 3, 4, 5, 6].sort((a, b) => ((a * 7 + h) % 11) - ((b * 7 + h) % 11)).slice(0, 5).map(k => COMMENTS[k]);
   const mine = (S.comments[c.id] || []);
   const draw = () => `${[...mine.map(t => [myName(), lvl(S.xp).name + ' tier', t, 1, true]), ...pick].map(([n, t, p, l, me]) => `<div class="comment"><span class="av" style="width:36px;height:36px;background:${me ? 'var(--heat-grad)' : avColor(n)}">${esc(initials(n))}</span><div><b>${esc(n)} <span class="tier" style="font:800 9.5px/1 var(--font-t);letter-spacing:.06em;text-transform:uppercase;padding:3px 5px;border-radius:5px;background:var(--s3);color:${/Verified/.test(t) ? 'var(--cool)' : /CEO/.test(t) ? 'var(--xp)' : 'var(--fg3)'}">${esc(t)}</span></b><p>${esc(p)}</p></div><span class="lk">${icon('heart')}<span class="num">${l}</span></span></div>`).join('')}`;
-  openSheet({ title: `${fmt(stat(c).comments + mine.length)} takes`, body: `<div id="cmts">${draw()}</div><form class="inputrow" id="cform"><input id="cin" placeholder="Add your take…" autocomplete="off" maxlength="200"><button class="sendb" aria-label="Post">${icon('send')}</button></form>`,
+  openSheet({ title: 'Takes', body: `<p class="smpnote">Sample takes for this concept demo.</p><div id="cmts">${draw()}</div><form class="inputrow" id="cform"><input id="cin" placeholder="Add your take…" autocomplete="off" maxlength="200"><button class="sendb" aria-label="Post">${icon('send')}</button></form>`,
     onMount() {
-      $('#cform').onsubmit = e => { e.preventDefault(); const v = $('#cin').value.trim(); if (!v) return; mine.unshift(v); S.comments[c.id] = mine; save(); $('#cmts').innerHTML = draw(); $('#sheetT').textContent = `${fmt(stat(c).comments + mine.length)} takes`; $('#cin').value = ''; anim($('#cmts .comment'), [{ opacity: 0, transform: 'translateY(-10px) scale(.96)' }, { opacity: 1, transform: 'none' }], { duration: SPR.bouncy.d, easing: SPR.bouncy.e }); haptic(); sfx('pop'); };
+      $('#cform').onsubmit = e => { e.preventDefault(); const v = $('#cin').value.trim(); if (!v) return; mine.unshift(v); S.comments[c.id] = mine; save(); $('#cmts').innerHTML = draw();  $('#cin').value = ''; anim($('#cmts .comment'), [{ opacity: 0, transform: 'translateY(-10px) scale(.96)' }, { opacity: 1, transform: 'none' }], { duration: SPR.bouncy.d, easing: SPR.bouncy.e }); haptic(); sfx('pop'); };
     } });
 }
 function openStreak() {
@@ -3854,7 +3857,7 @@ function openGoal() {
 }
 function openAbout() {
   openSheet({ title: 'About this concept', body: `<div style="display:grid;gap:14px;font:500 15px/1.5 var(--font-t);color:var(--fg2)">
-    <div style="display:flex;gap:12px;align-items:center">${LOGO(48)}<div><b style="font:800 20px/1 var(--font-d);color:var(--fg1)">Hot Seat</b><div style="font-size:13px;color:var(--fg3);margin-top:4px">A concept for Edify by Team 10, Babson EPS 1210</div></div></div>
+    <div style="display:flex;gap:12px;align-items:center">${LOGO(48)}<div><b style="font:800 20px/1 var(--font-d);color:var(--fg1)">Edify</b><div style="font-size:13px;color:var(--fg3);margin-top:4px">A concept for Edify by Team 10, Babson EPS 1210</div></div></div>
     <p style="margin:0">We logged 277 issues in CEO Wisdom, then rebuilt the core loop as a vertical feed: one decision per screen, thirty seconds to make the call, then what really happened and how everyone else chose.</p>
     <p style="margin:0">Real cases are summarized from public reporting and never quoted as a CEO's own words. Player counts, splits, leagues, comments and member answers are sample data for this prototype.</p>
     <p style="margin:0">Add it to your Home Screen from Safari's Share menu to run it full screen like an app.</p></div>` });
@@ -3868,12 +3871,12 @@ function showOnboarding(replay) {
   const T = ['Strategy', 'Growth', 'Crisis', 'People', 'Money', 'Marketing', 'Product', 'Founder life'], sel = new Set(S.interests && S.interests.length ? S.interests : []);
   let goal = S.goal || 5;
   o.innerHTML = `<div class="wall">${col(0)}${col(1)}${col(2)}</div><div class="fade"></div><div class="fade2"></div>
-    <div class="ostep" data-s="0"><div class="logo">${LOGO(40)}<b>Hot Seat</b></div><h1>Make the call.</h1><p>Real CEO decisions, thirty seconds each. See what really happened, how everyone else chose, and climb from Intern to CEO.</p>
-      <div class="proof"><div class="avs">${['Priya S.', 'Marcus T.', 'Lena K.', 'Diego R.'].map(n => `<span class="av" style="background:${avColor(n)}">${initials(n)}</span>`).join('')}</div>3,412 people made today's calls</div>
+    <div class="ostep" data-s="0"><div class="logo">${LOGO(40)}<b>Edify</b></div><h1>Make the call.</h1><p>Real CEO decisions, thirty seconds each. See what really happened, how everyone else chose, and climb from Intern to CEO.</p>
+      <div class="proof">Real cases from public reporting · Five new calls every morning</div>
       <button class="btn heat" data-next>Start</button></div>
     <div class="ostep hidden" data-s="1"><button class="skipb" data-done>Skip</button><div class="topgap"></div><h2>What's your world?</h2><p>Pick as many as you like. You can change this any time.</p><div class="chips" id="och">${T.map(t => `<button class="tchip ${sel.has(t) ? 'on' : ''}" data-t="${t}"><span class="ck">${icon('check')}</span>${t}</button>`).join('')}</div><button class="btn heat" data-next id="o1n">Continue</button></div>
     <div class="ostep hidden" data-s="2"><button class="skipb" data-done>Skip</button><div class="topgap"></div><h2>How many calls a day?</h2><div class="goal">${[[3, 'Casual', '☕️'], [5, 'Regular', '🔥'], [10, 'Serious', '🚀']].map(([n, t, e]) => `<button class="choice ${goal === n ? 'on' : ''}" data-g="${n}"><span class="ci">${e}</span><span><b>${t}</b><small>${n} calls · about ${Math.round(n * 0.8)} min</small></span><span></span></button>`).join('')}</div>
-      <input class="namein" id="oname" placeholder="Your first name (optional)" maxlength="20" autocomplete="given-name" value="${esc(S.name || '')}"><button class="btn heat" data-done>Take the hot seat</button></div>`;
+      <input class="namein" id="oname" placeholder="Your first name (optional)" maxlength="20" autocomplete="given-name" value="${esc(S.name || '')}"><button class="btn heat" data-done>Make the call</button></div>`;
   const steps = $$('.ostep', o); let s = 0;
   const show = k => { steps.forEach((st, j) => { st.classList.toggle('hidden', j > k); st.classList.toggle('gone', j < k); }); o.classList.toggle('deep', k > 0); s = k; haptic(); sfx('tap'); };
   $$('[data-next]', o).forEach(b => b.onclick = () => show(s + 1));
